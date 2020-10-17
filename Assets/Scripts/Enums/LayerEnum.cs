@@ -3,6 +3,9 @@
     enum LayerEnum
     {
         Ground = 8,
-        Player = 9
+        Player,
+        Spike
     }
+
+
 }
