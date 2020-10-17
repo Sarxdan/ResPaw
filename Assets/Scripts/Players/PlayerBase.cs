@@ -1,8 +1,9 @@
 ﻿using Assets.Scripts.Enums;
+using System;
 using System.Collections;
 using UnityEngine;
 
-//[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Rigidbody))]
 public abstract class PlayerBase : MonoBehaviour
 {
     private Animator anim;
@@ -29,6 +30,15 @@ public abstract class PlayerBase : MonoBehaviour
 
     private Rigidbody theOtherPlayerOboveMe;
     private Rigidbody theOtherPlayerBelowMe;
+
+    private float maxFriction = 500f;
+    private float normalFriction = 0.6f;
+
+    private float maxJumpSpped = 15f;
+    private float minJumpSpped = 8f;
+
+    private float maxMoveSpeed = 10f;
+    private float minMoveSpeed = 5f;
 
     public PlayerBase()
     {
@@ -66,6 +76,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     }
 
+
     void FallingGravity()
     {
         if (IsPlayerFalling())
@@ -99,13 +110,13 @@ public abstract class PlayerBase : MonoBehaviour
 
             anim.SetTrigger("Jump Inplace");
 
-            var jumpPower = isHeadTouchingOtherPlayer && isTouchingGround ? 15f : 8f;
+            var jumpPower = isHeadTouchingOtherPlayer && isTouchingGround ? maxJumpSpped : minJumpSpped;
 
             var currrentVelocity = rb.velocity;
             currrentVelocity.y = jumpPower;
 
             rb.velocity = currrentVelocity;
-            Debug.Log(rb.velocity.y);
+
         }
     }
 
@@ -119,20 +130,22 @@ public abstract class PlayerBase : MonoBehaviour
             isTouchingGround = true;
             PreventSlidingAfterJumping();
 
+
         }
         if (isTheColliderPlayerBelowMe(collision))
         {
+            theOtherPlayerBelowMe = collision.gameObject.GetComponent<Rigidbody>();
 
             isLegsTouchingOtherPlayer = true;
             PreventSlidingAfterJumping();
-            SetPlayerDriction(500);
-            theOtherPlayerBelowMe = collision.gameObject.GetComponent<Rigidbody>();
+            SetPlayerFriction(maxFriction);
 
         }
         if (IsTheColliderPlayerAboveMe(collision))
         {
             theOtherPlayerOboveMe = collision.gameObject.GetComponent<Rigidbody>();
             isHeadTouchingOtherPlayer = true;
+            SetPlayerFriction(normalFriction);
         }
         isJummping = (isTouchingGround || isLegsTouchingOtherPlayer) ? false : true;
     }
@@ -141,11 +154,13 @@ public abstract class PlayerBase : MonoBehaviour
 
     private bool IsTheColliderPlayerAboveMe(Collision collision)
     {
-        var diffrentBetweenPlayerAndOther = transform.position.y - collision.transform.position.y;
-        return collision.gameObject.layer == (int)LayerEnum.Player && diffrentBetweenPlayerAndOther < 0;
+        var diffrentBetweenPlayerAndOther = Math.Abs(collision.transform.position.y) - Math.Abs(transform.position.y);
+        var isAbove = collision.gameObject.layer == (int)LayerEnum.Player && diffrentBetweenPlayerAndOther > 1 && diffrentBetweenPlayerAndOther < 2.0f;
+
+        return isAbove;
     }
 
-    void SetPlayerDriction(float friction)
+    void SetPlayerFriction(float friction)
     {
         playerCollider.material.dynamicFriction = friction;
 
@@ -184,7 +199,7 @@ public abstract class PlayerBase : MonoBehaviour
         }
         if (collision.gameObject.layer == (int)LayerEnum.Player)
         {
-            SetPlayerDriction(0.6f);
+            SetPlayerFriction(normalFriction);
             isLegsTouchingOtherPlayer = false;
             isHeadTouchingOtherPlayer = false;
         }
@@ -194,8 +209,27 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void MoveThePlayer()
     {
-        Vector3 movement = new Vector3(Input.GetAxis(horizontalAxies), 0f, 0f);
-        if (movement.x > 0)
+        var x = Input.GetAxis(horizontalAxies);
+
+        HandleFacing(x);
+
+
+
+        if (isJummping)
+        {
+            MoveWhileInAir(x);
+
+        }
+        else
+        {
+            MoveWhileInGround(x);
+        }
+
+    }
+
+    private void HandleFacing(float x)
+    {
+        if (x > 0)
         {
             isIdel = false;
             transform.rotation = lookRight;
@@ -205,7 +239,7 @@ public abstract class PlayerBase : MonoBehaviour
                 PlayWalkAnimation();
             }
         }
-        else if (movement.x < 0)
+        else if (x < 0)
         {
             isIdel = false;
             transform.rotation = lookLeft;
@@ -225,32 +259,18 @@ public abstract class PlayerBase : MonoBehaviour
 
             //StartCoroutine(Idling());
         }
-
-        var x = Input.GetAxis(horizontalAxies);
-        var movmentSpeed = isJummping ? 15f : 30;
-
-        if (isJummping)
-        {
-            MoveWhileInAir(x, movmentSpeed);
-
-        }
-        else
-        {
-            MoveWhileInGround(x);
-        }
-
     }
 
     private void MoveWhileInGround(float x)
     {
-        if (x != 0 && isLegsTouchingOtherPlayer && playerCollider.material.dynamicFriction != 0.6f)
+        if (x != 0 && isLegsTouchingOtherPlayer && playerCollider.material.dynamicFriction != normalFriction)
         {
-            SetPlayerDriction(0.6f);
+            SetPlayerFriction(normalFriction);
         }
-        else if (x == 0 && isLegsTouchingOtherPlayer && playerCollider.material.dynamicFriction != 50f)
+        else if (x == 0 && isLegsTouchingOtherPlayer && playerCollider.material.dynamicFriction != maxFriction)
         {
 
-            SetPlayerDriction(500f);
+            SetPlayerFriction(maxFriction);
         }
         if (x == 0)
         {
@@ -281,29 +301,32 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (isLegsTouchingOtherPlayer)
         {
-            var speed = System.Math.Abs(theOtherPlayerBelowMe.velocity.x) < 1 ? 5 : 10;
-            Debug.Log(speed);
-            Debug.Log(theOtherPlayerBelowMe.velocity.x);
+            var speed = System.Math.Abs(theOtherPlayerBelowMe.velocity.x) < 1 ? minMoveSpeed : maxMoveSpeed;
+
             return movingLeft ? speed * -1 : speed;
         }
 
-        return movingLeft ? -5 : 5;
+        return movingLeft ? -minMoveSpeed : minMoveSpeed;
 
 
     }
 
-    private void MoveWhileInAir(float x, float movmentSpeed)
+    private void MoveWhileInAir(float x)
     {
-        movmentSpeed = System.Math.Abs(rb.velocity.x) > 5 ? 0.1f : movmentSpeed;
+
         if (x < 0)
         {
 
-            rb.AddForce(new Vector3(-1f, 0, 0) * movmentSpeed * Time.deltaTime, ForceMode.Impulse);
+            var currentVelocity = rb.velocity;
+            currentVelocity.x = PlayerSpeedIfAboveOtherPlayerOrNot(true);
+            rb.velocity = currentVelocity;
 
         }
         else if (x > 0)
         {
-            rb.AddForce(new Vector3(1f, 0, 0) * movmentSpeed * Time.deltaTime, ForceMode.Impulse);
+            var currentVelocity = rb.velocity;
+            currentVelocity.x = PlayerSpeedIfAboveOtherPlayerOrNot(false);
+            rb.velocity = currentVelocity;
         }
     }
 
