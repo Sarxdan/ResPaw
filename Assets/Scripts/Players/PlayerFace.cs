@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerFace : MonoBehaviour
 {
-    public event EventHandler<bool> PlayerIsFacingSomthing;
+    public event EventHandler<bool> PlayerIsFacingSomething;
     int facingObjectsCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
         facingObjectsCount++;
-        PlayerIsFacingSomthing?.Invoke(this, true);
+        PlayerIsFacingSomething?.Invoke(this, true);
     }
 
     private void OnTriggerExit(Collider other)
@@ -17,7 +17,7 @@ public class PlayerFace : MonoBehaviour
         facingObjectsCount--;
         if (facingObjectsCount == 0)
         {
-            PlayerIsFacingSomthing?.Invoke(this, false);
+            PlayerIsFacingSomething?.Invoke(this, false);
         }
     }
 }
