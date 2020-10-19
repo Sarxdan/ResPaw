@@ -4,7 +4,8 @@
     {
         Ground = 8,
         Player,
-        Spike
+        Spike,
+        RoofSpike
     }
 
 
