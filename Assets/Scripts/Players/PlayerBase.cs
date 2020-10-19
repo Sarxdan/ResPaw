@@ -58,6 +58,8 @@ public abstract class PlayerBase : MonoBehaviour
     private int belowMeCount = 0;
     [SerializeField]
     private bool isFacingObject;
+    
+    
 
     public PlayerBase()
     {
@@ -80,12 +82,15 @@ public abstract class PlayerBase : MonoBehaviour
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
+        playerFace = gameObject.transform.Find("Face").gameObject;
+        playerBottom = gameObject.transform.Find("Bottom").gameObject;
+        playerRoof = gameObject.transform.Find("Roof").gameObject;
     }
 
     public abstract string GetHorizontalAxies();
     public abstract string GetJumpButton();
 
-
+    
     void Start()
     {
 
@@ -202,7 +207,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
 
-    void SetPlayerFriction(float friction)
+    void PlayerFriction(float friction)
     {
         playerCollider.material.dynamicFriction = friction;
 
@@ -221,7 +226,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (belowMeCount < 1)
         {
-            SetPlayerFriction(normalFriction);
+            PlayerFriction(normalFriction);
             touchingOtherPlayer = false;
 
         }
@@ -287,11 +292,11 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (PlayerMovingAbove(x))
         {
-            SetPlayerFriction(normalFriction);
+            PlayerFriction(normalFriction);
         }
         else if (notMovingAbove(x))
         {
-            SetPlayerFriction(maxFriction);
+            PlayerFriction(maxFriction);
         }
         if (x == 0)
         {
@@ -392,7 +397,7 @@ public abstract class PlayerBase : MonoBehaviour
         {
             playerBelow = values.rb;
             PreventSliding();
-            SetPlayerFriction(maxFriction);
+            PlayerFriction(maxFriction);
         }
 
         jumpCheck();
@@ -403,7 +408,7 @@ public abstract class PlayerBase : MonoBehaviour
         if (isGrounded)
         {
             PreventSliding();
-            SetPlayerFriction(normalFriction);
+            PlayerFriction(normalFriction);
         }
         jumpCheck();
     }
