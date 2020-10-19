@@ -161,7 +161,7 @@ public abstract class PlayerBase : MonoBehaviour
         }
     }
 
-    private void OnDeath<T>(T Me) where T : PlayerBase
+    public void OnDeath<T>(T Me) where T : PlayerBase
     {
         if (GetComponent<T>().enabled)
         {
@@ -173,6 +173,22 @@ public abstract class PlayerBase : MonoBehaviour
             GetComponent<T>().enabled = false;
             rb.mass = 1;
             rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        }
+    }
+    
+    public void OnDeath2()
+    {
+        if (enabled)
+        {
+            playerSpawner.SpawnPlayer(gameObject);
+            RemoveAllEvents();
+            StopWalkAnimation();
+            anim.enabled = false;
+            //anim.SetTrigger("Death");da
+            rb.mass = 1;
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ |
+                             RigidbodyConstraints.FreezeRotation;
+            enabled = false;
         }
     }
 
