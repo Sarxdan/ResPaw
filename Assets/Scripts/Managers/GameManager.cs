@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int PlayerOneLife { get; set; }
     public int PlayerTwoLife { get; set; }
 
+    private const int playerLives = 3;
 
     private void Awake()
     {
@@ -26,11 +27,11 @@ public class GameManager : MonoBehaviour
     {
         if (player is PlayerOne)
         {
-            return PlayerOneLife != 3;
+            return PlayerOneLife != playerLives;
         }
         else
         {
-            return PlayerTwoLife != 3;
+            return PlayerTwoLife != playerLives;
         }
     }
 
