@@ -1290,7 +1290,7 @@ GameObject:
   - component: {fileID: 1049460223}
   - component: {fileID: 1049460222}
   m_Layer: 0
-  m_Name: Buttom
+  m_Name: Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1305,7 +1305,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1049460221}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6da60b1b5a308340821d70b100b2e17, type: 3}
+  m_Script: {fileID: 11500000, guid: 894fdd2441b283447aa0254cf8daa9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &1049460223
@@ -2385,7 +2385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2083668054}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6da60b1b5a308340821d70b100b2e17, type: 3}
+  m_Script: {fileID: 11500000, guid: 894fdd2441b283447aa0254cf8daa9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!65 &2083668056
@@ -2490,6 +2490,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lion
       objectReference: {fileID: 0}
+    - target: {fileID: 3906546505431363626, guid: 1baddc0f8bc29e84093ce5fe59bccd87, type: 3}
+      propertyPath: m_Mass
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3906546505431363627, guid: 1baddc0f8bc29e84093ce5fe59bccd87, type: 3}
       propertyPath: m_Size.y
       value: 1.0763934
@@ -2500,6 +2504,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3906546505431363628, guid: 1baddc0f8bc29e84093ce5fe59bccd87, type: 3}
       propertyPath: playerButtom
+      value: 
+      objectReference: {fileID: 2083668054}
+    - target: {fileID: 3906546505431363628, guid: 1baddc0f8bc29e84093ce5fe59bccd87, type: 3}
+      propertyPath: PlayerButton
       value: 
       objectReference: {fileID: 2083668054}
     m_RemovedComponents: []
@@ -2587,6 +2595,14 @@ PrefabInstance:
       propertyPath: playerButtom
       value: 
       objectReference: {fileID: 1049460221}
+    - target: {fileID: 7141223104764850386, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
+      propertyPath: PlayerButton
+      value: 
+      objectReference: {fileID: 1049460221}
+    - target: {fileID: 7141223104764850387, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
+      propertyPath: m_Mass
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 7141223104764850388, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
       propertyPath: m_Size.y
       value: 1.0763934

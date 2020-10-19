@@ -35,7 +35,7 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     private bool isHeadTouchingOtherPlayer;
     private bool isTouchingGround;
-    private float fallMultiplier = 2.5f;
+    private float fallMultiplier = 4f;
     private float lowJumpMultiplier = 2f;
     private Collider playerCollider;
 
@@ -45,8 +45,8 @@ public abstract class PlayerBase : MonoBehaviour
     private float maxFriction = 500f;
     private float normalFriction = 0.6f;
 
-    private float maxJumpSpped = 15f;
-    private float minJumpSpped = 8f;
+    private float maxJumpSpeed = 10f;
+    private float minJumpSpeed = 8f;
 
     private float maxMoveSpeed = 10f;
     private float minMoveSpeed = 5f;
@@ -58,6 +58,8 @@ public abstract class PlayerBase : MonoBehaviour
     private int playerBelowMeCount = 0;
     [SerializeField]
     private bool isPlayerFacingObject;
+    [SerializeField]
+    private bool isPressingKey = false;
 
     public PlayerBase()
     {
@@ -111,7 +113,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (IsPlayerFalling())
         {
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
         }
         else if (IsJumpingSmall())
         {
@@ -143,7 +145,7 @@ public abstract class PlayerBase : MonoBehaviour
 
             anim.SetTrigger("Jump Inplace");
 
-            var jumpPower = isHeadTouchingOtherPlayer && isTouchingGround ? maxJumpSpped : minJumpSpped;
+            var jumpPower = isHeadTouchingOtherPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
             var currrentVelocity = rb.velocity;
             currrentVelocity.y = jumpPower;
@@ -158,7 +160,6 @@ public abstract class PlayerBase : MonoBehaviour
         if (collision.gameObject.layer == (int)LayerEnum.Spike)
         {
             OnDeath(this);
-
         }
     }
 
@@ -172,6 +173,8 @@ public abstract class PlayerBase : MonoBehaviour
             anim.enabled = false;
             //anim.SetTrigger("Death");
             GetComponent<T>().enabled = false;
+            rb.mass = 1;
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         }
     }
 
@@ -213,6 +216,10 @@ public abstract class PlayerBase : MonoBehaviour
     private void MoveThePlayer()
     {
         var x = Input.GetAxis(horizontalAxies);
+
+        Debug.Log(x);
+
+        
 
         HandleFacing(x);
         
@@ -324,7 +331,13 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
     private void MoveWhileInAir(float x)
-    { 
+    {
+        if (x == 0)
+        {
+            var currentVelocity = rb.velocity;
+            currentVelocity.x = 0;
+            rb.velocity = currentVelocity;
+        }
 
         if (x < 0 && !isPlayerFacingObject)
         {
@@ -340,6 +353,8 @@ public abstract class PlayerBase : MonoBehaviour
             currentVelocity.x = SpeedAbovePlayer(false);
             rb.velocity = currentVelocity;
         }
+        
+        
     }
 
     private void SetIsPlayerFacingObject(object sender, bool isFacing)
