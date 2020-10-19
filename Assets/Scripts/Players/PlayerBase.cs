@@ -82,6 +82,9 @@ public abstract class PlayerBase : MonoBehaviour
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
+        playerFace = gameObject.transform.Find("Face").gameObject;
+        playerBottom = gameObject.transform.Find("Bottom").gameObject;
+        playerRoof = gameObject.transform.Find("Roof").gameObject;
     }
 
     public abstract string GetHorizontalAxies();
