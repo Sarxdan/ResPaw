@@ -37,4 +37,13 @@ public class HorizontalEnemy : MonoBehaviour
             anim.SetTrigger((direction.z >= 1 ? "TurnLeft" : "TurnRight"));
         }
     }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            other.gameObject.GetComponent<PlayerBase>().OnDeath2();
+        }
+        
+    }
 }
