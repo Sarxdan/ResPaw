@@ -59,9 +59,9 @@ public abstract class PlayerBase : MonoBehaviour
 
     public bool killedByPlayer = false;
     public bool killedByRoof = false;
-    
-    
-    
+
+
+
 
     public PlayerBase()
     {
@@ -93,7 +93,7 @@ public abstract class PlayerBase : MonoBehaviour
     public abstract string GetHorizontalAxies();
     public abstract string GetJumpButton();
 
-    
+
     void Start()
     {
 
@@ -155,9 +155,9 @@ public abstract class PlayerBase : MonoBehaviour
 
             var currrentVelocity = rb.velocity;
             currrentVelocity.y = jumpPower;
-            
+
             rb.velocity = currrentVelocity;
-            
+
         }
     }
 
@@ -167,8 +167,12 @@ public abstract class PlayerBase : MonoBehaviour
         {
             OnDeath();
         }
+        if (collision.gameObject.layer == (int)LayerEnum.WallSpike)
+        {
+            OnDeath(true);
+        }
     }
-    
+
 
     /*public void OnDeath<T>(T Me) where T : PlayerBase
     {
@@ -188,22 +192,39 @@ public abstract class PlayerBase : MonoBehaviour
         }
     }
     */
-    
-    public void OnDeath()
+
+    public void OnDeath(bool freezeLocation = false)
     {
         if (enabled)
         {
-            playerSpawner.SpawnPlayer(gameObject);
+
+            if (GameManager.Instance.CanSpawn(this))
+            {
+                playerSpawner.SpawnPlayer(gameObject);
+
+            }
+
+
+
+
             RemoveAllEvents();
             StopWalkAnimation();
             anim.enabled = false;
-            //anim.SetTrigger("Death");
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-            enabled = false;
-            if (isJumping)
-            {
+
+            if (freezeLocation)
                 rb.constraints = RigidbodyConstraints.FreezeAll;
-            }
+
+            touchingOtherPlayer = false;
+            isFacingObject = false;
+            headTouchingPlayer = false;
+            isTouchingGround = true;
+            isJumping = false;
+            GameManager.Instance.RemoveLife(this);
+            enabled = false;
+            //if (isJumping)
+            //{
+            //    rb.constraints = RigidbodyConstraints.FreezeAll;
+            //}
         }
     }
 
@@ -247,10 +268,10 @@ public abstract class PlayerBase : MonoBehaviour
         var x = Input.GetAxis(horizontalAxies);
 
 
-        
+
 
         HandleFacing(x);
-        
+
 
 
         if (isJumping)
@@ -297,7 +318,7 @@ public abstract class PlayerBase : MonoBehaviour
             //StartCoroutine(Idling());
         }
     }
-    
+
     private void SetFriciton(float x)
     {
         if (PlayerMovingAbove(x))
@@ -380,8 +401,8 @@ public abstract class PlayerBase : MonoBehaviour
             currentVelocity.x = SpeedAbovePlayer(false);
             rb.velocity = currentVelocity;
         }
-        
-        
+
+
     }
 
     private void PlayerFacingObject(object sender, bool isFacing)
@@ -412,6 +433,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         jumpCheck();
     }
+
     private void touchingGround(object sender, bool isGrounded)
     {
         isTouchingGround = isGrounded;
