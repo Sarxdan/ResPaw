@@ -613,12 +613,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFace: {fileID: 1583980447}
   playerRoof: {fileID: 888515698}
-  PlayerBottom: {fileID: 2083668054}
+  playerBottom: {fileID: 2083668054}
   jumpSpeed: 7
   isJumping: 1
   velocityY: 0
   touchingOtherPlayer: 0
-  HeadTouchingPlayer: 0
+  headTouchingPlayer: 0
   isFacingObject: 0
 --- !u!1 &3906088976497965277
 GameObject:

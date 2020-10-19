@@ -14,7 +14,7 @@ public abstract class PlayerBase : MonoBehaviour
     private GameObject playerRoof;
 
     [SerializeField]
-    private GameObject PlayerBottom;
+    private GameObject playerBottom;
 
     private Animator anim;
     [SerializeField]
@@ -33,7 +33,7 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     private bool touchingOtherPlayer;
     [SerializeField]
-    private bool HeadTouchingPlayer;
+    private bool headTouchingPlayer;
     private bool isTouchingGround;
     private float fallMultiplier = 4f;
     private float lowJumpMultiplier = 2f;
@@ -70,7 +70,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         isJumping = true;
         touchingOtherPlayer = false;
-        HeadTouchingPlayer = false;
+        headTouchingPlayer = false;
         isTouchingGround = false;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
@@ -78,8 +78,8 @@ public abstract class PlayerBase : MonoBehaviour
         playerSpawner = FindObjectOfType<PlayerSpawner>();
         playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += PlayerFacingObject;
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround += touchingGround;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
+        playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
+        playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
     }
 
     public abstract string GetHorizontalAxies();
@@ -109,22 +109,22 @@ public abstract class PlayerBase : MonoBehaviour
 
     void FallingGravity()
     {
-        if (IsPlayerFalling())
+        if (playerFalling())
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
         }
-        else if (IsJumpingSmall())
+        else if (jumpingSmall())
         {
             rb.velocity += Vector3.up * Physics.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
-    private bool IsJumpingSmall()
+    private bool jumpingSmall()
     {
         return rb.velocity.y > 0 && !Input.GetButton(jumpButton);
     }
 
-    private bool IsPlayerFalling()
+    private bool playerFalling()
     {
         return rb.velocity.y < 0;
     }
@@ -143,7 +143,7 @@ public abstract class PlayerBase : MonoBehaviour
 
             anim.SetTrigger("Jump Inplace");
 
-            var jumpPower = HeadTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
+            var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
             var currrentVelocity = rb.velocity;
             currrentVelocity.y = jumpPower;
@@ -180,8 +180,8 @@ public abstract class PlayerBase : MonoBehaviour
     {
         playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= PlayerFacingObject;
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer -= TouchingPlayerAbove;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround -= touchingGround;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer -= LegTouchingPlayer;
+        playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround -= touchingGround;
+        playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer -= LegTouchingPlayer;
     }
 
 
@@ -360,7 +360,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void TouchingPlayerAbove(object sender, (Rigidbody rb, bool isCarying) values)
     {
-        HeadTouchingPlayer = values.isCarying;
+        headTouchingPlayer = values.isCarying;
 
         if (values.isCarying)
             playerAbove = values.rb;
