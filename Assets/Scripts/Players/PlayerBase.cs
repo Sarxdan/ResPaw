@@ -167,6 +167,11 @@ public abstract class PlayerBase : MonoBehaviour
         {
             OnDeath();
         }
+        else if(collision.gameObject.layer == (int)LayerEnum.RoofSpike)
+        {
+            killedByRoof = true;
+            OnDeath();
+        }
     }
     
 
@@ -203,6 +208,10 @@ public abstract class PlayerBase : MonoBehaviour
             if (isJumping)
             {
                 rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
+            if (killedByRoof)
+            {
+                rb.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             }
         }
     }

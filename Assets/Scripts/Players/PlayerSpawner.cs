@@ -2,8 +2,6 @@
 
 public class PlayerSpawner : MonoBehaviour
 {
-
-
     public void SpawnPlayer(GameObject animal)
     {
 
