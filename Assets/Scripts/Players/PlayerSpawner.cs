@@ -3,16 +3,13 @@
 public class PlayerSpawner : MonoBehaviour
 {
 
-    [SerializeField]
-    private Transform spawnPosition;
-
 
     public void SpawnPlayer(GameObject animal)
     {
 
-        Vector3 posToSpawn = spawnPosition.position;
+        Vector3 posToSpawn = GetComponent<Transform>().position;
 
-        Instantiate(animal, posToSpawn, spawnPosition.rotation);
+        Instantiate(animal, posToSpawn, GetComponent<Transform>().rotation);
     }
 
 }

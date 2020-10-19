@@ -592,7 +592,7 @@ GameObject:
   - component: {fileID: 7141223104764850386}
   m_Layer: 9
   m_Name: Cow
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -678,14 +678,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFace: {fileID: 1108529856}
   playerRoof: {fileID: 1829296226}
-  PlayerButton: {fileID: 1049460221}
+  PlayerBottom: {fileID: 1049460221}
   jumpSpeed: 7
   isJumping: 1
   velocityY: 0
-  isLegsTouchingOtherPlayer: 0
-  isHeadTouchingOtherPlayer: 0
-  isPlayerFacingObject: 0
-  isPressingKey: 0
+  touchingOtherPlayer: 0
+  HeadTouchingPlayer: 0
+  isFacingObject: 0
 --- !u!1 &7142646324293760164
 GameObject:
   m_ObjectHideFlags: 0

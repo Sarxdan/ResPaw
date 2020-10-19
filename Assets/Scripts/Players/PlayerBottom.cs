@@ -2,7 +2,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerBottom : MonoBehaviour
+public class playerBottom : MonoBehaviour
 {
     public event EventHandler<(Rigidbody, bool)> PlayerIsAbovePlayer;
     public event EventHandler<bool> PlayerIsAboveGround;

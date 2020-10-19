@@ -14,7 +14,7 @@ public abstract class PlayerBase : MonoBehaviour
     private GameObject playerRoof;
 
     [SerializeField]
-    private GameObject PlayerButton;
+    private GameObject PlayerBottom;
 
     private Animator anim;
     [SerializeField]
@@ -31,16 +31,16 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     private float velocityY;
     [SerializeField]
-    private bool isLegsTouchingOtherPlayer;
+    private bool touchingOtherPlayer;
     [SerializeField]
-    private bool isHeadTouchingOtherPlayer;
+    private bool HeadTouchingPlayer;
     private bool isTouchingGround;
     private float fallMultiplier = 4f;
     private float lowJumpMultiplier = 2f;
     private Collider playerCollider;
 
-    private Rigidbody theOtherPlayerOboveMe;
-    private Rigidbody theOtherPlayerBelowMe;
+    private Rigidbody playerAbove;
+    private Rigidbody playerBelow;
 
     private float maxFriction = 500f;
     private float normalFriction = 0.6f;
@@ -55,11 +55,9 @@ public abstract class PlayerBase : MonoBehaviour
 
     private PlayerBase playerClass;
 
-    private int playerBelowMeCount = 0;
+    private int belowMeCount = 0;
     [SerializeField]
-    private bool isPlayerFacingObject;
-    [SerializeField]
-    private bool isPressingKey = false;
+    private bool isFacingObject;
 
     public PlayerBase()
     {
@@ -71,17 +69,17 @@ public abstract class PlayerBase : MonoBehaviour
     private void Awake()
     {
         isJumping = true;
-        isLegsTouchingOtherPlayer = false;
-        isHeadTouchingOtherPlayer = false;
+        touchingOtherPlayer = false;
+        HeadTouchingPlayer = false;
         isTouchingGround = false;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
         playerSpawner = FindObjectOfType<PlayerSpawner>();
-        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += SetIsPlayerFacingObject;
+        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += playerFacingObject;
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += SetHeadTouchingPlayer;
-        PlayerButton.GetComponent<PlayerBottom>().PlayerIsAboveGround += SetIsTouchingGround;
-        PlayerButton.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += SetLegTouchingPlayer;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround += SetIsTouchingGround;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer += SetLegTouchingPlayer;
     }
 
     public abstract string GetHorizontalAxies();
@@ -145,7 +143,7 @@ public abstract class PlayerBase : MonoBehaviour
 
             anim.SetTrigger("Jump Inplace");
 
-            var jumpPower = isHeadTouchingOtherPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
+            var jumpPower = HeadTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
             var currrentVelocity = rb.velocity;
             currrentVelocity.y = jumpPower;
@@ -180,10 +178,10 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void RemoveAllEvents()
     {
-        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= SetIsPlayerFacingObject;
+        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= playerFacingObject;
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer -= SetHeadTouchingPlayer;
-        PlayerButton.GetComponent<PlayerBottom>().PlayerIsAboveGround -= SetIsTouchingGround;
-        PlayerButton.GetComponent<PlayerBottom>().PlayerIsAbovePlayer -= SetLegTouchingPlayer;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround -= SetIsTouchingGround;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer -= SetLegTouchingPlayer;
     }
 
 
@@ -194,7 +192,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     }
 
-    private void PreventSlidingAfterJumping()
+    private void PreventSliding()
     {
 
         rb.velocity = new Vector3(0, 0, 0);
@@ -205,10 +203,10 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void IfThereIsNoAnimalsBelowMe()
     {
-        if (playerBelowMeCount < 1)
+        if (belowMeCount < 1)
         {
             SetPlayerFriction(normalFriction);
-            isLegsTouchingOtherPlayer = false;
+            touchingOtherPlayer = false;
 
         }
     }
@@ -217,7 +215,6 @@ public abstract class PlayerBase : MonoBehaviour
     {
         var x = Input.GetAxis(horizontalAxies);
 
-        Debug.Log(x);
 
         
 
@@ -231,7 +228,7 @@ public abstract class PlayerBase : MonoBehaviour
         }
         else
         {
-            MoveWhileGroundOrPlayer(x);
+            SetFriciton(x);
         }
 
     }
@@ -269,16 +266,15 @@ public abstract class PlayerBase : MonoBehaviour
             //StartCoroutine(Idling());
         }
     }
-
-    private void MoveWhileGroundOrPlayer(float x)
+    
+    private void SetFriciton(float x)
     {
-        if (CheckIfPlayerMovingAbove(x))
+        if (PlayerMovingAbove(x))
         {
             SetPlayerFriction(normalFriction);
         }
-        else if (PlayerNotMovingAbove(x))
+        else if (notMovingAbove(x))
         {
-
             SetPlayerFriction(maxFriction);
         }
         if (x == 0)
@@ -305,22 +301,22 @@ public abstract class PlayerBase : MonoBehaviour
         }
     }
 
-    private bool PlayerNotMovingAbove(float x)
+    private bool notMovingAbove(float x)
     {
-        return x == 0 && isLegsTouchingOtherPlayer && playerCollider.material.dynamicFriction != maxFriction;
+        return x == 0 && touchingOtherPlayer && playerCollider.material.dynamicFriction != maxFriction;
     }
 
-    private bool CheckIfPlayerMovingAbove(float x)
+    private bool PlayerMovingAbove(float x)
     {
-        return x != 0 && isLegsTouchingOtherPlayer && playerCollider.material.dynamicFriction != normalFriction;
+        return x != 0 && touchingOtherPlayer && playerCollider.material.dynamicFriction != normalFriction;
     }
 
     private float SpeedAbovePlayer(bool movingLeft)
     {
 
-        if (isLegsTouchingOtherPlayer)
+        if (touchingOtherPlayer)
         {
-            var speed = Math.Abs(theOtherPlayerBelowMe.velocity.x) > 1 ? maxMoveSpeed : minMoveSpeed;
+            var speed = Math.Abs(playerBelow.velocity.x) > 1 ? maxMoveSpeed : minMoveSpeed;
 
             return movingLeft ? speed * -1 : speed;
         }
@@ -339,7 +335,7 @@ public abstract class PlayerBase : MonoBehaviour
             rb.velocity = currentVelocity;
         }
 
-        if (x < 0 && !isPlayerFacingObject)
+        if (x < 0 && !isFacingObject)
         {
 
             var currentVelocity = rb.velocity;
@@ -347,7 +343,7 @@ public abstract class PlayerBase : MonoBehaviour
             rb.velocity = currentVelocity;
 
         }
-        else if (x > 0 && !isPlayerFacingObject)
+        else if (x > 0 && !isFacingObject)
         {
             var currentVelocity = rb.velocity;
             currentVelocity.x = SpeedAbovePlayer(false);
@@ -357,29 +353,29 @@ public abstract class PlayerBase : MonoBehaviour
         
     }
 
-    private void SetIsPlayerFacingObject(object sender, bool isFacing)
+    private void playerFacingObject(object sender, bool isFacing)
     {
-        isPlayerFacingObject = isFacing;
+        isFacingObject = isFacing;
     }
 
     private void SetHeadTouchingPlayer(object sender, (Rigidbody rb, bool isCarying) values)
     {
-        isHeadTouchingOtherPlayer = values.isCarying;
+        HeadTouchingPlayer = values.isCarying;
 
         if (values.isCarying)
-            theOtherPlayerOboveMe = values.rb;
+            playerAbove = values.rb;
 
     }
 
 
     private void SetLegTouchingPlayer(object sender, (Rigidbody rb, bool isAbove) values)
     {
-        isLegsTouchingOtherPlayer = values.isAbove;
+        touchingOtherPlayer = values.isAbove;
 
         if (values.isAbove)
         {
-            theOtherPlayerBelowMe = values.rb;
-            PreventSlidingAfterJumping();
+            playerBelow = values.rb;
+            PreventSliding();
             SetPlayerFriction(maxFriction);
         }
 
@@ -390,7 +386,7 @@ public abstract class PlayerBase : MonoBehaviour
         isTouchingGround = isGrounded;
         if (isGrounded)
         {
-            PreventSlidingAfterJumping();
+            PreventSliding();
             SetPlayerFriction(normalFriction);
         }
         SetIsjumping();
@@ -398,7 +394,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void SetIsjumping()
     {
-        isJumping = isTouchingGround || isLegsTouchingOtherPlayer ? false : true;
+        isJumping = isTouchingGround || touchingOtherPlayer ? false : true;
     }
 
     private void PlayWalkAnimation()

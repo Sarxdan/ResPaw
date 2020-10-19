@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 3906546505431363628}
   m_Layer: 9
   m_Name: Lion
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -613,14 +613,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFace: {fileID: 1583980447}
   playerRoof: {fileID: 888515698}
-  PlayerButton: {fileID: 2083668054}
+  PlayerBottom: {fileID: 2083668054}
   jumpSpeed: 7
   isJumping: 1
   velocityY: 0
-  isLegsTouchingOtherPlayer: 0
-  isHeadTouchingOtherPlayer: 0
-  isPlayerFacingObject: 0
-  isPressingKey: 0
+  touchingOtherPlayer: 0
+  HeadTouchingPlayer: 0
+  isFacingObject: 0
 --- !u!1 &3906088976497965277
 GameObject:
   m_ObjectHideFlags: 0
