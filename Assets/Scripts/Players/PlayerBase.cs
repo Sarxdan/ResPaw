@@ -76,10 +76,10 @@ public abstract class PlayerBase : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
         playerSpawner = FindObjectOfType<PlayerSpawner>();
-        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += playerFacingObject;
-        playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += SetHeadTouchingPlayer;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround += SetIsTouchingGround;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer += SetLegTouchingPlayer;
+        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += PlayerFacingObject;
+        playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround += touchingGround;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
     }
 
     public abstract string GetHorizontalAxies();
@@ -178,10 +178,10 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void RemoveAllEvents()
     {
-        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= playerFacingObject;
-        playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer -= SetHeadTouchingPlayer;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround -= SetIsTouchingGround;
-        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer -= SetLegTouchingPlayer;
+        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= PlayerFacingObject;
+        playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer -= TouchingPlayerAbove;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAboveGround -= touchingGround;
+        PlayerBottom.GetComponent<playerBottom>().PlayerIsAbovePlayer -= LegTouchingPlayer;
     }
 
 
@@ -353,12 +353,12 @@ public abstract class PlayerBase : MonoBehaviour
         
     }
 
-    private void playerFacingObject(object sender, bool isFacing)
+    private void PlayerFacingObject(object sender, bool isFacing)
     {
         isFacingObject = isFacing;
     }
 
-    private void SetHeadTouchingPlayer(object sender, (Rigidbody rb, bool isCarying) values)
+    private void TouchingPlayerAbove(object sender, (Rigidbody rb, bool isCarying) values)
     {
         HeadTouchingPlayer = values.isCarying;
 
@@ -368,7 +368,7 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
 
-    private void SetLegTouchingPlayer(object sender, (Rigidbody rb, bool isAbove) values)
+    private void LegTouchingPlayer(object sender, (Rigidbody rb, bool isAbove) values)
     {
         touchingOtherPlayer = values.isAbove;
 
@@ -379,9 +379,9 @@ public abstract class PlayerBase : MonoBehaviour
             SetPlayerFriction(maxFriction);
         }
 
-        SetIsjumping();
+        jumpCheck();
     }
-    private void SetIsTouchingGround(object sender, bool isGrounded)
+    private void touchingGround(object sender, bool isGrounded)
     {
         isTouchingGround = isGrounded;
         if (isGrounded)
@@ -389,10 +389,10 @@ public abstract class PlayerBase : MonoBehaviour
             PreventSliding();
             SetPlayerFriction(normalFriction);
         }
-        SetIsjumping();
+        jumpCheck();
     }
 
-    private void SetIsjumping()
+    private void jumpCheck()
     {
         isJumping = isTouchingGround || touchingOtherPlayer ? false : true;
     }
