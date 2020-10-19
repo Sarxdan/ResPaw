@@ -3,25 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//created by Daniel
+//peer reviewed by 
+
+
+
 public class FinishLine : MonoBehaviour
 {
-    public List<GameObject> Tb;
-    
-    
 
+    public List<GameObject> tb;
+  
     private void Start()
     {
-        Tb = new List<GameObject>();       
+        tb = new List<GameObject>();       
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.tag == "Player")
         {           
-            if (!Tb.Contains(other.gameObject))
+            if (!tb.Contains(other.gameObject))
             {
-                Tb.Add(other.gameObject);
-                Debug.Log("added");
+                tb.Add(other.gameObject);               
             }
         }      
     }
@@ -30,31 +33,27 @@ public class FinishLine : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {         
-            if (Tb.Contains(other.gameObject))
+            if (tb.Contains(other.gameObject))
             {
-                Tb.Remove(other.gameObject);
-                Debug.Log("remove");
+                tb.Remove(other.gameObject);
             }
         }
-
     }
 
     private void Update()
     {
-        checkAmount();
+        CheckAmount();
     }
 
-    private void checkAmount()
+    private void CheckAmount()
     {
-        if(Tb.Count >= 2)
+        if(tb.Count == 2)
         {
-            
-          
-        }
+            foreach (GameObject objects in tb)
+            {
+                objects.GetComponent<PlayerBase>().enabled = false;
+                //TODO: UI
+            }
+        }        
     }
-
-
-
-
-
 }
