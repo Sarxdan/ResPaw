@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBase.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBase.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/New Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/materials/New Material.mat.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +69,7 @@
       <updated>1602940311230</updated>
       <workItem from="1602940326165" duration="11677000" />
       <workItem from="1603092107454" duration="1758000" />
-      <workItem from="1603101352178" duration="5538000" />
+      <workItem from="1603101352178" duration="6685000" />
     </task>
     <servers />
   </component>
