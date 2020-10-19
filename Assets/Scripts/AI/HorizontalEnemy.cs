@@ -42,7 +42,7 @@ public class HorizontalEnemy : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerBase>().OnDeath2();
+            other.gameObject.GetComponent<PlayerBase>().OnDeath();
         }
         
     }

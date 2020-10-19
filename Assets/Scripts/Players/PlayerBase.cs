@@ -7,13 +7,10 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public abstract class PlayerBase : MonoBehaviour
 {
-    [SerializeField]
     private GameObject playerFace;
 
-    [SerializeField]
     private GameObject playerRoof;
 
-    [SerializeField]
     private GameObject playerBottom;
 
     private Animator anim;
@@ -59,6 +56,13 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     private bool isFacingObject;
 
+
+    public bool killedByPlayer = false;
+    public bool killedByRoof = false;
+    
+    
+    
+
     public PlayerBase()
     {
         horizontalAxies = GetHorizontalAxies();
@@ -72,6 +76,9 @@ public abstract class PlayerBase : MonoBehaviour
         touchingOtherPlayer = false;
         headTouchingPlayer = false;
         isTouchingGround = false;
+        playerFace = gameObject.transform.Find("Face").gameObject;
+        playerBottom = gameObject.transform.Find("Bottom").gameObject;
+        playerRoof = gameObject.transform.Find("Roof").gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
@@ -80,12 +87,13 @@ public abstract class PlayerBase : MonoBehaviour
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
+
     }
 
     public abstract string GetHorizontalAxies();
     public abstract string GetJumpButton();
 
-
+    
     void Start()
     {
 
@@ -157,11 +165,12 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (collision.gameObject.layer == (int)LayerEnum.Spike)
         {
-            OnDeath(this);
+            OnDeath();
         }
     }
+    
 
-    public void OnDeath<T>(T Me) where T : PlayerBase
+    /*public void OnDeath<T>(T Me) where T : PlayerBase
     {
         if (GetComponent<T>().enabled)
         {
@@ -171,12 +180,16 @@ public abstract class PlayerBase : MonoBehaviour
             anim.enabled = false;
             //anim.SetTrigger("Death");
             GetComponent<T>().enabled = false;
-            rb.mass = 1;
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+            //rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+            if (isJumping)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
     }
+    */
     
-    public void OnDeath2()
+    public void OnDeath()
     {
         if (enabled)
         {
@@ -184,11 +197,13 @@ public abstract class PlayerBase : MonoBehaviour
             RemoveAllEvents();
             StopWalkAnimation();
             anim.enabled = false;
-            //anim.SetTrigger("Death");da
-            rb.mass = 1;
-            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ |
-                             RigidbodyConstraints.FreezeRotation;
+            //anim.SetTrigger("Death");
+            rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
             enabled = false;
+            if (isJumping)
+            {
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+            }
         }
     }
 
@@ -202,7 +217,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
 
-    void SetPlayerFriction(float friction)
+    void PlayerFriction(float friction)
     {
         playerCollider.material.dynamicFriction = friction;
 
@@ -221,7 +236,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (belowMeCount < 1)
         {
-            SetPlayerFriction(normalFriction);
+            PlayerFriction(normalFriction);
             touchingOtherPlayer = false;
 
         }
@@ -287,11 +302,11 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (PlayerMovingAbove(x))
         {
-            SetPlayerFriction(normalFriction);
+            PlayerFriction(normalFriction);
         }
         else if (notMovingAbove(x))
         {
-            SetPlayerFriction(maxFriction);
+            PlayerFriction(maxFriction);
         }
         if (x == 0)
         {
@@ -392,7 +407,7 @@ public abstract class PlayerBase : MonoBehaviour
         {
             playerBelow = values.rb;
             PreventSliding();
-            SetPlayerFriction(maxFriction);
+            PlayerFriction(maxFriction);
         }
 
         jumpCheck();
@@ -403,7 +418,7 @@ public abstract class PlayerBase : MonoBehaviour
         if (isGrounded)
         {
             PreventSliding();
-            SetPlayerFriction(normalFriction);
+            PlayerFriction(normalFriction);
         }
         jumpCheck();
     }
