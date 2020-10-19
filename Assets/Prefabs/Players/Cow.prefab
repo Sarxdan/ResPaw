@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1049460221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1049460224}
+  - component: {fileID: 1049460223}
+  - component: {fileID: 1049460222}
+  m_Layer: 0
+  m_Name: Bottom
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1049460224
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049460221}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.064, y: 0.013, z: 0}
+  m_LocalScale: {x: 1, y: 0.88145, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7136655515078106984}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1049460223
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049460221}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.9695921, y: 0.0608747, z: 0.9228096}
+  m_Center: {x: 0.07130462, y: 0.01927936, z: 0.009327158}
+--- !u!114 &1049460222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1049460221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 894fdd2441b283447aa0254cf8daa9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1108529856
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4090301, y: 0.42182872, z: 0.16399783}
-  m_Center: {x: 0.82920796, y: 0.23371843, z: 1.0462737}
+  m_Size: {x: 1.4090301, y: 0.4179188, z: 0.16399783}
+  m_Center: {x: 0.82920796, y: 0.23176347, z: 1.0462737}
 --- !u!114 &1108529857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,7 +125,7 @@ GameObject:
   - component: {fileID: 1829296227}
   - component: {fileID: 1829296229}
   - component: {fileID: 1829296228}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9695921, y: 0.0608747, z: 0.97099495}
-  m_Center: {x: 0.07130462, y: 0.01927936, z: 0.002320528}
+  m_Size: {x: 0.9695921, y: 0.0608747, z: 0.91932106}
+  m_Center: {x: 0.07130462, y: 0.01927936, z: 0.004918322}
 --- !u!114 &1829296228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,6 +612,7 @@ Transform:
   - {fileID: 7139834735738139002}
   - {fileID: 1108529859}
   - {fileID: 1829296227}
+  - {fileID: 1049460224}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -604,8 +662,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1.0819013, z: 1}
-  m_Center: {x: 0, y: 0.54123414, z: 0}
+  m_Size: {x: 1, y: 1.0763934, z: 0.9377632}
+  m_Center: {x: 0, y: 0.5439881, z: 0.00949882}
 --- !u!114 &7141223104764850386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -620,11 +678,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerFace: {fileID: 1108529856}
   playerRoof: {fileID: 1829296226}
+  PlayerButton: {fileID: 1049460221}
   jumpSpeed: 7
-  isJummping: 1
+  isJumping: 1
   velocityY: 0
+  isLegsTouchingOtherPlayer: 0
   isHeadTouchingOtherPlayer: 0
   isPlayerFacingObject: 0
+  isPressingKey: 0
 --- !u!1 &7142646324293760164
 GameObject:
   m_ObjectHideFlags: 0
