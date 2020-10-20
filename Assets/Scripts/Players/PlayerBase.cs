@@ -41,7 +41,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private float maxFriction = 500f;
     private float normalFriction = 0.6f;
-    private float mediumFriction = 20f;
+    private float mediumFriction = 5f;
 
     private float maxJumpSpeed = 10f;
     private float minJumpSpeed = 8f;
@@ -211,7 +211,6 @@ public abstract class PlayerBase : MonoBehaviour
 
             if (freezeLocation)
                 rb.constraints = RigidbodyConstraints.FreezeAll;
-            SetPlayerFriction(normalFriction);
             touchingOtherPlayerFromBelow = false;
             isFacingObject = false;
             isFacingAnotherPlayer = false;
@@ -219,7 +218,7 @@ public abstract class PlayerBase : MonoBehaviour
             isTouchingGround = true;
             isJumping = false;
             GameManager.Instance.RemoveLife(this);
-            SetPlayerFriction(mediumFriction);
+            rb.mass = 3;
             enabled = false;
             //if (isJumping)
             //{
@@ -367,6 +366,8 @@ public abstract class PlayerBase : MonoBehaviour
             finalSpeed *= isFacingAnotherPlayer ? 2 : 1;
 
             return finalSpeed;
+
+
         }
 
         finalSpeed = movingLeft ? -minMoveSpeed : minMoveSpeed;
