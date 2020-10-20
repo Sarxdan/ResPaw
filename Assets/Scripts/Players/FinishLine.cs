@@ -1,7 +1,9 @@
 ﻿using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 //created by Daniel
 //peer reviewed by 
@@ -10,12 +12,14 @@ using UnityEngine;
 
 public class FinishLine : MonoBehaviour
 {
+    
+    private List<GameObject> tb;
+    [SerializeField]private Canvas canvas;
 
-    public List<GameObject> tb;
-  
     private void Start()
     {
-        tb = new List<GameObject>();       
+        tb = new List<GameObject>();
+        canvas = canvas.GetComponent<Canvas>();      
     }
 
     private void OnTriggerEnter(Collider other)
@@ -42,18 +46,22 @@ public class FinishLine : MonoBehaviour
 
     private void Update()
     {
-        CheckAmount();
+        CheckAmount();             
     }
 
     private void CheckAmount()
     {
         if(tb.Count == 2)
-        {
+        {           
+            canvas.enabled = true;
+            
             foreach (GameObject objects in tb)
             {
-                objects.GetComponent<PlayerBase>().enabled = false;
-                //TODO: UI
+                objects.GetComponent<Animator>().enabled = false;
+                objects.GetComponent<PlayerBase>().enabled = false;               
+                //TODO: make the final UI
             }
         }        
     }
+    
 }
