@@ -126,7 +126,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (playerFalling())
         {
-            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
+                     rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
         }
         else if (jumpingSmall())
         {
@@ -141,7 +141,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private bool playerFalling()
     {
-        return rb.velocity.y < 0;
+        return headTouchingPlayer ? rb.velocity.y < 0 : rb.velocity.y < 4;
     }
 
 
