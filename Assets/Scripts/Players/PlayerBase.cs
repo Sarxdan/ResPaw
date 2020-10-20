@@ -77,7 +77,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     }
 
-    private void Awake()
+    private void Start()
     {
         isJumping = true;
         touchingOtherPlayerFromBelow = false;
