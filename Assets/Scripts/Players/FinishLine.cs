@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 //created by Daniel
-//peer reviewed by 
+//peer reviewed by Sandra
 
 
 
@@ -22,8 +22,9 @@ public class FinishLine : MonoBehaviour
         victoryText = victoryText.GetComponent<Text>();      
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
+        //saves playerobject for later use
         if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
         {           
             if (!tb.Contains(other.gameObject))
