@@ -56,10 +56,10 @@ public class FinishLine : MonoBehaviour
             canvas.enabled = true;
             
             foreach (GameObject objects in tb)
-            {
-                objects.GetComponent<Animator>().enabled = false;
+            {                     
                 objects.GetComponent<PlayerBase>().enabled = false;               
                 //TODO: make the final UI
+                //TODO: make winning animation
             }
         }        
     }
