@@ -153,8 +153,6 @@ public abstract class PlayerBase : MonoBehaviour
 
             StopWalkAnimation();
 
-            anim.SetTrigger("Jump Inplace");
-
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
             var currrentVelocity = rb.velocity;
@@ -205,11 +203,7 @@ public abstract class PlayerBase : MonoBehaviour
             if (GameManager.Instance.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
-
             }
-
-
-
 
             RemoveAllEvents();
             StopWalkAnimation();
