@@ -8,7 +8,7 @@ public class GameManager : MonoBehaviour
     public int PlayerOneLife { get; set; }
     public int PlayerTwoLife { get; set; }
 
-    private const int playerLives = 3;
+    public int playerLives = 3;
 
     private void Awake()
     {
