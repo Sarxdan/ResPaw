@@ -302,7 +302,6 @@ public abstract class PlayerBase : MonoBehaviour
             isIdle = true;
             StopWalkAnimation();
 
-            anim.SetTrigger("Idle");
 
             //StartCoroutine(Idling());
         }

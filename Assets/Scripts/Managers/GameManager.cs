@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        PlayerOneLife = playerLives;
+        PlayerTwoLife = playerLives;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -27,11 +29,13 @@ public class GameManager : MonoBehaviour
     {
         if (player is PlayerOne)
         {
-            return PlayerOneLife != playerLives;
+            Debug.Log(PlayerOneLife);
+            return PlayerOneLife != 0;
         }
         else
         {
-            return PlayerTwoLife != playerLives;
+            Debug.Log(PlayerTwoLife);
+            return PlayerTwoLife != 0;
         }
     }
 
@@ -39,12 +43,12 @@ public class GameManager : MonoBehaviour
     {
         if (player is PlayerOne)
         {
-            PlayerOneLife++;
+            PlayerOneLife--;
             
         }
         else
         {
-            PlayerTwoLife++;
+            PlayerTwoLife--;
             
         }
     }
