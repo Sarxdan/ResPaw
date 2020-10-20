@@ -201,11 +201,7 @@ public abstract class PlayerBase : MonoBehaviour
             if (GameManager.Instance.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
-
             }
-
-
-
 
             RemoveAllEvents();
             StopWalkAnimation();
