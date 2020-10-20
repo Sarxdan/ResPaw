@@ -77,7 +77,11 @@ public abstract class PlayerBase : MonoBehaviour
 
     }
 
-    private void Start()
+    public abstract string GetHorizontalAxies();
+    public abstract string GetJumpButton();
+
+
+    void Start()
     {
         isJumping = true;
         touchingOtherPlayerFromBelow = false;
@@ -95,14 +99,6 @@ public abstract class PlayerBase : MonoBehaviour
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-    }
-
-    public abstract string GetHorizontalAxies();
-    public abstract string GetJumpButton();
-
-
-    void Start()
-    {
 
         //locking the rotation that so we can just replace the current rotation with the new rotations
         lookRight = transform.rotation;
