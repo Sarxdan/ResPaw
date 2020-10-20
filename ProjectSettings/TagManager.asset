@@ -6,6 +6,7 @@ TagManager:
   tags:
   - AI Border
   - Spike
+  - GameManager
   layers:
   - Default
   - TransparentFX
