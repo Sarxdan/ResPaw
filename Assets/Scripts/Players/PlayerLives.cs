@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerLives : MonoBehaviour
 {
-    [SerializeField] Text P1, P2;
+    [SerializeField] Text restartText;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +15,15 @@ public class PlayerLives : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        P1.text = "P1: " + GameManager.Instance.PlayerOneLife.ToString();
-        P2.text = "P2: " + GameManager.Instance.PlayerTwoLife.ToString();
+        restartText.text = "P1: " + GameManager.Instance.PlayerOneLife.ToString() + " P2: " + GameManager.Instance.PlayerTwoLife.ToString();
+        if(GameManager.Instance.PlayerOneLife == 0 && GameManager.Instance.PlayerTwoLife == 0)
+        {
+            RestartText();
+        }
+    }
+    public void RestartText()
+    {
+        restartText.text = "PRESS R TO RESTART";
+        restartText.rectTransform.localPosition = new Vector3(0, 0, 0);
     }
 }
