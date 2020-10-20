@@ -14,17 +14,17 @@ public class FinishLine : MonoBehaviour
 {
     
     private List<GameObject> tb;
-    [SerializeField]private Canvas canvas;
+    [SerializeField]private Text victoryText;
 
     private void Start()
     {
         tb = new List<GameObject>();
-        canvas = canvas.GetComponent<Canvas>();      
+        victoryText = victoryText.GetComponent<Text>();      
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
         {           
             if (!tb.Contains(other.gameObject))
             {
@@ -35,7 +35,7 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
         {         
             if (tb.Contains(other.gameObject))
             {
@@ -53,7 +53,7 @@ public class FinishLine : MonoBehaviour
     {
         if(tb.Count == 2)
         {           
-            canvas.enabled = true;
+            victoryText.enabled = true;
             
             foreach (GameObject objects in tb)
             {                     
