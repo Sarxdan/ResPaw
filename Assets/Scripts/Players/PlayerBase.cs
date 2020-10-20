@@ -41,6 +41,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private float maxFriction = 500f;
     private float normalFriction = 0.6f;
+    private float mediumFriction = 20f;
 
     private float maxJumpSpeed = 10f;
     private float minJumpSpeed = 8f;
@@ -153,8 +154,6 @@ public abstract class PlayerBase : MonoBehaviour
 
             StopWalkAnimation();
 
-            anim.SetTrigger("Jump Inplace");
-
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
             var currrentVelocity = rb.velocity;
@@ -201,15 +200,10 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (enabled)
         {
-
             if (GameManager.Instance.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
-
             }
-
-
-
 
             RemoveAllEvents();
             StopWalkAnimation();
@@ -225,7 +219,7 @@ public abstract class PlayerBase : MonoBehaviour
             isTouchingGround = true;
             isJumping = false;
             GameManager.Instance.RemoveLife(this);
-
+            SetPlayerFriction(mediumFriction);
             enabled = false;
             //if (isJumping)
             //{
