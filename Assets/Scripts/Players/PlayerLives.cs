@@ -8,13 +8,17 @@ public class PlayerLives : MonoBehaviour
 {
     //[SerializeField] Text restartText;
     public TextMeshProUGUI retryText;
+    GameManager manager;
     // Start is called before the first frame update
-
+    private void Start()
+    {
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
+    }
     // Update is called once per frame
     void Update()
     {
-        retryText.text = "P1: " + GameManager.Instance.PlayerOneLife.ToString() + " P2: " + GameManager.Instance.PlayerTwoLife.ToString();
-        if(GameManager.Instance.PlayerOneLife == 0 && GameManager.Instance.PlayerTwoLife == 0)
+        retryText.text = "P1: " + manager.PlayerOneLife.ToString() + " P2: " + manager.PlayerTwoLife.ToString();
+        if(manager.PlayerOneLife == 0 && manager.PlayerTwoLife == 0)
         {
             RestartText();
         }

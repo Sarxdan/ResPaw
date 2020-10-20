@@ -22,6 +22,7 @@ public class FinishLine : MonoBehaviour
     {
         tb = new List<GameObject>();
         victoryText.enabled = false;
+        Debug.Log(victoryText);
     }
 
     private void OnTriggerEnter(Collider other) 

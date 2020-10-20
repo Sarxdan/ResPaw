@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
+    
 
     public int PlayerOneLife { get; set; }
     public int PlayerTwoLife { get; set; }
@@ -14,15 +14,7 @@ public class GameManager : MonoBehaviour
     {
         PlayerOneLife = playerLives;
         PlayerTwoLife = playerLives;
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-        }
-        else
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+
     }
 
     public bool CanSpawn(PlayerBase player)

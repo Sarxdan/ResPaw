@@ -67,6 +67,8 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     private float playerFriction = 0f;
 
+    GameManager manager;
+
 
     public PlayerBase()
     {
@@ -92,7 +94,7 @@ public abstract class PlayerBase : MonoBehaviour
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
-
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
     public abstract string GetHorizontalAxies();
@@ -200,7 +202,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (enabled)
         {
-            if (GameManager.Instance.CanSpawn(this))
+            if (manager.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
             }
@@ -217,7 +219,7 @@ public abstract class PlayerBase : MonoBehaviour
             headTouchingPlayer = false;
             isTouchingGround = true;
             isJumping = false;
-            GameManager.Instance.RemoveLife(this);
+            manager.RemoveLife(this);
             rb.mass = 3;
             enabled = false;
             //if (isJumping)

@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    GameManager manager;
     // Start is called before the first frame update
     void Start()
     {
-        
+        manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
     }
 
  
@@ -17,8 +18,8 @@ public class SceneLoader : MonoBehaviour
     {
          if(Input.GetKeyDown(KeyCode.R)){
              Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
-            GameManager.Instance.PlayerOneLife = GameManager.Instance.playerLives;
-            GameManager.Instance.PlayerTwoLife = GameManager.Instance.playerLives;
+            manager.PlayerOneLife = manager.playerLives;
+            manager.PlayerTwoLife = manager.playerLives;
          }
      }
  }
