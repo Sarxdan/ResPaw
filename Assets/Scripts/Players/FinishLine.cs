@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 
 //created by Daniel
-//peer reviewed by 
+//peer reviewed by Sandra
 
 
 
@@ -24,8 +24,9 @@ public class FinishLine : MonoBehaviour
         victoryText.enabled = false;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
+        //saves playerobject for later use
         if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
         {           
             if (!tb.Contains(other.gameObject))
