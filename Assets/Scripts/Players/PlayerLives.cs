@@ -2,20 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerLives : MonoBehaviour
 {
-    [SerializeField] Text restartText;
+    //[SerializeField] Text restartText;
+    public TextMeshProUGUI retryText;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        restartText.text = "P1: " + GameManager.Instance.PlayerOneLife.ToString() + " P2: " + GameManager.Instance.PlayerTwoLife.ToString();
+        retryText.text = "P1: " + GameManager.Instance.PlayerOneLife.ToString() + " P2: " + GameManager.Instance.PlayerTwoLife.ToString();
         if(GameManager.Instance.PlayerOneLife == 0 && GameManager.Instance.PlayerTwoLife == 0)
         {
             RestartText();
@@ -23,7 +21,7 @@ public class PlayerLives : MonoBehaviour
     }
     public void RestartText()
     {
-        restartText.text = "PRESS R TO RESTART";
-        restartText.rectTransform.localPosition = new Vector3(0, 0, 0);
+        retryText.text = "PRESS R TO RESTART";
+        retryText.rectTransform.localPosition = new Vector3(0, 0, 0);
     }
 }

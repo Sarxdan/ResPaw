@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 //created by Daniel
 //peer reviewed by 
@@ -14,7 +15,8 @@ public class FinishLine : MonoBehaviour
 {
     
     private List<GameObject> tb;
-    [SerializeField] Text victoryText;
+    //[SerializeField] Text victoryText;
+    public TextMeshProUGUI victoryText;
 
     private void Start()
     {
