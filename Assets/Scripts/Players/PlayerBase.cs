@@ -41,6 +41,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private float maxFriction = 500f;
     private float normalFriction = 0.6f;
+    private float mediumFriction = 20f;
 
     private float maxJumpSpeed = 10f;
     private float minJumpSpeed = 8f;
@@ -218,7 +219,7 @@ public abstract class PlayerBase : MonoBehaviour
             isTouchingGround = true;
             isJumping = false;
             GameManager.Instance.RemoveLife(this);
-
+            SetPlayerFriction(mediumFriction);
             enabled = false;
             //if (isJumping)
             //{
