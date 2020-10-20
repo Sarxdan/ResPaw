@@ -14,12 +14,12 @@ public class FinishLine : MonoBehaviour
 {
     
     private List<GameObject> tb;
-    [SerializeField]private Text victoryText;
+    [SerializeField] Text victoryText;
 
     private void Start()
     {
         tb = new List<GameObject>();
-        victoryText = victoryText.GetComponent<Text>();      
+        victoryText.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -63,5 +63,7 @@ public class FinishLine : MonoBehaviour
             }
         }        
     }
+
+ 
     
 }

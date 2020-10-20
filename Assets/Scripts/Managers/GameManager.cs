@@ -28,14 +28,12 @@ public class GameManager : MonoBehaviour
     public bool CanSpawn(PlayerBase player)
     {
         if (player is PlayerOne)
-        {
-            Debug.Log(PlayerOneLife);
-            return PlayerOneLife != 0;
+        {            
+            return PlayerOneLife != 1;
         }
         else
         {
-            Debug.Log(PlayerTwoLife);
-            return PlayerTwoLife != 0;
+            return PlayerTwoLife != 1;
         }
     }
 
