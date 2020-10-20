@@ -199,7 +199,6 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (enabled)
         {
-
             if (GameManager.Instance.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);

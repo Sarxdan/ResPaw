@@ -17,6 +17,8 @@ public class SceneLoader : MonoBehaviour
     {
          if(Input.GetKeyDown(KeyCode.R)){
              Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            GameManager.Instance.PlayerOneLife = 0;
+            GameManager.Instance.PlayerTwoLife = 0;
          }
      }
  }

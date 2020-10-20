@@ -40,10 +40,12 @@ public class GameManager : MonoBehaviour
         if (player is PlayerOne)
         {
             PlayerOneLife++;
+            
         }
         else
         {
             PlayerTwoLife++;
+            
         }
     }
 }
