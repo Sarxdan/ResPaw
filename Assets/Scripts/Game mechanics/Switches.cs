@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Switches : MonoBehaviour
 {
+    //created by Daniel
+    //peer reviewed by Mehmet
     [SerializeField] GameObject door;
     [SerializeField] Transform doorStop;
     float doorSpeed = 1f;
@@ -26,12 +28,12 @@ public class Switches : MonoBehaviour
     {
         if(isTrigger == true)
         {
-            test();
+            OpenDoor();
         }
             
     }
 
-    void test()
+    void OpenDoor()
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
     }

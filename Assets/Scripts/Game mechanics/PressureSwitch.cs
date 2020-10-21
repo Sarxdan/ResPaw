@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //created by Daniel
-//peer reviewed by 
+//peer reviewed by Mehmet
 public class PressureSwitch : MonoBehaviour
 {
     [SerializeField] GameObject door;
@@ -51,7 +51,7 @@ public class PressureSwitch : MonoBehaviour
         
         if(doorClosed == true)
         {
-            if (doorKiller.GetComponent<DoorKiller>().underDoor)
+            if (doorKiller.GetComponent<DoorKiller>().underDoor) //checks if the trigger on the door is true or false
             {              
                 DoorStop();
             }
