@@ -1,25 +1,32 @@
-﻿using System.Collections;
+﻿using Packages.Rider.Editor.UnitTesting;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//created by Daniel
+//peer reviewed by 
 public class PressureSwitch : MonoBehaviour
 {
     [SerializeField] GameObject door;
     [SerializeField] Transform doorStop;
-    [SerializeField] Transform doorStop_2;
+    [SerializeField] GameObject doorKiller;
+    
     float doorSpeed = 1f;
     bool doorOpen = false;
-    bool doorClosed = true;
-    
+    [HideInInspector]public bool doorClosed = true;
+      
     Vector3 orignalpos;
     private void Start()
     {
         orignalpos = door.transform.position;
+        doorKiller = GameObject.FindGameObjectWithTag("DoorKill"); //finds the gameobject with the tag DoorKill to get its trigger
+        Debug.Log(doorKiller);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (doorClosed == true)
         {
+
             doorOpen = true;
             doorClosed = false;
         }
@@ -37,24 +44,41 @@ public class PressureSwitch : MonoBehaviour
 
     private void Update()
     {
+        
         if (doorOpen == true)
         {
-            DoorOpen();
+            DoorOpen(); 
         }
         
         if(doorClosed == true)
         {
-            DoorClosed();
+            if (doorKiller.GetComponent<DoorKiller>().underDoor)
+            {              
+                DoorStop();
+            }
+            else if (!doorKiller.GetComponent<DoorKiller>().underDoor)
+            {
+                DoorClosed();                
+            }            
         }
 
     }
-
-    void DoorOpen()
+   
+    void DoorOpen() // makes the door move towards a location giving it a smooth look.
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
     }
     void DoorClosed()
     {
-        door.transform.position = Vector3.MoveTowards(door.transform.position, orignalpos, doorSpeed * Time.deltaTime);
+        
+        door.transform.position = Vector3.MoveTowards(door.transform.position, orignalpos, 1 * Time.deltaTime);
     }
+    private void DoorStop()
+    {
+        door.transform.position = Vector3.MoveTowards(door.transform.position, door.transform.position, 1 * Time.deltaTime);
+    }
+
+
+
+
 }

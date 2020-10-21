@@ -7,6 +7,7 @@ TagManager:
   - AI Border
   - Spike
   - Manager
+  - DoorKill
   layers:
   - Default
   - TransparentFX
