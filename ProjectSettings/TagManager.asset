@@ -8,6 +8,7 @@ TagManager:
   - Spike
   - Manager
   - DoorKill
+  - Switch
   layers:
   - Default
   - TransparentFX

@@ -7,9 +7,9 @@ using UnityEngine;
 //peer reviewed by Mehmet
 public class PressureSwitch : MonoBehaviour
 {
-    [SerializeField] GameObject door;
-    [SerializeField] Transform doorStop;
-    [SerializeField] GameObject doorKiller;
+    public GameObject door;
+    public Transform doorStop;
+    public GameObject doorKiller;
     
     float doorSpeed = 1f;
     public bool doorOpen = false;
@@ -66,7 +66,7 @@ public class PressureSwitch : MonoBehaviour
     void DoorOpen() // makes the door move towards a location giving it a smooth look.
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
-        Invoke("TriggerActive", 0.5f);        
+        Invoke("TriggerActive", 0.02f);        
     }
     void DoorClosed()
     {      
@@ -80,10 +80,12 @@ public class PressureSwitch : MonoBehaviour
 
     private void TriggerActive()
     {
+
         doorKiller.SetActive(false);
     }
-
-
-
-
 }
+
+
+
+
+

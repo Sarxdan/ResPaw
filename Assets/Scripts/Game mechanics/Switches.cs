@@ -6,8 +6,8 @@ public class Switches : MonoBehaviour
 {
     //created by Daniel
     //peer reviewed by Mehmet
-    [SerializeField] GameObject door;
-    [SerializeField] Transform doorStop;
+    public GameObject door;
+    public Transform doorStop;
     float doorSpeed = 1f;
     bool isTrigger = false;
     bool isOpen;
