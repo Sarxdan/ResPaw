@@ -13,14 +13,13 @@ public class PressureSwitch : MonoBehaviour
     
     float doorSpeed = 1f;
     bool doorOpen = false;
-    [HideInInspector]public bool doorClosed = true;
+    bool doorClosed = true;
       
     Vector3 orignalpos;
     private void Start()
     {
         orignalpos = door.transform.position;
         doorKiller = GameObject.FindGameObjectWithTag("DoorKill"); //finds the gameobject with the tag DoorKill to get its trigger
-        Debug.Log(doorKiller);
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -67,11 +66,12 @@ public class PressureSwitch : MonoBehaviour
     void DoorOpen() // makes the door move towards a location giving it a smooth look.
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
+        doorKiller.SetActive(false);
     }
     void DoorClosed()
-    {
-        
+    {      
         door.transform.position = Vector3.MoveTowards(door.transform.position, orignalpos, 1 * Time.deltaTime);
+        doorKiller.SetActive(true);
     }
     private void DoorStop()
     {
