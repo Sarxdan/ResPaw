@@ -207,7 +207,7 @@ public abstract class PlayerBase : MonoBehaviour
             {
                 playerSpawner.SpawnPlayer(gameObject);
             }
-            Debug.Log(GetComponentInChildren<Renderer>().material.shader = transParent); ;
+            GetComponentInChildren<Renderer>().material.shader = transParent; 
             isDead = true;
             RemoveAllEvents();
             StopWalkAnimation();
