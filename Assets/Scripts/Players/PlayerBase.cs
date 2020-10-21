@@ -142,23 +142,21 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
 
+    //Peer-Reviewed By Daniel
     private void Jump()
     {
-
-
             if (Input.GetButton(jumpButton) && !isJumping)
             {
 
-                isJumping = true;
                 isIdle = false;
 
                 StopWalkAnimation();
 
                 var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
-
+            
                 var currrentVelocity = rb.velocity;
                 currrentVelocity.y = jumpPower;
-
+            
                 rb.velocity = currrentVelocity;
 
             }
