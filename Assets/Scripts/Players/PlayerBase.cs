@@ -63,6 +63,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     public bool killedByPlayer = false;
     public bool killedByRoof = false;
+    private bool isDead = false;
 
     [SerializeField]
     private float playerFriction = 0f;
@@ -143,22 +144,25 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void Jump()
     {
-
-        if (Input.GetButton(jumpButton) && !isJumping)
+        if (!isDead)
         {
 
-            isJumping = true;
-            isIdle = false;
+            if (Input.GetButton(jumpButton) && !isJumping)
+            {
 
-            StopWalkAnimation();
+                isJumping = true;
+                isIdle = false;
 
-            var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
+                StopWalkAnimation();
 
-            var currrentVelocity = rb.velocity;
-            currrentVelocity.y = jumpPower;
+                var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
-            rb.velocity = currrentVelocity;
+                var currrentVelocity = rb.velocity;
+                currrentVelocity.y = jumpPower;
 
+                rb.velocity = currrentVelocity;
+
+            }
         }
     }
 
@@ -202,7 +206,7 @@ public abstract class PlayerBase : MonoBehaviour
             {
                 playerSpawner.SpawnPlayer(gameObject);
             }
-
+            isDead = true;
             RemoveAllEvents();
             StopWalkAnimation();
             anim.enabled = false;
@@ -218,6 +222,18 @@ public abstract class PlayerBase : MonoBehaviour
             manager.RemoveLife(this);
             rb.mass = 3;
             enabled = false;
+            if (isDead)
+            {
+                var currentVelocity = rb.velocity;
+                if(currentVelocity.x > 1 || currentVelocity.x < 0)
+                {
+                    SetPlayerFriction(normalFriction);
+                }
+                else
+                {
+                    SetPlayerFriction(normalFriction);
+                }
+            }
             //if (isJumping)
             //{
             //    rb.constraints = RigidbodyConstraints.FreezeAll;
@@ -252,22 +268,26 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void MoveThePlayer()
     {
-        var x = Input.GetAxis(horizontalAxies);
-
-
-
-
-        HandleFacing(x);
-
-
-
-        if (isJumping)
+        if (!isDead)
         {
-            MoveWhileInAir(x);
-        }
-        else
-        {
-            MoveOnGroundOrPlayer(x);
+            var x = Input.GetAxis(horizontalAxies);
+
+
+
+
+
+            HandleFacing(x);
+
+
+
+            if (isJumping)
+            {
+                MoveWhileInAir(x);
+            }
+            else
+            {
+                MoveOnGroundOrPlayer(x);
+            }
         }
 
     }
