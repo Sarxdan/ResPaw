@@ -17,4 +17,5 @@ public class DoorKiller : MonoBehaviour
     {
         underDoor = false;
     }
+    
 }
