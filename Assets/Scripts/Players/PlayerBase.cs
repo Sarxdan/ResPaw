@@ -31,6 +31,7 @@ public abstract class PlayerBase : MonoBehaviour
     private bool touchingOtherPlayerFromBelow;
     [SerializeField]
     private bool headTouchingPlayer;
+    [SerializeField]
     private bool isTouchingGround;
     private float fallMultiplier = 4f;
     private float lowJumpMultiplier = 2f;
@@ -63,12 +64,12 @@ public abstract class PlayerBase : MonoBehaviour
 
     public bool killedByPlayer = false;
     public bool killedByRoof = false;
+    [SerializeField]
     private bool isDead = false;
 
     [SerializeField]
     private float playerFriction = 0f;
 
-    
     Shader transParent;
 
     GameManager manager;
@@ -87,10 +88,12 @@ public abstract class PlayerBase : MonoBehaviour
 
     void Start()
     {
-        isJumping = true;
+
         touchingOtherPlayerFromBelow = false;
         headTouchingPlayer = false;
         isTouchingGround = false;
+        isFacingAnotherPlayer = false;
+        isFacingObject = false;
         playerFace = gameObject.transform.Find("Face").gameObject;
         playerBottom = gameObject.transform.Find("Bottom").gameObject;
         playerRoof = gameObject.transform.Find("Roof").gameObject;
@@ -104,9 +107,10 @@ public abstract class PlayerBase : MonoBehaviour
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         transParent = Shader.Find("Unlit/GreyScale");
-        //locking the rotation that so we can just replace the current rotation with the new rotations
+        SetPlayerFriction(normalFriction);
         lookRight = transform.rotation;
         lookLeft = lookRight * Quaternion.Euler(0, -180, 0);
+        rb.velocity = new Vector3(0, 0, 0);
 
     }
 
@@ -117,8 +121,6 @@ public abstract class PlayerBase : MonoBehaviour
         Jump();
 
         FallingGravity();
-
-
     }
 
 
@@ -126,7 +128,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (playerFalling())
         {
-                     rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
+            rb.velocity += Vector3.up * Physics.gravity.y * (fallMultiplier - 2) * Time.deltaTime;
         }
         else if (jumpingSmall())
         {
@@ -148,23 +150,31 @@ public abstract class PlayerBase : MonoBehaviour
     //Peer-Reviewed By Daniel
     private void Jump()
     {
-            if (Input.GetButton(jumpButton) && !isJumping)
+        if (Input.GetButton(jumpButton) && !isJumping && !isDead)
+        {
+
+            isIdle = false;
+
+            StopWalkAnimation();
+
+            var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
+
+            var currrentVelocity = rb.velocity;
+            currrentVelocity.y = jumpPower;
+
+
+            if ((isFacingAnotherPlayer || isFacingObject) && Math.Abs(rb.velocity.x) > 0)
             {
-
-                isIdle = false;
-
-                StopWalkAnimation();
-
-                var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
-            
-                var currrentVelocity = rb.velocity;
-                currrentVelocity.y = jumpPower;
-            
-                rb.velocity = currrentVelocity;
-
+                currrentVelocity.x = 0;
             }
-        
+
+
+            rb.velocity = currrentVelocity;
+
+        }
+
     }
+
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -200,14 +210,14 @@ public abstract class PlayerBase : MonoBehaviour
 
     public void OnDeath(bool freezeLocation = false)
     {
-        if (enabled)
+        if (!isDead)
         {
-            
+
             if (manager.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
             }
-            GetComponentInChildren<Renderer>().material.shader = transParent; 
+            GetComponentInChildren<Renderer>().material.shader = transParent;
             isDead = true;
             RemoveAllEvents();
             StopWalkAnimation();
@@ -215,18 +225,9 @@ public abstract class PlayerBase : MonoBehaviour
 
             if (freezeLocation)
                 rb.constraints = RigidbodyConstraints.FreezeAll;
-            touchingOtherPlayerFromBelow = false;
-            isFacingObject = false;
-            isFacingAnotherPlayer = false;
-            headTouchingPlayer = false;
-            isTouchingGround = true;
-            isJumping = false;
+
             manager.RemoveLife(this);
-            enabled = false;
-            //if (isJumping)
-            //{
-            //    rb.constraints = RigidbodyConstraints.FreezeAll;
-            //}
+
         }
     }
 
@@ -258,21 +259,21 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void MoveThePlayer()
     {
-            var x = Input.GetAxis(horizontalAxies);
+        var x = Input.GetAxis(horizontalAxies);
+
+        x = isDead ? 0 : x;
+        HandleFacing(x);
 
 
-            HandleFacing(x);
+        if (isJumping)
+        {
+            MoveWhileInAir(x);
+        }
+        else
+        {
+            MoveOnGroundOrPlayer(x);
+        }
 
-
-            if (isJumping)
-            {
-                MoveWhileInAir(x);
-            }
-            else
-            {
-                MoveOnGroundOrPlayer(x);
-            }
-        
 
     }
 
@@ -419,7 +420,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (values.isCarying)
             playerAbove = values.rb;
-        
+
     }
 
 

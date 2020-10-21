@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using Assets.Scripts.Enums;
 using UnityEngine;
-using Assets.Scripts.Enums;
-using UnityEditor;
-using UnityEditor.PackageManager.Requests;
 
 //
 // Created by: Sandra Andersson
@@ -19,7 +14,7 @@ public class HorizontalEnemy : MonoBehaviour
     private CharacterController charContr;
     private Vector3 direction = Vector3.forward;
     private Animator anim;
-    
+
     private float lastTime = 1;
     private float lastPos;
     private float checkSec = .2f;
@@ -41,7 +36,7 @@ public class HorizontalEnemy : MonoBehaviour
         // Prevents the agent from getting stuck
         if ((Time.time - lastTime) >= checkSec)
         {
-            if ((((transform.position.x - lastPos)* -direction.z) < (distanceCheck * -direction.z)) && !rotated)
+            if ((((transform.position.x - lastPos) * -direction.z) < (distanceCheck * -direction.z)) && !rotated)
             {
                 Rotate();
             }
@@ -53,7 +48,7 @@ public class HorizontalEnemy : MonoBehaviour
             lastPos = transform.position.x;
             lastTime = Time.time;
         }
-        
+
     }
 
     private void Rotate()
@@ -70,6 +65,7 @@ public class HorizontalEnemy : MonoBehaviour
             gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Unlit/GreyScale");
             Destroy(GameObject.Find("Horizontal Enemy/Root/Body1/Body2/Arm_R/Sword1"));
             GetComponent<Animator>().enabled = false;
+            gameObject.layer = (int)LayerEnum.Ground;
             enabled = false;
         }
 
@@ -86,6 +82,6 @@ public class HorizontalEnemy : MonoBehaviour
         {
             other.gameObject.GetComponent<PlayerBase>().OnDeath();
         }
-        
+
     }
 }
