@@ -144,8 +144,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void Jump()
     {
-        if (!isDead)
-        {
+
 
             if (Input.GetButton(jumpButton) && !isJumping)
             {
@@ -163,7 +162,7 @@ public abstract class PlayerBase : MonoBehaviour
                 rb.velocity = currrentVelocity;
 
             }
-        }
+        
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -220,26 +219,15 @@ public abstract class PlayerBase : MonoBehaviour
             isTouchingGround = true;
             isJumping = false;
             manager.RemoveLife(this);
-            rb.mass = 3;
+            rb.mass = 4;
             enabled = false;
-            if (isDead)
-            {
-                var currentVelocity = rb.velocity;
-                if(currentVelocity.x > 1 || currentVelocity.x < 0)
-                {
-                    SetPlayerFriction(normalFriction);
-                }
-                else
-                {
-                    SetPlayerFriction(normalFriction);
-                }
-            }
             //if (isJumping)
             //{
             //    rb.constraints = RigidbodyConstraints.FreezeAll;
             //}
         }
     }
+
 
     private void RemoveAllEvents()
     {
@@ -268,16 +256,10 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void MoveThePlayer()
     {
-        if (!isDead)
-        {
             var x = Input.GetAxis(horizontalAxies);
 
 
-
-
-
             HandleFacing(x);
-
 
 
             if (isJumping)
@@ -288,7 +270,7 @@ public abstract class PlayerBase : MonoBehaviour
             {
                 MoveOnGroundOrPlayer(x);
             }
-        }
+        
 
     }
 
@@ -435,7 +417,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (values.isCarying)
             playerAbove = values.rb;
-
+        
     }
 
 
