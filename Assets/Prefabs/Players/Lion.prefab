@@ -157,8 +157,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.9695921, y: 0.0608747, z: 0.9228096}
-  m_Center: {x: 0.07130462, y: 0.01927936, z: 0.009327158}
+  m_Size: {x: 0.9695921, y: 0.0608747, z: 0.7691533}
+  m_Center: {x: 0.07130462, y: 0.01927936, z: 0.010448888}
 --- !u!114 &2083668055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -611,15 +611,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff66cc0d6107f445829e0c4aa374674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerFace: {fileID: 1583980447}
-  playerRoof: {fileID: 888515698}
-  playerBottom: {fileID: 2083668054}
   jumpSpeed: 7
   isJumping: 1
   velocityY: 0
-  touchingOtherPlayer: 0
+  touchingOtherPlayerFromBelow: 0
   headTouchingPlayer: 0
   isFacingObject: 0
+  isFacingAnotherPlayer: 0
+  killedByPlayer: 0
+  killedByRoof: 0
+  playerFriction: 0
 --- !u!1 &3906088976497965277
 GameObject:
   m_ObjectHideFlags: 0
