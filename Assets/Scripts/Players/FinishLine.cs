@@ -21,7 +21,7 @@ public class FinishLine : MonoBehaviour
     private void Start()
     {
         tb = new List<GameObject>();
-        victoryText.enabled = false;
+        //victoryText.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -56,11 +56,15 @@ public class FinishLine : MonoBehaviour
     {
         if(tb.Count == 2)
         {           
-            victoryText.enabled = true;
+            //victoryText.enabled = true;
             
             foreach (GameObject objects in tb)
             {                     
-                objects.GetComponent<PlayerBase>().enabled = false;               
+                objects.GetComponent<PlayerBase>().enabled = false;
+                //GameObject test = transform.Find("Winning Confetti");
+                ParticleSystem confetti = transform.Find("Winning Confetti").gameObject.GetComponent<ParticleSystem>();
+                confetti.Play();
+                enabled = false;
                 //TODO: make the final UI
                 //TODO: make winning animation
             }

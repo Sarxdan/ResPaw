@@ -375,7 +375,7 @@ GameObject:
   - component: {fileID: 3726350712301274983}
   - component: {fileID: 6141282341201205852}
   m_Layer: 0
-  m_Name: SwordWarriorL1
+  m_Name: Horizontal Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -427,8 +427,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.22, y: 1.5054379, z: 1.8823957}
-  m_Center: {x: 8.356251e-16, y: 0.682719, z: 0.441198}
+  m_Size: {x: 1.22, y: 1.5054379, z: 1.7392808}
+  m_Center: {x: 1.2201526e-18, y: 0.682719, z: -0.00057414174}
 --- !u!54 &3726350712301274983
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -458,6 +458,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1.5
+  rayLength: 5
+  rayDir: {x: 1, y: 0, z: 0}
 --- !u!1 &6928709605461594921
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +532,7 @@ GameObject:
   - component: {fileID: 6931847078794217487}
   - component: {fileID: 7045312005278533565}
   m_Layer: 0
-  m_Name: WarriorLevel1
+  m_Name: Horizontal Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

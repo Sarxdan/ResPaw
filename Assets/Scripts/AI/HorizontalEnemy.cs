@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.Scripts.Enums;
+using UnityEditor;
 using UnityEditor.PackageManager.Requests;
 
 //
@@ -15,10 +16,6 @@ public class HorizontalEnemy : MonoBehaviour
 {
     public float movementSpeed = 2.5f;
 
-    public float rayLength = 5.0f;
-    public RaycastHit[] hits;
-    public Vector3 rayDir = new Vector3(1, 0, 0);
-    
     private CharacterController charContr;
     private Vector3 direction = Vector3.forward;
     private Animator anim;
@@ -28,7 +25,7 @@ public class HorizontalEnemy : MonoBehaviour
     private float checkSec = .2f;
     private float distanceCheck = .02f;
 
-    private bool rotated = false;
+    private bool rotated = false;    // Used for making the distance check and border rotation not screw with eachother
 
     void Start()
     {
@@ -40,6 +37,8 @@ public class HorizontalEnemy : MonoBehaviour
     {
         transform.Translate(Time.deltaTime * movementSpeed * direction);
 
+        // Check distance moved compare to last check
+        // Prevents the agent from getting stuck
         if ((Time.time - lastTime) >= checkSec)
         {
             if ((((transform.position.x - lastPos)* -direction.z) < (distanceCheck * -direction.z)) && !rotated)
@@ -65,7 +64,16 @@ public class HorizontalEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "AI Border")
+        // Kill the agent and gives it a death effect
+        if (other.tag == "Spike")
+        {
+            gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Unlit/GreyScale");
+            Destroy(GameObject.Find("Horizontal Enemy/Root/Body1/Body2/Arm_R/Sword1"));
+            GetComponent<Animator>().enabled = false;
+            enabled = false;
+        }
+
+        else if (other.tag == "AI Border")
         {
             Rotate();
             rotated = true;
@@ -74,7 +82,7 @@ public class HorizontalEnemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player" && enabled)
         {
             other.gameObject.GetComponent<PlayerBase>().OnDeath();
         }
