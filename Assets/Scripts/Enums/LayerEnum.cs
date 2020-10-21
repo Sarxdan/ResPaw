@@ -5,7 +5,8 @@
         Ground = 8,
         Player,
         Spike,
-        RoofSpike
+        WallSpike,
+        Body
     }
 
 

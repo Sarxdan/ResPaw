@@ -1,60 +1,73 @@
 ﻿using Assets.Scripts;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+
+//created by Daniel
+//peer reviewed by Sandra
+
+
 
 public class FinishLine : MonoBehaviour
 {
-    public List<GameObject> Tb;
     
-    
+    private List<GameObject> tb;
+    //[SerializeField] Text victoryText;
+    public TextMeshProUGUI victoryText;
 
     private void Start()
     {
-        Tb = new List<GameObject>();       
+        tb = new List<GameObject>();
+        victoryText.enabled = false;
+        Debug.Log(victoryText);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) 
     {
-        if(other.gameObject.tag == "Player")
+        //saves playerobject for later use
+        if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
         {           
-            if (!Tb.Contains(other.gameObject))
+            if (!tb.Contains(other.gameObject))
             {
-                Tb.Add(other.gameObject);
-                Debug.Log("added");
+                tb.Add(other.gameObject);               
             }
         }      
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
         {         
-            if (Tb.Contains(other.gameObject))
+            if (tb.Contains(other.gameObject))
             {
-                Tb.Remove(other.gameObject);
-                Debug.Log("remove");
+                tb.Remove(other.gameObject);
             }
         }
-
     }
 
     private void Update()
     {
-        checkAmount();
+        CheckAmount();             
     }
 
-    private void checkAmount()
+    private void CheckAmount()
     {
-        if(Tb.Count >= 2)
-        {
+        if(tb.Count == 2)
+        {           
+            victoryText.enabled = true;
             
-          
-        }
+            foreach (GameObject objects in tb)
+            {                     
+                objects.GetComponent<PlayerBase>().enabled = false;               
+                //TODO: make the final UI
+                //TODO: make winning animation
+            }
+        }        
     }
 
-
-
-
-
+ 
+    
 }
