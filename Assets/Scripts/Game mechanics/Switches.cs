@@ -11,9 +11,7 @@ public class Switches : MonoBehaviour
     float doorSpeed = 1f;
     bool isTrigger = false;
     bool isOpen;
-    private void Start()
-    {        
-    }
+   
     private void OnTriggerEnter(Collider other)
     {
         if (!isOpen)

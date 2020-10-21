@@ -6,7 +6,7 @@ using UnityEngine;
 //peer reviewed by Mehmet
 public class DoorKiller : MonoBehaviour
 {   
-    [HideInInspector]public bool underDoor;
+    public bool underDoor;
 
     public void OnTriggerEnter(Collider other)
     {

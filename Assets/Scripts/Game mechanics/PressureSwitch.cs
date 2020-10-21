@@ -12,8 +12,8 @@ public class PressureSwitch : MonoBehaviour
     [SerializeField] GameObject doorKiller;
     
     float doorSpeed = 1f;
-    bool doorOpen = false;
-    bool doorClosed = true;
+    public bool doorOpen = false;
+    public bool doorClosed = true;
       
     Vector3 orignalpos;
     private void Start()
@@ -42,8 +42,7 @@ public class PressureSwitch : MonoBehaviour
     }
 
     private void Update()
-    {
-        
+    {           
         if (doorOpen == true)
         {
             DoorOpen(); 
@@ -55,7 +54,8 @@ public class PressureSwitch : MonoBehaviour
             {              
                 DoorStop();
             }
-            else if (!doorKiller.GetComponent<DoorKiller>().underDoor)
+
+            if (!doorKiller.GetComponent<DoorKiller>().underDoor)
             {
                 DoorClosed();                
             }            
@@ -66,7 +66,7 @@ public class PressureSwitch : MonoBehaviour
     void DoorOpen() // makes the door move towards a location giving it a smooth look.
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
-        doorKiller.SetActive(false);
+        Invoke("TriggerActive", 0.5f);        
     }
     void DoorClosed()
     {      
@@ -76,6 +76,11 @@ public class PressureSwitch : MonoBehaviour
     private void DoorStop()
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, door.transform.position, 1 * Time.deltaTime);
+    }
+
+    private void TriggerActive()
+    {
+        doorKiller.SetActive(false);
     }
 
 
