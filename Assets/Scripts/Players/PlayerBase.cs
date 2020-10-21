@@ -68,6 +68,9 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     private float playerFriction = 0f;
 
+    
+    Shader transParent;
+
     GameManager manager;
 
 
@@ -100,7 +103,7 @@ public abstract class PlayerBase : MonoBehaviour
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-
+        transParent = Shader.Find("Unlit/GreyScale");
         //locking the rotation that so we can just replace the current rotation with the new rotations
         lookRight = transform.rotation;
         lookLeft = lookRight * Quaternion.Euler(0, -180, 0);
@@ -199,10 +202,12 @@ public abstract class PlayerBase : MonoBehaviour
     {
         if (enabled)
         {
+            
             if (manager.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
             }
+            Debug.Log(GetComponentInChildren<Renderer>().material.shader = transParent); ;
             isDead = true;
             RemoveAllEvents();
             StopWalkAnimation();
@@ -217,7 +222,6 @@ public abstract class PlayerBase : MonoBehaviour
             isTouchingGround = true;
             isJumping = false;
             manager.RemoveLife(this);
-            rb.mass = 4;
             enabled = false;
             //if (isJumping)
             //{
