@@ -73,6 +73,9 @@ public abstract class PlayerBase : MonoBehaviour
     Shader transParent;
 
     GameManager manager;
+    [SerializeField]
+    AudioClip[] animalClips;
+    AudioSource animalSource;
 
 
     public PlayerBase()
@@ -111,6 +114,7 @@ public abstract class PlayerBase : MonoBehaviour
         lookRight = transform.rotation;
         lookLeft = lookRight * Quaternion.Euler(0, -180, 0);
         rb.velocity = new Vector3(0, 0, 0);
+        animalSource = GetComponentInChildren<AudioSource>();
 
     }
 
@@ -150,12 +154,15 @@ public abstract class PlayerBase : MonoBehaviour
     //Peer-Reviewed By Daniel
     private void Jump()
     {
+
         if (Input.GetButton(jumpButton) && !isJumping && !isDead)
         {
 
             isIdle = false;
 
             StopWalkAnimation();
+            animalSource.clip = animalClips[3];
+            animalSource.Play();
 
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
@@ -210,15 +217,19 @@ public abstract class PlayerBase : MonoBehaviour
 
     public void OnDeath(bool freezeLocation = false)
     {
+
         if (!isDead)
         {
 
             if (manager.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
+                StartCoroutine(PlaySpawnSound());
             }
             GetComponentInChildren<Renderer>().material.shader = transParent;
             isDead = true;
+            animalSource.clip = animalClips[0];
+            animalSource.Play();
             RemoveAllEvents();
             StopWalkAnimation();
             anim.enabled = false;
@@ -475,6 +486,12 @@ public abstract class PlayerBase : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         anim.SetTrigger("Idle2");
+    }
+    IEnumerator PlaySpawnSound()
+    {
+        yield return new WaitForSeconds(animalClips[0].length);
+        animalSource.clip = animalClips[1];
+        animalSource.Play();
     }
 
 }

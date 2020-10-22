@@ -11402,7 +11402,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1833794023}
-  m_RootOrder: 17
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -87.454, y: 0, z: 0}
 --- !u!108 &1298480906
 Light:
@@ -16001,6 +16001,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2015054187}
+  - {fileID: 1298480905}
   - {fileID: 1648142187}
   - {fileID: 402107075}
   - {fileID: 346695627}
@@ -16017,7 +16018,6 @@ Transform:
   - {fileID: 1844228080}
   - {fileID: 1632493192}
   - {fileID: 406135329}
-  - {fileID: 1298480905}
   - {fileID: 1644685743}
   - {fileID: 1921445885}
   - {fileID: 252093647}
@@ -16407,6 +16407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lion
       objectReference: {fileID: 0}
+    - target: {fileID: 8928537359455330480, guid: 1baddc0f8bc29e84093ce5fe59bccd87, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 9394ca3353d26694bbb97101cbf91725, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1baddc0f8bc29e84093ce5fe59bccd87, type: 3}
 --- !u!1001 &1860477496
@@ -16656,6 +16660,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1664925830655895565, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 99348d26b121bdf40bca2ff30b000207, type: 3}
     - target: {fileID: 7136655515078106984, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.764432
@@ -16700,21 +16708,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7141223104764850386, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
-      propertyPath: playerBottom
-      value: 
-      objectReference: {fileID: 1876291514}
     - target: {fileID: 7142593071191860152, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
       propertyPath: m_Name
       value: Cow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
---- !u!1 &1876291514 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1049460221, guid: f7c52845d04d1034b8f27c66e16d268a, type: 3}
-  m_PrefabInstance: {fileID: 1876291513}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1886045180
 PrefabInstance:
   m_ObjectHideFlags: 0
