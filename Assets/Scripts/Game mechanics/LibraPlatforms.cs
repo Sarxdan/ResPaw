@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class LibraPlatforms : MonoBehaviour
 {
-    GameObject Platform1, Platform2;
+    GameObject[] Platform;
+    Collider collider1, collider2;
+    [SerializeField] GameObject[] player;
+    float Distance;
     // Start is called before the first frame update
     void Start()
     {
-        Platform1 = GameObject.Find("PlatForm1");
-        Platform2 = GameObject.Find("Platform2");
+        Platform = GameObject.FindGameObjectsWithTag("Platforms");
 
-        Collider collider1 = Platform1.GetComponent<CapsuleCollider>();
+        player = GameObject.FindGameObjectsWithTag("Player");
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
-    }
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
+        foreach (GameObject players in player)
         {
-           Debug.Log("Hello");
+            CalculateDistance(players.GetComponent<PlayerBase>());
         }
 
+    }
+    private void CalculateDistance(PlayerBase Player)
+    {
+        foreach(GameObject platforms in Platform)
+        {
+            Distance = Vector3.Distance(Player.transform.position, platforms.transform.position);
+        }
+
+        Debug.Log(Distance);
     }
 }
