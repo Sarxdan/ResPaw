@@ -12,15 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Daniels Test.unity
     guid: a2aea2cae2d205543afac55c64c5f801
   - enabled: 0
-    path: Assets/test/1.unity
-    guid: 7fbc38c68ea64704b9c7716fe17ea377
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Level3.unity
-    guid: 774b8883f96c0394c9868a1fbe2bc9b8
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 0
-    path: Assets/Scenes/Level 4.unity
-    guid: ad1fa801569c7ad41a95187a1da714aa
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
