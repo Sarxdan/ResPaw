@@ -27,7 +27,7 @@ public class FinishLine : MonoBehaviour
     private void OnTriggerEnter(Collider other) 
     {
         //saves playerobject for later use
-        if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
+        if(other.gameObject.tag == "Player" && !other.GetComponent<PlayerBase>().isDead)
         {           
             if (!tb.Contains(other.gameObject))
             {
@@ -38,7 +38,7 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.gameObject.tag == "Player" && other.GetComponent<PlayerBase>().enabled)
+        if(other.gameObject.tag == "Player" && !other.GetComponent<PlayerBase>().isDead)
         {         
             if (tb.Contains(other.gameObject))
             {
