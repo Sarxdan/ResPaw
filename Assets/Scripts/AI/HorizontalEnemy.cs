@@ -66,6 +66,7 @@ public class HorizontalEnemy : MonoBehaviour
             Destroy(GameObject.Find("Horizontal Enemy/Root/Body1/Body2/Arm_R/Sword1"));
             GetComponent<Animator>().enabled = false;
             gameObject.layer = (int)LayerEnum.Ground;    // For playerbase movement
+            GetComponent<Rigidbody>().mass = 1.0f;
             enabled = false;
         }
 
