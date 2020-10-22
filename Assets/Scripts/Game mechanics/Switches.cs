@@ -8,7 +8,7 @@ public class Switches : MonoBehaviour
     //peer reviewed by Mehmet
     public GameObject door;
     public Transform doorStop;
-    float doorSpeed = 1f;
+    public float doorSpeed;
     bool isTrigger = false;
     bool isOpen;
    
@@ -35,5 +35,7 @@ public class Switches : MonoBehaviour
     {
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
     }
+
+    
 
 }
