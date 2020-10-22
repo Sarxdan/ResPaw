@@ -10,12 +10,7 @@ public class DoorKiller : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
-        {
-            underDoor = true;
-        }
-       
-       
+        underDoor = true;
     }
 
     public void OnTriggerExit(Collider other)

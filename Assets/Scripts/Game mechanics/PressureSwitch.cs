@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //created by Daniel
-//peer reviewed by 
+//peer reviewed by Mehmet
 public class PressureSwitch : MonoBehaviour
 {
     public GameObject door;
