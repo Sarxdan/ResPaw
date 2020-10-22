@@ -75,6 +75,7 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
+            <e p="Archer.cs" t="Include" />
             <e p="HorizontalEnemy.cs" t="Include" />
           </e>
           <e p="Debug" t="Include">
@@ -85,6 +86,7 @@
           </e>
           <e p="Game mechanics" t="Include">
             <e p="DoorKiller.cs" t="Include" />
+            <e p="LibraPlatforms.cs" t="Include" />
             <e p="PressureSwitch.cs" t="Include" />
             <e p="Switches.cs" t="Include" />
           </e>
@@ -92,6 +94,7 @@
             <e p="GameManager.cs" t="Include" />
           </e>
           <e p="Players" t="Include">
+            <e p="CharacterSelect.cs" t="Include" />
             <e p="FinishLine.cs" t="Include" />
             <e p="PlayerBase.cs" t="Include" />
             <e p="PlayerBottom.cs" t="Include" />
@@ -101,6 +104,15 @@
             <e p="PlayerRoof.cs" t="Include" />
             <e p="PlayerSpawner.cs" t="Include" />
             <e p="PlayerTwo.cs" t="Include" />
+          </e>
+          <e p="UI" t="Include">
+            <e p="ImageManager.cs" t="Include" />
+            <e p="LevelControll.cs" t="Include" />
+            <e p="MainMenuController.cs" t="Include" />
+          </e>
+          <e p="Weapons" t="Include">
+            <e p="Arrow.cs" t="Include" />
+            <e p="Bow.cs" t="Include" />
           </e>
         </e>
         <e p="TextMesh Pro" t="Include">
