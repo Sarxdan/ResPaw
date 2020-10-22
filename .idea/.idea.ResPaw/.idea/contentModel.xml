@@ -68,9 +68,6 @@
             </e>
           </e>
         </e>
-        <e p="materials" t="Include">
-          <e p="GreyScale.shader" t="Include" />
-        </e>
         <e p="Racing Flag Animated" t="Include">
           <e p="Shaders" t="Include">
             <e p="vertex_animation_shader.shader" t="Include" />
