@@ -13,16 +13,25 @@ public class SceneLoader : MonoBehaviour
     void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        Object playerOnePrefab = AssetDatabase.LoadAssetAtPath(GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerOne), typeof(GameObject));
 
-        Object playerTwoPrefab = AssetDatabase.LoadAssetAtPath(GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerTwo), typeof(GameObject));
+        try
+        {
+            Object playerOnePrefab = AssetDatabase.LoadAssetAtPath(GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerOne), typeof(GameObject));
+
+            Object playerTwoPrefab = AssetDatabase.LoadAssetAtPath(GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerTwo), typeof(GameObject));
 
 
-        playerSpawner1 = GameObject.FindGameObjectWithTag("PlayerOneSpawner").GetComponent<PlayerSpawner>();
-        playerSpawner2 = GameObject.FindGameObjectWithTag("PlayerTwoSpawner").GetComponent<PlayerSpawner>();
+            playerSpawner1 = GameObject.FindGameObjectWithTag("PlayerOneSpawner").GetComponent<PlayerSpawner>();
+            playerSpawner2 = GameObject.FindGameObjectWithTag("PlayerTwoSpawner").GetComponent<PlayerSpawner>();
 
-        playerSpawner1.SpawnPlayerFirstTime(playerOnePrefab, 1);
-        playerSpawner2.SpawnPlayerFirstTime(playerTwoPrefab, 2);
+            playerSpawner1.SpawnPlayerFirstTime(playerOnePrefab, 1);
+            playerSpawner2.SpawnPlayerFirstTime(playerTwoPrefab, 2);
+        }
+        catch (System.Exception)
+        {
+
+
+        }
     }
 
 
