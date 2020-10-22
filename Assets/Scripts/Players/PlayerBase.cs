@@ -65,7 +65,7 @@ public abstract class PlayerBase : MonoBehaviour
     public bool killedByPlayer = false;
     public bool killedByRoof = false;
     [SerializeField]
-    private bool isDead = false;
+    public bool isDead = false;
 
     [SerializeField]
     private float playerFriction = 0f;

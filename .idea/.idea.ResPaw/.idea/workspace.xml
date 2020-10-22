@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="" />
+    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -17,8 +19,8 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBottom.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBase.cs" />
         <option value="$PROJECT_DIR$/Assets/materials/NewSurfaceShader.shader" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
       </list>
     </option>
   </component>
@@ -69,7 +71,7 @@
       <workItem from="1603092107454" duration="1758000" />
       <workItem from="1603101352178" duration="6685000" />
       <workItem from="1603184992397" duration="22364000" />
-      <workItem from="1603349794567" duration="788000" />
+      <workItem from="1603349794567" duration="1587000" />
     </task>
     <servers />
   </component>
