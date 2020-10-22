@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KUBIKOS - Cube Mini Animals/Animals1_Materials/CubeAnimals_D.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KUBIKOS - Cube Mini Animals/Animals1_Materials/CubeAnimals_D.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/KUBIKOS - RPG RTS Characters/Materials/KUBKOS_RPG_Blue_Mat.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/KUBIKOS - RPG RTS Characters/Materials/KUBKOS_RPG_Blue_Mat.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI/Horizontal Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI/Horizontal Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Game Mechanics/Finishline.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Game Mechanics/Finishline.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs" afterDir="false" />
-    </list>
+    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -79,6 +69,7 @@
       <workItem from="1603092107454" duration="1758000" />
       <workItem from="1603101352178" duration="6685000" />
       <workItem from="1603184992397" duration="22364000" />
+      <workItem from="1603349794567" duration="788000" />
     </task>
     <servers />
   </component>
@@ -204,24 +195,5 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="VCS.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1603197219972" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs</url>
-          <line>64</line>
-          <properties documentPath="D:\Git\Respaw\Assets\Scripts\Players\FinishLine.cs" initialLine="64">
-            <startOffsets>
-              <option value="1595" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1698" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="33" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
