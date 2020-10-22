@@ -8,6 +8,8 @@ TagManager:
   - Spike
   - Manager
   - DoorKill
+  - Libra1
+  - Libra2
   layers:
   - Default
   - TransparentFX
