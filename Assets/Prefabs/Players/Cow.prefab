@@ -589,7 +589,6 @@ GameObject:
   - component: {fileID: 7083788090921205660}
   - component: {fileID: 7141223104764850387}
   - component: {fileID: 7141223104764850388}
-  - component: {fileID: 7141223104764850386}
   m_Layer: 9
   m_Name: Cow
   m_TagString: Player
@@ -665,35 +664,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0763934, z: 0.9377632}
   m_Center: {x: 0, y: 0.5439881, z: 0.00949882}
---- !u!114 &7141223104764850386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7142593071191860152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9a6d4b6b23b3c7458884315454994f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSpeed: 7
-  isJumping: 1
-  velocityY: 0
-  touchingOtherPlayerFromBelow: 0
-  headTouchingPlayer: 0
-  isTouchingGround: 0
-  isFacingObject: 0
-  isFacingAnotherPlayer: 0
-  killedByPlayer: 0
-  killedByRoof: 0
-  isDead: 0
-  playerFriction: 0
-  animalClips:
-  - {fileID: 8300000, guid: 37da3ba174a0e89469af892fd34f3b2f, type: 3}
-  - {fileID: 8300000, guid: 727d1939a0ab7c443af5e449a1a5caf5, type: 3}
-  - {fileID: 8300000, guid: 648009e62f8a64248b33ba4ac7b63b66, type: 3}
-  - {fileID: 8300000, guid: 1a0817eb10abacf45b9ef92a7b60909e, type: 3}
 --- !u!1 &7142646324293760164
 GameObject:
   m_ObjectHideFlags: 0

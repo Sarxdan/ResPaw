@@ -524,7 +524,6 @@ GameObject:
   - component: {fileID: 3991392954390986631}
   - component: {fileID: 3906546505431363626}
   - component: {fileID: 3906546505431363627}
-  - component: {fileID: 3906546505431363628}
   m_Layer: 9
   m_Name: Lion
   m_TagString: Player
@@ -600,35 +599,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0903475, z: 1}
   m_Center: {x: 0, y: 0.537011, z: 0}
---- !u!114 &3906546505431363628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3906075419459619649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dff66cc0d6107f445829e0c4aa374674, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  jumpSpeed: 7
-  isJumping: 1
-  velocityY: 0
-  touchingOtherPlayerFromBelow: 0
-  headTouchingPlayer: 0
-  isTouchingGround: 0
-  isFacingObject: 0
-  isFacingAnotherPlayer: 0
-  killedByPlayer: 0
-  killedByRoof: 0
-  isDead: 0
-  playerFriction: 0
-  animalClips:
-  - {fileID: 8300000, guid: 37da3ba174a0e89469af892fd34f3b2f, type: 3}
-  - {fileID: 8300000, guid: 727d1939a0ab7c443af5e449a1a5caf5, type: 3}
-  - {fileID: 8300000, guid: 648009e62f8a64248b33ba4ac7b63b66, type: 3}
-  - {fileID: 8300000, guid: 1a0817eb10abacf45b9ef92a7b60909e, type: 3}
 --- !u!1 &3906088976497965277
 GameObject:
   m_ObjectHideFlags: 0
