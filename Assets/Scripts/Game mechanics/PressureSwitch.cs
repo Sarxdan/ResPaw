@@ -12,8 +12,8 @@ public class PressureSwitch : MonoBehaviour
     public GameObject doorKiller;
     
     float doorSpeed = 1f;
-    public bool doorOpen = false;
-    public bool doorClosed = true;
+    bool doorOpen = false;
+    bool doorClosed = true;
       
     Vector3 orignalpos;
     private void Start()
