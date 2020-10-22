@@ -4,14 +4,13 @@ using UnityEngine;
 //
 // Created by: Sandra Andersson
 //
-// Peer Reviewed by: 
+// Peer Reviewed by: Daniel
 //
 
 public class HorizontalEnemy : MonoBehaviour
 {
     public float movementSpeed = 2.5f;
 
-    private CharacterController charContr;
     private Vector3 direction = Vector3.forward;
     private Animator anim;
 
