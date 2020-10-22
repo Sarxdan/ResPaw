@@ -231,7 +231,6 @@ public abstract class PlayerBase : MonoBehaviour
             isDead = true;
             animalSource.clip = animalClips[0];
             animalSource.Play();
-            RemoveAllEvents();
             StopWalkAnimation();
             anim.enabled = false;
 

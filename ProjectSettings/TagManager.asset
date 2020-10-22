@@ -10,6 +10,8 @@ TagManager:
   - DoorKill
   - Platforms
   - Enemy
+  - PlayerOneSpawner
+  - PlayerTwoSpawner
   layers:
   - Default
   - TransparentFX
