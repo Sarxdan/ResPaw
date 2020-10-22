@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 //created by Daniel
-//peer reviewed by Mehmet
+//peer reviewed by 
 public class PressureSwitch : MonoBehaviour
 {
     public GameObject door;
@@ -20,16 +20,16 @@ public class PressureSwitch : MonoBehaviour
     {
         orignalpos = door.transform.position;
         doorKiller = GameObject.FindGameObjectWithTag("DoorKill"); //finds the gameobject with the tag DoorKill to get its trigger
-    }
-    private void OnTriggerEnter(Collider other)
+    }   
+
+    private void OnTriggerStay(Collider other)
     {
         if (doorClosed == true)
         {
-
             doorOpen = true;
             doorClosed = false;
         }
-
+        
     }
 
     private void OnTriggerExit(Collider other)

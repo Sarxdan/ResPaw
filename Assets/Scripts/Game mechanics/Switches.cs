@@ -36,4 +36,6 @@ public class Switches : MonoBehaviour
         door.transform.position = Vector3.MoveTowards(door.transform.position, doorStop.position, doorSpeed * Time.deltaTime);
     }
 
+    
+
 }
