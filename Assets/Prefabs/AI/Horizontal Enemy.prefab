@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 6846754749142071634}
   - component: {fileID: 3726350712301274983}
   - component: {fileID: 6141282341201205852}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Horizontal Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6928483219941082997}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e3ecb6360b33b4888c368520d899ec, type: 3}
   m_Name: 
