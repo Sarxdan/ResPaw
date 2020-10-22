@@ -17,10 +17,10 @@
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/HorizontalEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBottom.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBase.cs" />
         <option value="$PROJECT_DIR$/Assets/materials/NewSurfaceShader.shader" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Players/PlayerBase.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs" />
       </list>
     </option>
   </component>
@@ -71,7 +71,7 @@
       <workItem from="1603092107454" duration="1758000" />
       <workItem from="1603101352178" duration="6685000" />
       <workItem from="1603184992397" duration="22364000" />
-      <workItem from="1603349794567" duration="1587000" />
+      <workItem from="1603349794567" duration="3325000" />
     </task>
     <servers />
   </component>
