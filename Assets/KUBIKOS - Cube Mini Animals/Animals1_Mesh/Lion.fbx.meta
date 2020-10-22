@@ -266,7 +266,7 @@ ModelImporter:
       name: Walk
       takeName: Take 001
       internalID: 0
-      firstFrame: 145
+      firstFrame: 141
       lastFrame: 161
       wrapMode: 0
       orientationOffsetY: 0

@@ -1,4 +1,6 @@
-﻿public class PlayerOne : PlayerBase
+﻿using UnityEngine;
+
+public class PlayerOne : PlayerBase
 {
     public override string GetHorizontalAxies()
     {
@@ -9,6 +11,9 @@
     {
         return "Jump";
     }
-
+    public override Vector3 GetPosition()
+    {
+        return transform.position;
+    }
 
 }

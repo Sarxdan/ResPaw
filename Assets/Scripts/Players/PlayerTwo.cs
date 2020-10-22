@@ -1,6 +1,6 @@
-﻿namespace Assets.Scripts
-{
-    class PlayerTwo : PlayerBase
+﻿using UnityEngine;
+
+class PlayerTwo : PlayerBase
     {
         public override string GetHorizontalAxies()
         {
@@ -12,6 +12,9 @@
             return "Jump2";
         }
 
-
+    public override Vector3 GetPosition()
+    {
+        return transform.position;
     }
 }
+

@@ -87,6 +87,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     public abstract string GetHorizontalAxies();
     public abstract string GetJumpButton();
+    public abstract Vector3 GetPosition();
 
 
     void Start()
