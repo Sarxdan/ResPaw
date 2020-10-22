@@ -99,7 +99,7 @@ public class LibraPlatforms : MonoBehaviour
         {
             GameObject platforms = Platform[i];
             
-            Vector3 hitboxSize = new Vector3(0.9f, 10f, 1f);
+            Vector3 hitboxSize = new Vector3(0.9f, 0.5f, 1f);
             Vector3 boxSize = platforms.transform.position;
             boxSize.y += hitboxSize.y;
             Collider[] AboveCollider = Physics.OverlapBox(boxSize, hitboxSize, Quaternion.identity, mask);
