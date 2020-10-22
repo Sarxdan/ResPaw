@@ -8,7 +8,7 @@ public class Switches : MonoBehaviour
     //peer reviewed by Mehmet
     public GameObject door;
     public Transform doorStop;
-    float doorSpeed = 1f;
+    public float doorSpeed;
     bool isTrigger = false;
     bool isOpen;
    
