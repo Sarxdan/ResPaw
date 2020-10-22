@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenuController : MonoBehaviour
 {
     public Button button2, button3, button4;
     public int levelpassed;
     void Start()
-    {
+    {       
         levelpassed = PlayerPrefs.GetInt("LevelPassed");
         button2.interactable = false;
         button3.interactable = false;
@@ -18,7 +19,7 @@ public class MainMenuController : MonoBehaviour
         switch (levelpassed)
         {
             case 1:
-                button2.interactable = true;
+                button2.interactable = true;             
                 break;
             case 2:
                 button2.interactable = true;
@@ -35,6 +36,8 @@ public class MainMenuController : MonoBehaviour
 
     public void LevelToLoad(int level)
     {
+       int test = level;
+
         SceneManager.LoadScene(level);
     }
 
