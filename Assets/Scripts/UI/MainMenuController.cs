@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 //created by Daniel
-//peer reviewed by 
+//peer reviewed by Mehmet
 
 public class MainMenuController : MonoBehaviour
 {

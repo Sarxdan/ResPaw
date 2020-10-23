@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 //created by Daniel
-//peer reviewed by 
+//peer reviewed by Mehmet
 
 public class LevelControll : MonoBehaviour
 {
