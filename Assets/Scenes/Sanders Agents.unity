@@ -3382,7 +3382,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 299162523039594510, guid: 4ede21de3ae66204d9f760eefdf328d7, type: 3}
       propertyPath: ammunition
-      value: 4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1918787145226980163, guid: 4ede21de3ae66204d9f760eefdf328d7, type: 3}
       propertyPath: m_LocalPosition.x

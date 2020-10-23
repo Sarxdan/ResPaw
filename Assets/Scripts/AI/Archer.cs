@@ -18,10 +18,12 @@ public class Archer : EnemyBase
     public Bow bow;
 
     private float lastTime;
+    private Animator anim;
 
     void Start()
     {
         bow = GetComponent<Bow>();
+        anim = GetComponent<Animator>();
         lastTime = Time.time;
     }
 
@@ -29,8 +31,9 @@ public class Archer : EnemyBase
     {
         if ((Time.time - lastTime) >= fireRate)
         {
+            anim.SetTrigger("Shoot");
             lastTime = Time.time;
-            bow.Fire();
+            //bow.Fire();
             
         }
     }
