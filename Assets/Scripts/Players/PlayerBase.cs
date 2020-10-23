@@ -116,7 +116,7 @@ public abstract class PlayerBase : MonoBehaviour
         lookLeft = lookRight * Quaternion.Euler(0, -180, 0);
         rb.velocity = new Vector3(0, 0, 0);
         animalSource = GetComponentInChildren<AudioSource>();
-        animalClips = Resources.LoadAll<AudioClip>("Audio");
+        animalClips = Resources.LoadAll<AudioClip>("Audio/Character");
     }
 
     void FixedUpdate()
