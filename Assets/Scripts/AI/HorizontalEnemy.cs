@@ -7,7 +7,7 @@ using UnityEngine;
 // Peer Reviewed by: Daniel
 //
 
-public class HorizontalEnemy : MonoBehaviour
+public class HorizontalEnemy : EnemyBase
 {
     public float movementSpeed = 2.5f;
 
@@ -59,14 +59,13 @@ public class HorizontalEnemy : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // Kills the agent and gives it a death effect
-        if (other.tag == "Spike")
+        if (other.tag == "Spike" || other.tag == "DoorKill")
         {
-            gameObject.transform.GetChild(1).gameObject.GetComponent<Renderer>().material.shader = Shader.Find("Unlit/GreyScale");
-            Destroy(GameObject.Find("Horizontal Enemy/Root/Body1/Body2/Arm_R/Sword1"));
-            GetComponent<Animator>().enabled = false;
-            gameObject.layer = (int)LayerEnum.Ground;    // For playerbase movement
             GetComponent<Rigidbody>().mass = 1.0f;
-            enabled = false;
+            gameObject.layer = (int)LayerEnum.Ground;    // For playerbase movement
+            Destroy(GameObject.Find("Horizontal Enemy/Root/Body1/Body2/Arm_R/Sword1"));
+            
+            Death();
         }
 
         else if (other.tag == "AI Border")

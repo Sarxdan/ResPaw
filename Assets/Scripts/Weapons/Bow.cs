@@ -14,17 +14,25 @@ public class Bow : MonoBehaviour
 {
     
     public GameObject arrowPrefab;
-    private float arrowSpeed = 4;
-    private float arrowLifetime = 4.0f;
+    public int ammunition = -1;
+        
+    public float arrowSpeed = 4;
+    public float arrowLifetime = 4.0f;
     private float direction;
+    
 
     public void Fire()
     {
-        direction = (transform.rotation.y > 0) ? 1.0f : -1.0f;
+        if (ammunition == -1 || ammunition > 0)
+        {
+            direction = (transform.rotation.y > 0) ? 1.0f : -1.0f;
         
-        // Create arrow and place it in correct position and rotation
-        GameObject arrow = Instantiate(arrowPrefab, transform.position + new Vector3(0,0.5f,0), transform.rotation * Quaternion.Euler(90,0,0));
-        arrow.GetComponent<Rigidbody>().velocity = new Vector3(arrowSpeed*direction, 0,0);
-        arrow.GetComponent<Arrow>().StartCoroutine("DestroyWhenFinished", arrowLifetime);
+            // Create arrow and place it in correct position and rotation
+            GameObject arrow = Instantiate(arrowPrefab, transform.position + new Vector3(0,0.5f,0), transform.rotation * Quaternion.Euler(90,0,0));
+            arrow.GetComponent<Rigidbody>().velocity = new Vector3(arrowSpeed*direction, 0,0);
+            arrow.GetComponent<Arrow>().StartCoroutine("DestroyWhenFinished", arrowLifetime);
+
+            ammunition = (ammunition > 0) ? ammunition-1 : -1;
+        }
     }
 }
