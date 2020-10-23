@@ -44,12 +44,7 @@ public class MainMenuController : MonoBehaviour
     public void BackButton()
     {
         SceneManager.LoadScene(0);//change 0 to whatever is mainmenu
-    }
-    public void PlayButton()
-    {
-        SceneManager.LoadScene(0);
-    }
-
+    }   
     public void reset()
     {
         button2.interactable = false;

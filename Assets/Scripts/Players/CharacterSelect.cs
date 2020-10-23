@@ -80,7 +80,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void loadLevel()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     private int MoveSelectIcon(int currentPosition, MoveTo moveTo)
