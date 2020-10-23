@@ -18,14 +18,14 @@ public class MainMenuController : MonoBehaviour
 
         switch (levelpassed)
         {
-            case 1:
+            case 3:
                 button2.interactable = true;             
                 break;
-            case 2:
+            case 4:
                 button2.interactable = true;
                 button3.interactable = true;
                 break;
-            case 3:
+            case 5:
                 button2.interactable = true;
                 button3.interactable = true;
                 button4.interactable = true;
