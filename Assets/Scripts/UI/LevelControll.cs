@@ -27,6 +27,6 @@ public class LevelControll : MonoBehaviour
             PlayerPrefs.SetInt("LevelPassed", sceneIndex);
             
         }
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
