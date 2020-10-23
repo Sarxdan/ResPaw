@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -9,11 +10,11 @@ using UnityEngine;
 // Peer-reviewed by: 
 //
 
-public class Archer : MonoBehaviour
+public class Archer : EnemyBase
 {
     
     // Seconds between each shot
-    private float fireRate = 1f;
+    public float fireRate = 1f;
     public Bow bow;
 
     private float lastTime;
@@ -31,6 +32,14 @@ public class Archer : MonoBehaviour
             lastTime = Time.time;
             bow.Fire();
             
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Spike" || other.tag == "DoorKill")
+        {
+            Death();
         }
     }
 }

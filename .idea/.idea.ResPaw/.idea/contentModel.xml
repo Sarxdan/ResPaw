@@ -76,13 +76,16 @@
         <e p="Scripts" t="Include">
           <e p="AI" t="Include">
             <e p="Archer.cs" t="Include" />
+            <e p="EnemyBase.cs" t="Include" />
             <e p="HorizontalEnemy.cs" t="Include" />
           </e>
           <e p="Debug" t="Include">
             <e p="SceneLoader.cs" t="Include" />
           </e>
           <e p="Enums" t="Include">
+            <e p="EnumAnimals.cs" t="Include" />
             <e p="LayerEnum.cs" t="Include" />
+            <e p="SceneEnum.cs" t="Include" />
           </e>
           <e p="Game mechanics" t="Include">
             <e p="DoorKiller.cs" t="Include" />
@@ -92,6 +95,7 @@
           </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
+            <e p="SelectedPlayersSingleton.cs" t="Include" />
           </e>
           <e p="Players" t="Include">
             <e p="CharacterSelect.cs" t="Include" />
