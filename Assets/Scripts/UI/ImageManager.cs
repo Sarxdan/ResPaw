@@ -7,7 +7,8 @@ using UnityEngine.EventSystems;
 public class ImageManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     Button button;
-    public GameObject image;
+    public GameObject preview;
+    public GameObject arrow;
 
     private void Awake()
     {
@@ -18,11 +19,13 @@ public class ImageManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (!button.interactable)
         {
-            image.SetActive(false);
+            preview.SetActive(false);
+            arrow.SetActive(false);
         }
         else
         {
-            image.SetActive(true);
+            preview.SetActive(true);
+            arrow.SetActive(true);
         }
             
     }
@@ -30,7 +33,8 @@ public class ImageManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
     {
         if (button.interactable)
         {
-            image.SetActive(false);
+            preview.SetActive(false);
+            arrow.SetActive(false);
         }
            
     }
