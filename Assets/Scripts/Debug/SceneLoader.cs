@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Enums;
 using Assets.Scripts.Managers;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,9 +15,23 @@ public class SceneLoader : MonoBehaviour
 
         try
         {
-            Object playerOnePrefab = AssetDatabase.LoadAssetAtPath(GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerOne), typeof(GameObject));
+            Object[] allAnimalsPrefab = Resources.LoadAll<GameObject>("Players");
+            Object playerOnePrefab = new Object();
+            Object playerTwoPrefab = new Object();
+            foreach (var prefab in allAnimalsPrefab)
+            {
+                if (prefab.name == GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerOne))
+                {
+                    playerOnePrefab = prefab;
+                }
+                if (prefab.name == GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerTwo))
+                {
+                    playerTwoPrefab = prefab;
+                }
+            }
 
-            Object playerTwoPrefab = AssetDatabase.LoadAssetAtPath(GetPlayerPreFab(SelectedPlayersSingleton.Instance.SelectedPlayerTwo), typeof(GameObject));
+
+
 
 
             playerSpawner1 = GameObject.FindGameObjectWithTag("PlayerOneSpawner").GetComponent<PlayerSpawner>();
@@ -48,18 +61,18 @@ public class SceneLoader : MonoBehaviour
 
     private string GetPlayerPreFab(EnumAnimals enumAnimals)
     {
-        string preFabeLocation = "Assets/Prefabs/Players/";
+        string preFabeLocation = "";
 
         switch (enumAnimals)
         {
             case EnumAnimals.cow:
-                preFabeLocation += "Cow.prefab";
+                preFabeLocation += "Cow";
                 break;
             case EnumAnimals.lion:
-                preFabeLocation += "Lion.prefab";
+                preFabeLocation += "Lion";
                 break;
             case EnumAnimals.bird:
-                preFabeLocation += "Bird.prefab";
+                preFabeLocation += "Bird";
                 break;
             default:
                 break;

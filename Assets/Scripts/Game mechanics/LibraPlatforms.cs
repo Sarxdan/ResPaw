@@ -1,6 +1,5 @@
 ﻿//Created By Mehmet 
 //Peer-Reviewed by Daniel
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -13,7 +12,7 @@ public class LibraPlatforms : MonoBehaviour
     public LayerMask mask;
 
     //initializing the list, containing all objects that can interact with the scale.
-    List<GameObject> gameObjects = new List<GameObject>();    
+    List<GameObject> gameObjects = new List<GameObject>();
     public float maxDistance = 20f;
     [SerializeField] float minDistance = 20f;
     [SerializeField] float speed;
@@ -82,14 +81,14 @@ public class LibraPlatforms : MonoBehaviour
             for (int i = 0; i < platformCount.Count; i++)
             {
                 Vector3 destinationPos = orgPos[i];
-                
+
                 destinationPos.y = maxDistance - minDistance;
 
                 Platform[i].transform.position = Vector3.MoveTowards(Platform[i].transform.position, destinationPos, speed * Time.deltaTime);
             }
         }
-    }        
-    
+    }
+
     private List<int> getEntityCount()
     {
         //initializing a list for the amount of objects on each scale.
@@ -100,7 +99,7 @@ public class LibraPlatforms : MonoBehaviour
         for (int i = 0; i < Platform.Length; i++)
         {
             GameObject platforms = Platform[i];
-            
+
             Vector3 hitboxSize = new Vector3(0.9f, 0.5f, 1f);
             Vector3 boxSize = platforms.transform.position;
             boxSize.y += hitboxSize.y;
@@ -108,13 +107,13 @@ public class LibraPlatforms : MonoBehaviour
 
             boxSize = platforms.transform.position;
             boxSize.y -= 0.4f;
-            Collider[] BelowCollider = Physics.OverlapBox(boxSize, new Vector3(0.9f,0.1f,1), Quaternion.identity, mask);
+            Collider[] BelowCollider = Physics.OverlapBox(boxSize, new Vector3(0.9f, 0.1f, 1), Quaternion.identity, mask);
             if (BelowCollider.Length != 0)
             {
                 platformCount.Clear();
                 break;
             }
-                
+
             platformCount.Add(AboveCollider.Length);
 
         }
@@ -122,10 +121,11 @@ public class LibraPlatforms : MonoBehaviour
         return platformCount;
     }
     //We are getting the platforms with the most interactable objects
-    private List<int> getDensePlatform(List<int> platformCount) {
+    private List<int> getDensePlatform(List<int> platformCount)
+    {
         if (platformCount.Count == 0)
             return platformCount;
-        
+
         int maxObjectsCount = platformCount.Max();
         List<int> mostDensePlatform = new List<int>();
 
@@ -139,4 +139,3 @@ public class LibraPlatforms : MonoBehaviour
 
 
 }
-

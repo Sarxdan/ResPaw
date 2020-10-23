@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //created by Daniel
@@ -25,7 +22,7 @@ public class LevelControll : MonoBehaviour
 
     public void YouWin()
     {
-        if(levelPassed < sceneIndex)
+        if (levelPassed < sceneIndex)
         {
             PlayerPrefs.SetInt("LevelPassed", sceneIndex);
             SceneManager.LoadScene(2);

@@ -1,9 +1,5 @@
-﻿using Assets.Scripts;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 //created by Daniel
