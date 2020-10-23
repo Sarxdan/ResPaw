@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
+  m_FirstSelected: {fileID: 1601489258}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
 --- !u!4 &88815574
@@ -618,10 +618,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.5372549, g: 0.87843144, b: 0.37647063, a: 1}
+    m_HighlightedColor: {r: 0.101960786, g: 0.3019608, b: 0.011764706, a: 1}
+    m_PressedColor: {r: 0.08235294, g: 0.25490198, b: 0.003921569, a: 1}
+    m_SelectedColor: {r: 0.12156863, g: 0.35686275, b: 0.011764706, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1078,10 +1078,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 0.5372549, g: 0.87843144, b: 0.37647063, a: 1}
+    m_HighlightedColor: {r: 0.10338197, g: 0.3018868, b: 0.009967966, a: 0.8392157}
+    m_PressedColor: {r: 0.083960466, g: 0.254717, b: 0.0036044791, a: 1}
+    m_SelectedColor: {r: 0.1227661, g: 0.3584906, b: 0.01183696, a: 0.9137255}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1

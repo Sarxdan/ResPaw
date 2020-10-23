@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+//created by Daniel
+//peer reviewed by 
+
 public class MainMenuController : MonoBehaviour
 {
     public Button button2, button3, button4;

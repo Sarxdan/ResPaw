@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
+//created by Daniel
+//peer reviewed by 
+
 public class ImageManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     Button button;
@@ -38,4 +41,6 @@ public class ImageManager : MonoBehaviour, IPointerEnterHandler, IPointerExitHan
         }
            
     }
+
+    
 }

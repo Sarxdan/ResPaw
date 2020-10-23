@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//created by Daniel
+//peer reviewed by 
+
 public class LevelControll : MonoBehaviour
 {
     public static LevelControll instace = null;
