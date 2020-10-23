@@ -45,6 +45,10 @@ public class MainMenuController : MonoBehaviour
     {
         SceneManager.LoadScene(0);//change 0 to whatever is mainmenu
     }
+    public void PlayButton()
+    {
+        SceneManager.LoadScene(0);
+    }
 
     public void reset()
     {
