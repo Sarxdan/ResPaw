@@ -162,8 +162,8 @@ public abstract class PlayerBase : MonoBehaviour
             isIdle = false;
 
             StopWalkAnimation();
-            //animalSource.clip = animalClips[3];
-            //animalSource.Play();
+            animalSource.clip = animalClips[1];
+            animalSource.Play();
 
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
@@ -225,12 +225,12 @@ public abstract class PlayerBase : MonoBehaviour
             if (manager.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
-                // StartCoroutine(PlaySpawnSound());
+                StartCoroutine(PlaySpawnSound());
             }
             GetComponentInChildren<Renderer>().material.shader = transParent;
             isDead = true;
-            //animalSource.clip = animalClips[0];
-            //animalSource.Play();
+            animalSource.clip = animalClips[3];
+            animalSource.Play();
             StopWalkAnimation();
             anim.enabled = false;
 
@@ -489,8 +489,8 @@ public abstract class PlayerBase : MonoBehaviour
     }
     IEnumerator PlaySpawnSound()
     {
-        yield return new WaitForSeconds(animalClips[0].length);
-        animalSource.clip = animalClips[1];
+        yield return new WaitForSeconds(animalClips[3].length);
+        animalSource.clip = animalClips[2];
         animalSource.Play();
     }
 
