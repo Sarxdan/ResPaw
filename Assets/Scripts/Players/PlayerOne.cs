@@ -2,6 +2,10 @@
 
 public class PlayerOne : PlayerBase
 {
+    public override string GetDragButton()
+    {
+        return "Drag1";
+    }
     public override string GetHorizontalAxies()
     {
         return "Horizontal";

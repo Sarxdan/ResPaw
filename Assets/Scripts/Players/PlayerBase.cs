@@ -21,6 +21,7 @@ public abstract class PlayerBase : MonoBehaviour
     private Rigidbody rb;
     private string horizontalAxies;
     private string jumpButton;
+    private string dragButton;
     private bool isIdle = false;
     [SerializeField]
     private bool isJumping = true;
@@ -36,9 +37,11 @@ public abstract class PlayerBase : MonoBehaviour
     private float fallMultiplier = 4f;
     private float lowJumpMultiplier = 2f;
     private Collider playerCollider;
+    private FixedJoint fixedJoint;
 
     private Rigidbody playerAbove;
     private Rigidbody playerBelow;
+    private Rigidbody playerFacing;
 
     private float maxFriction = 500f;
     private float normalFriction = 0.6f;
@@ -77,16 +80,19 @@ public abstract class PlayerBase : MonoBehaviour
     AudioClip[] animalClips;
     AudioSource animalSource;
 
+    [SerializeField]
+    private bool isDragging;
 
     public PlayerBase()
     {
         horizontalAxies = GetHorizontalAxies();
         jumpButton = GetJumpButton();
-
+        dragButton = GetDragButton();
     }
 
     public abstract string GetHorizontalAxies();
     public abstract string GetJumpButton();
+    public abstract string GetDragButton();
     public abstract Vector3 GetPosition();
 
 
@@ -104,6 +110,7 @@ public abstract class PlayerBase : MonoBehaviour
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
+
         playerSpawner = FindObjectOfType<PlayerSpawner>();
         playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += PlayerFacingObject;
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
@@ -126,6 +133,41 @@ public abstract class PlayerBase : MonoBehaviour
         Jump();
 
         FallingGravity();
+        if (!isDead)
+            DragPlayer();
+    }
+
+    private void DragPlayer()
+    {
+        if (Input.GetButton(dragButton) && isFacingAnotherPlayer && !isJumping)
+        {
+            isDragging = true;
+            JoinOtherPlayerToDrag();
+        }
+        if (!Input.GetButton(dragButton))
+        {
+            RemoveDragging();
+        }
+    }
+
+    private void RemoveDragging()
+    {
+        isDragging = false;
+        if (fixedJoint != null)
+            Destroy(fixedJoint);
+    }
+
+    private void JoinOtherPlayerToDrag()
+    {
+        if (fixedJoint == null)
+        {
+            fixedJoint = gameObject.AddComponent<FixedJoint>();
+            fixedJoint.breakForce = 2f;
+            fixedJoint.enableCollision = true;
+        }
+
+
+        fixedJoint.connectedBody = playerFacing;
     }
 
 
@@ -162,7 +204,7 @@ public abstract class PlayerBase : MonoBehaviour
             isIdle = false;
 
             StopWalkAnimation();
-
+            RemoveDragging();
 
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
@@ -228,6 +270,7 @@ public abstract class PlayerBase : MonoBehaviour
                 StartCoroutine(PlaySpawnSound());
                 playerSpawner.SpawnPlayer(gameObject);
             }
+            RemoveDragging();
             GetComponentInChildren<Renderer>().material.shader = transParent;
             isDead = true;
             animalSource.clip = animalClips[3];
@@ -291,7 +334,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void HandleFacing(float x)
     {
-        if (x > 0)
+        if (x > 0 && !isDragging)
         {
             isIdle = false;
             transform.rotation = lookRight;
@@ -301,7 +344,7 @@ public abstract class PlayerBase : MonoBehaviour
                 PlayWalkAnimation();
             }
         }
-        else if (x < 0)
+        else if (x < 0 && !isDragging)
         {
             isIdle = false;
             transform.rotation = lookLeft;
@@ -417,11 +460,14 @@ public abstract class PlayerBase : MonoBehaviour
 
     }
 
-    private void PlayerFacingObject(object sender, (bool isFacingObject, bool isItAPlayer) values)
+    private void PlayerFacingObject(object sender, (Rigidbody OtherPlayerRB, bool isFacingObject, bool isItAPlayer) values)
     {
         isFacingObject = values.isFacingObject;
 
         isFacingAnotherPlayer = values.isItAPlayer;
+
+        if (values.OtherPlayerRB != null)
+            playerFacing = values.OtherPlayerRB;
 
 
     }
@@ -469,7 +515,10 @@ public abstract class PlayerBase : MonoBehaviour
     private void jumpCheck()
     {
         isJumping = isTouchingGround || touchingOtherPlayerFromBelow ? false : true;
-
+        if (isJumping && isDragging)
+        {
+            RemoveDragging();
+        }
     }
 
     private void PlayWalkAnimation()
