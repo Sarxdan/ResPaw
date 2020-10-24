@@ -42,7 +42,30 @@ public class SceneLoader : MonoBehaviour
         }
         catch (System.Exception)
         {
+            Object[] allAnimalsPrefab = Resources.LoadAll<GameObject>("Players");
+            Object playerOnePrefab = new Object();
+            Object playerTwoPrefab = new Object();
+            foreach (var prefab in allAnimalsPrefab)
+            {
+                if (prefab.name == GetPlayerPreFab(EnumAnimals.cow))
+                {
+                    playerOnePrefab = prefab;
+                }
+                if (prefab.name == GetPlayerPreFab(EnumAnimals.lion))
+                {
+                    playerTwoPrefab = prefab;
+                }
+            }
 
+
+
+
+
+            playerSpawner1 = GameObject.FindGameObjectWithTag("PlayerOneSpawner").GetComponent<PlayerSpawner>();
+            playerSpawner2 = GameObject.FindGameObjectWithTag("PlayerTwoSpawner").GetComponent<PlayerSpawner>();
+
+            playerSpawner1.SpawnPlayerFirstTime(playerOnePrefab, 1);
+            playerSpawner2.SpawnPlayerFirstTime(playerTwoPrefab, 2);
 
         }
     }

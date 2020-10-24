@@ -37,15 +37,15 @@ public abstract class PlayerBase : MonoBehaviour
     private float fallMultiplier = 4f;
     private float lowJumpMultiplier = 2f;
     private Collider playerCollider;
-    private FixedJoint fixedJoint;
+    private FixedJoint fixedJointToDrag;
+    private FixedJoint fixedJointToPlayerBelow;
 
     private Rigidbody playerAbove;
     private Rigidbody playerBelow;
     private Rigidbody playerFacing;
 
-    private float maxFriction = 500f;
-    private float normalFriction = 0.6f;
-    private float mediumFriction = 5f;
+
+
 
     private float maxJumpSpeed = 10f;
     private float minJumpSpeed = 8f;
@@ -70,8 +70,7 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     public bool isDead = false;
 
-    [SerializeField]
-    private float playerFriction = 0f;
+
 
     Shader transParent;
 
@@ -118,7 +117,7 @@ public abstract class PlayerBase : MonoBehaviour
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         transParent = Shader.Find("Unlit/GreyScale");
-        SetPlayerFriction(normalFriction);
+
         lookRight = transform.rotation;
         lookLeft = lookRight * Quaternion.Euler(0, -180, 0);
         rb.velocity = new Vector3(0, 0, 0);
@@ -126,7 +125,7 @@ public abstract class PlayerBase : MonoBehaviour
         animalClips = Resources.LoadAll<AudioClip>("Audio/Character");
     }
 
-    void FixedUpdate()
+    void Update()
     {
         MoveThePlayer();
 
@@ -153,21 +152,44 @@ public abstract class PlayerBase : MonoBehaviour
     private void RemoveDragging()
     {
         isDragging = false;
-        if (fixedJoint != null)
-            Destroy(fixedJoint);
+        if (fixedJointToDrag != null)
+            Destroy(fixedJointToDrag);
+    }
+
+    private void AttachToBelowPlayer()
+    {
+        if (fixedJointToPlayerBelow == null && touchingOtherPlayerFromBelow)
+        {
+            fixedJointToPlayerBelow = gameObject.AddComponent<FixedJoint>();
+            fixedJointToPlayerBelow.breakForce = 2f;
+            fixedJointToPlayerBelow.enableCollision = true;
+
+
+            fixedJointToPlayerBelow.connectedBody = playerBelow;
+        }
+    }
+
+    private void RemoveAttachedToBelowPlayer()
+    {
+        if (fixedJointToPlayerBelow != null)
+        {
+
+            fixedJointToPlayerBelow.connectedBody = null;
+            Destroy(fixedJointToPlayerBelow);
+        }
     }
 
     private void JoinOtherPlayerToDrag()
     {
-        if (fixedJoint == null)
+        if (fixedJointToDrag == null)
         {
-            fixedJoint = gameObject.AddComponent<FixedJoint>();
-            fixedJoint.breakForce = 2f;
-            fixedJoint.enableCollision = true;
+            fixedJointToDrag = gameObject.AddComponent<FixedJoint>();
+            fixedJointToDrag.breakForce = 2f;
+            fixedJointToDrag.enableCollision = true;
         }
 
 
-        fixedJoint.connectedBody = playerFacing;
+        fixedJointToDrag.connectedBody = playerFacing;
     }
 
 
@@ -202,9 +224,9 @@ public abstract class PlayerBase : MonoBehaviour
         {
 
             isIdle = false;
-
             StopWalkAnimation();
             RemoveDragging();
+            RemoveAttachedToBelowPlayer();
 
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
@@ -219,6 +241,8 @@ public abstract class PlayerBase : MonoBehaviour
 
 
             rb.velocity = currrentVelocity;
+
+
             animalSource.clip = animalClips[1];
             animalSource.Play();
         }
@@ -297,11 +321,6 @@ public abstract class PlayerBase : MonoBehaviour
 
 
 
-    void SetPlayerFriction(float friction)
-    {
-        playerCollider.material.dynamicFriction = friction;
-        playerFriction = friction;
-    }
 
     private void PreventSliding()
     {
@@ -367,16 +386,15 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void MoveOnGroundOrPlayer(float x)
     {
-        if (PlayerMovingAbove(x))
-        {
-            SetPlayerFriction(normalFriction);
-        }
-        else if (notMovingAbove(x))
-        {
-            SetPlayerFriction(maxFriction);
-        }
+
         if (x == 0)
         {
+            if (fixedJointToPlayerBelow == null && touchingOtherPlayerFromBelow)
+            {
+                AttachToBelowPlayer();
+
+            }
+
             var currentVelocity = rb.velocity;
             currentVelocity.x = 0;
             rb.velocity = currentVelocity;
@@ -384,7 +402,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (x < 0)
         {
-
+            RemoveAttachedToBelowPlayer();
             var currentVelocity = rb.velocity;
             currentVelocity.x = GetPlayerSpeed(true);
 
@@ -392,21 +410,14 @@ public abstract class PlayerBase : MonoBehaviour
         }
         else if (x > 0)
         {
+            RemoveAttachedToBelowPlayer();
             var currentVelocity = rb.velocity;
             currentVelocity.x = GetPlayerSpeed(false);
             rb.velocity = currentVelocity;
         }
     }
 
-    private bool notMovingAbove(float x)
-    {
-        return x == 0 && touchingOtherPlayerFromBelow && playerCollider.material.dynamicFriction != maxFriction;
-    }
 
-    private bool PlayerMovingAbove(float x)
-    {
-        return x != 0 && touchingOtherPlayerFromBelow && playerCollider.material.dynamicFriction != normalFriction;
-    }
 
     private float GetPlayerSpeed(bool movingLeft)
     {
@@ -490,11 +501,13 @@ public abstract class PlayerBase : MonoBehaviour
         {
             playerBelow = values.rb;
             PreventSliding();
-            SetPlayerFriction(maxFriction);
+
+            AttachToBelowPlayer();
         }
         else
         {
-            SetPlayerFriction(normalFriction);
+            RemoveAttachedToBelowPlayer();
+
 
         }
 
@@ -507,7 +520,7 @@ public abstract class PlayerBase : MonoBehaviour
         if (isGrounded)
         {
             PreventSliding();
-            SetPlayerFriction(normalFriction);
+
         }
         jumpCheck();
     }
@@ -518,6 +531,10 @@ public abstract class PlayerBase : MonoBehaviour
         if (isJumping && isDragging)
         {
             RemoveDragging();
+        }
+        if (isJumping && touchingOtherPlayerFromBelow)
+        {
+            RemoveAttachedToBelowPlayer();
         }
     }
 
