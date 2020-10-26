@@ -9,14 +9,7 @@ public class InteractionManager : MonoBehaviour
     public bool occupied = false;
     public bool equipped = false;
     public Bow bow;
-    public bool pickupCheck = false;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,20 +20,23 @@ public class InteractionManager : MonoBehaviour
                 bow.Fire();
             }
 
+            // Pick up weapon if near it
             else if (!equipped)
             {
-                Collider[] hits = Physics.OverlapBox(transform.position, transform.localScale / 2, Quaternion.identity);
-
-                int i = 0;
-                while (i < hits.Length)
+                // Check if the player is near the bow
+                Collider[] hits = Physics.OverlapBox(transform.position + new Vector3(0,0.5f,0), transform.localScale / 2, Quaternion.identity);
+                
+                for(int i = 0; i < hits.Length; i++)
                 {
                     if (hits[i].tag == "Weapon")
                     {
                         
                         equipped = true;
+                        // Set transforms for bow
                         hits[i].transform.position = transform.position + new Vector3(.75f,0.5f,0);
                         hits[i].transform.rotation = transform.rotation;
                         hits[i].transform.parent = transform;
+                        
                         bow = hits[i].GetComponent<Bow>();
                         return;
                     }
@@ -51,4 +47,5 @@ public class InteractionManager : MonoBehaviour
             }
         }
     }
+
 }

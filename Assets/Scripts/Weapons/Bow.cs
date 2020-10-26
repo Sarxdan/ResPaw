@@ -30,6 +30,10 @@ public class Bow : Interact
             arrow.GetComponent<Arrow>().StartCoroutine("DestroyWhenFinished", arrowLifetime);
 
             ammunition = (ammunition > 0) ? ammunition-1 : -1;
+            if (ammunition == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
