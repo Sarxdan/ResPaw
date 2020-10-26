@@ -40,18 +40,15 @@ public class InteractionManager : MonoBehaviour
                 {
                     if (hits[i].tag == "Weapon")
                     {
-                        
                         equipped = true;
                         // Set transforms for bow
-                        hits[i].transform.position = transform.position + new Vector3(.75f,0.5f,0);
+                        hits[i].transform.position = new Vector3(transform.position.x + (.75f*((transform.rotation.y > 0) ? 1.0f : -1.0f)), hits[i].transform.position.y + .5f, 0);
                         hits[i].transform.rotation = transform.rotation;
                         hits[i].transform.parent = transform;
                         
                         bow = hits[i].GetComponent<Bow>();
                         return;
                     }
-
-                    i++;
                 }
                 
             }
