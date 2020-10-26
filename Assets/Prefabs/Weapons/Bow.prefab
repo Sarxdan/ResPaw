@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db03980cb8f6f24b9af6576cb3ccc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 0}
+  arrowPrefab: {fileID: 1076496879142260410, guid: dbd24c36117bd6d46b2e956665d5a9ae, type: 3}
   ammunition: 4
   arrowSpeed: 4
   arrowLifetime: 4

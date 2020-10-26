@@ -38,5 +38,6 @@ public class Archer : EnemyBase
         {
             Death();
         }
+        
     }
 }
