@@ -290,17 +290,16 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (!isDead)
         {
-            StartCoroutine(PlaySpawnSound());
             animalSource.clip = animalClips[3];
             animalSource.Play();
             Debug.Log(playSpawnSound);
-            if (playSpawnSound)
-            {
+            StartCoroutine(PlaySpawnSound());
                 if (manager.CanSpawn(this))
                 {
                     playerSpawner.SpawnPlayer(gameObject);
+
                 }
-            }
+            
             
             RemoveDragging();
             GetComponentInChildren<Renderer>().material.shader = transParent;
@@ -314,6 +313,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         }
     }
+
 
 
     private void RemoveAllEvents()
