@@ -15,7 +15,6 @@ public abstract class PlayerBase : MonoBehaviour
 
     private Animator anim;
     [SerializeField]
-    private float jumpSpeed = 7f;
     private Quaternion lookLeft;
     private Quaternion lookRight;
     private Rigidbody rb;
@@ -69,8 +68,6 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     public bool isDead = false;
 
-    [SerializeField]
-    private bool playSpawnSound = false;
 
 
 
@@ -96,7 +93,6 @@ public abstract class PlayerBase : MonoBehaviour
     public abstract string GetJumpButton();
     public abstract string GetActionButton();
     public abstract string GetDropButton();
-    public abstract Vector3 GetPosition();
 
 
     void Start()
@@ -269,24 +265,6 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
 
-    /*public void OnDeath<T>(T Me) where T : PlayerBase
-    {
-        if (GetComponent<T>().enabled)
-        {
-            playerSpawner.SpawnPlayer(gameObject);
-            RemoveAllEvents();
-            StopWalkAnimation();
-            anim.enabled = false;
-            //anim.SetTrigger("Death");
-            GetComponent<T>().enabled = false;
-            //rb.constraints = RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
-            if (isJumping)
-            {
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-            }
-        }
-    }
-    */
 
     public void OnDeath(bool freezeLocation = false)
     {
@@ -295,17 +273,18 @@ public abstract class PlayerBase : MonoBehaviour
         {
             animalSource.clip = animalClips[3];
             animalSource.Play();
-            Debug.Log(playSpawnSound);
             StartCoroutine(PlaySpawnSound());
-                if (manager.CanSpawn(this))
-                {
-                    playerSpawner.SpawnPlayer(gameObject);
 
-                }
+                    if (manager.CanSpawn(this))
+                    {
+                        playerSpawner.SpawnPlayer(gameObject);
+                    }
+                
             
-            
+
             RemoveDragging();
             GetComponentInChildren<Renderer>().material.shader = transParent;
+            
             isDead = true;
             StopWalkAnimation();
             anim.enabled = false;
@@ -318,7 +297,7 @@ public abstract class PlayerBase : MonoBehaviour
     }
 
 
-
+    
     private void RemoveAllEvents()
     {
         playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= PlayerFacingObject;
@@ -565,7 +544,6 @@ public abstract class PlayerBase : MonoBehaviour
     IEnumerator PlaySpawnSound()
     {
         yield return new WaitForSeconds(animalClips[3].length);
-        playSpawnSound = true;
         animalSource.clip = animalClips[2];
         animalSource.Play();
     }
