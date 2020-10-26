@@ -59,8 +59,21 @@ public class InteractionManager : MonoBehaviour
         
         else if(Input.GetButtonDown(playerBase.dropButton) && equipped)
         {
-            bow.transform.parent = null;
+            Drop();
         }
     }
+
+    public void Drop()
+    {
+        if (equipped)
+        {
+            equipped = false;
+            bow.transform.position = bow.transform.position - new Vector3(0,0.5f,0);
+            bow.transform.rotation = Quaternion.Euler(90, 90, 0);
+            bow.transform.parent = null;
+        }
+        
+    }
+
 
 }

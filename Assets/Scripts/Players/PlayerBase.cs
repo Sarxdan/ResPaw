@@ -271,6 +271,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (!isDead)
         {
+            GetComponent<InteractionManager>().Drop();
             animalSource.clip = animalClips[3];
             animalSource.Play();
             StartCoroutine(PlaySpawnSound());
