@@ -8,17 +8,17 @@ using TMPro;
 
 
 public class FinishLine : MonoBehaviour
-{
-    
+{ 
     private List<GameObject> tb;
-    //[SerializeField] Text victoryText;
-    public TextMeshProUGUI victoryText;
     private LevelControll lc;
+
+    public Canvas canvas;    
     private void Start()
     {
         tb = new List<GameObject>();
         lc = GameObject.FindObjectOfType(typeof(LevelControll)) as LevelControll;
-        victoryText.enabled = false;
+        
+        canvas.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -52,8 +52,8 @@ public class FinishLine : MonoBehaviour
     private void CheckAmount()
     {
         if(tb.Count == 2)
-        {           
-            victoryText.enabled = true;
+        {                      
+            canvas.enabled = true;
             lc.YouWin();
             
             foreach (GameObject objects in tb)

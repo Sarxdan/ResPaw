@@ -24,8 +24,7 @@ public class LevelControll : MonoBehaviour
     {
         if (levelPassed < sceneIndex)
         {
-            PlayerPrefs.SetInt("LevelPassed", sceneIndex);
-            SceneManager.LoadScene(2);
+            PlayerPrefs.SetInt("LevelPassed", sceneIndex);           
         }
-    }
+    }   
 }

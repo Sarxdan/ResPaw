@@ -12,9 +12,9 @@ public class MainMenuController : MonoBehaviour
     void Start()
     {       
         levelpassed = PlayerPrefs.GetInt("LevelPassed");
-        //button2.interactable = false;
-        //button3.interactable = false;
-        //utton4.interactable = false;
+        button2.interactable = false;
+        button3.interactable = false;
+        button4.interactable = false;
 
         switch (levelpassed)
         {
