@@ -56,6 +56,11 @@ public class InteractionManager : MonoBehaviour
                 
             }
         }
+        
+        else if(Input.GetButtonDown(playerBase.dropButton) && equipped)
+        {
+            bow.transform.parent = null;
+        }
     }
 
 }

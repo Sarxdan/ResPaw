@@ -9,7 +9,7 @@ public class PlayerOne : PlayerBase
     
     public override string GetDropButton()
     {
-        return "Drop";
+        return "Drop1";
     }
     
     public override string GetHorizontalAxies()
