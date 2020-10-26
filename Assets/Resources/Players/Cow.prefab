@@ -100,8 +100,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.4090301, y: 0.4179188, z: 0.16399783}
-  m_Center: {x: 0.82920796, y: 0.23176347, z: 1.0462737}
+  m_Size: {x: 1.4090302, y: 0.41571707, z: 0.16399778}
+  m_Center: {x: 0.82920796, y: 0.2306626, z: 1.0462735}
 --- !u!114 &1108529857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +680,8 @@ MonoBehaviour:
   occupied: 0
   equipped: 0
   bow: {fileID: 0}
+  fireRate: 1
+  playerBase: {fileID: 0}
 --- !u!1 &7142646324293760164
 GameObject:
   m_ObjectHideFlags: 0

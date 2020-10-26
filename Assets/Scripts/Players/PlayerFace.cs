@@ -10,16 +10,25 @@ public class PlayerFace : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Weapon")
+        {
+            return;
+        }
         facingObjectsCount++;
 
         var isFacingPlayer = (other.gameObject.layer == (int)LayerEnum.Player) || (other.gameObject.layer == (int)LayerEnum.Body);
         facingPlayerCount += isFacingPlayer ? 1 : 0;
-        var theOtherPlayerRb = facingPlayerCount > 0 && isFacingPlayer ? other.GetComponent<Rigidbody>() : null;
+        var theOtherPlayerRb = facingPlayerCount > 0 && isFacingPlayer ? other.GetComponent<Rigidbody>() == null ? other.GetComponentInParent<Rigidbody>() : other.GetComponent<Rigidbody>() : null;
+
         PlayerIsFacingSomething?.Invoke(this, (theOtherPlayerRb, true, facingPlayerCount > 0));
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (other.tag == "Weapon")
+        {
+            return;
+        }
         facingObjectsCount--;
         var isWasFacingPlayer = (other.gameObject.layer == (int)LayerEnum.Player) || (other.gameObject.layer == (int)LayerEnum.Body);
         facingPlayerCount -= isWasFacingPlayer ? 1 : 0;

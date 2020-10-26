@@ -94,8 +94,17 @@ public class SceneLoader : MonoBehaviour
             case EnumAnimals.lion:
                 preFabeLocation += "Lion";
                 break;
-            case EnumAnimals.bird:
-                preFabeLocation += "Bird";
+            case EnumAnimals.cat:
+                preFabeLocation += "Cat";
+                break;
+            case EnumAnimals.dog:
+                preFabeLocation += "Dog";
+                break;
+            case EnumAnimals.panda:
+                preFabeLocation += "Panda";
+                break;
+            case EnumAnimals.turtle:
+                preFabeLocation += "Turtle";
                 break;
             default:
                 break;

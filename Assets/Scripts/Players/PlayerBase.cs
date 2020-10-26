@@ -97,7 +97,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     void Start()
     {
-
+        isDead = false;
         touchingOtherPlayerFromBelow = false;
         headTouchingPlayer = false;
         isTouchingGround = false;
@@ -158,7 +158,7 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void AttachToBelowPlayer()
     {
-        if (fixedJointToPlayerBelow == null && touchingOtherPlayerFromBelow)
+        if (fixedJointToPlayerBelow == null && touchingOtherPlayerFromBelow && !isDead)
         {
             fixedJointToPlayerBelow = gameObject.AddComponent<FixedJoint>();
             fixedJointToPlayerBelow.breakForce = 2f;
@@ -231,6 +231,7 @@ public abstract class PlayerBase : MonoBehaviour
             var jumpPower = headTouchingPlayer && isTouchingGround ? maxJumpSpeed : minJumpSpeed;
 
             var currrentVelocity = rb.velocity;
+
             currrentVelocity.y = jumpPower;
 
 
@@ -241,6 +242,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
             rb.velocity = currrentVelocity;
+
 
             if (!animalSource.isPlaying)
             {
@@ -268,37 +270,13 @@ public abstract class PlayerBase : MonoBehaviour
 
     public void OnDeath(bool freezeLocation = false)
     {
+        StartCoroutine(PlaySpawnSound(freezeLocation));
 
-        if (!isDead)
-        {
-            GetComponent<InteractionManager>().Drop();
-            animalSource.clip = animalClips[3];
-            animalSource.Play();
-            StartCoroutine(PlaySpawnSound());
 
-                    if (manager.CanSpawn(this))
-                    {
-                        playerSpawner.SpawnPlayer(gameObject);
-                    }
-                
-            
-
-            RemoveDragging();
-            GetComponentInChildren<Renderer>().material.shader = transParent;
-            
-            isDead = true;
-            StopWalkAnimation();
-            anim.enabled = false;
-            if (freezeLocation)
-                rb.constraints = RigidbodyConstraints.FreezeAll;
-
-            manager.RemoveLife(this);
-
-        }
     }
 
 
-    
+
     private void RemoveAllEvents()
     {
         playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= PlayerFacingObject;
@@ -453,30 +431,67 @@ public abstract class PlayerBase : MonoBehaviour
         {
             var currentVelocity = rb.velocity;
             currentVelocity.x = GetPlayerSpeed(false);
+
             rb.velocity = currentVelocity;
         }
-
-
     }
 
     private void PlayerFacingObject(object sender, (Rigidbody OtherPlayerRB, bool isFacingObject, bool isItAPlayer) values)
     {
+
+
+        if (values.isItAPlayer && playerFacing == null)
+        {
+            playerFacing = values.OtherPlayerRB;
+        }
+
+
+        if (values.OtherPlayerRB != null)
+        {
+
+            if (IsFacingTheSamePlayerOboveMe(playerAbove, values.OtherPlayerRB))
+            {
+                return;
+            }
+
+
+
+        }
+
         isFacingObject = values.isFacingObject;
 
         isFacingAnotherPlayer = values.isItAPlayer;
 
-        if (values.OtherPlayerRB != null)
-            playerFacing = values.OtherPlayerRB;
 
+    }
 
+    private bool IsFacingTheSamePlayerOboveMe(Rigidbody otherPlayerAbove, Rigidbody otherPlayerFacing)
+    {
+        if (otherPlayerAbove == null)
+            return false;
+
+        if (otherPlayerFacing == null)
+            return false;
+
+        return otherPlayerAbove.name == otherPlayerFacing.name;
     }
 
     private void TouchingPlayerAbove(object sender, (Rigidbody rb, bool isCarying) values)
     {
-        headTouchingPlayer = values.isCarying;
 
-        if (values.isCarying)
+
+        headTouchingPlayer = values.isCarying;
+        if (IsFacingTheSamePlayerOboveMe(values.rb, playerFacing))
+        {
+            isFacingAnotherPlayer = false;
+
+            playerFacing = null;
+
+        }
+        if (values.isCarying && playerAbove == null)
             playerAbove = values.rb;
+        else
+            playerAbove = null;
 
     }
 
@@ -542,11 +557,40 @@ public abstract class PlayerBase : MonoBehaviour
         yield return new WaitForSeconds(3);
         anim.SetTrigger("Idle2");
     }
-    IEnumerator PlaySpawnSound()
+    IEnumerator PlaySpawnSound(bool freezeLocation)
     {
-        yield return new WaitForSeconds(animalClips[3].length);
-        animalSource.clip = animalClips[2];
-        animalSource.Play();
+        if (!isDead)
+        {
+            isDead = true;
+            GetComponent<InteractionManager>().Drop();
+            animalSource.clip = animalClips[3];
+            animalSource.Play();
+
+            yield return new WaitForSeconds(animalClips[3].length);
+            animalSource.clip = animalClips[2];
+            animalSource.Play();
+
+
+            if (manager.CanSpawn(this))
+            {
+                playerSpawner.SpawnPlayer(gameObject);
+            }
+
+
+
+            RemoveDragging();
+            GetComponentInChildren<Renderer>().material.shader = transParent;
+
+
+            StopWalkAnimation();
+            anim.enabled = false;
+            if (freezeLocation)
+                rb.constraints = RigidbodyConstraints.FreezeAll;
+
+            manager.RemoveLife(this);
+
+        }
+
     }
 
 

@@ -4,6 +4,9 @@
     {
         cow = 0,
         lion,
-        bird
+        cat,
+        dog,
+        panda,
+        turtle
     }
 }
