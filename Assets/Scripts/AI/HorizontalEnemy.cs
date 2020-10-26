@@ -61,10 +61,7 @@ public class HorizontalEnemy : EnemyBase
         // Kills the agent and gives it a death effect
         if (other.tag == "Spike" || other.tag == "DoorKill")
         {
-            
             gameObject.layer = (int)LayerEnum.Ground;    // For playerbase movement
-            //Destroy(GameObject.Find("Horizontal Enemy/Root/Body1/Body2/Arm_R/Sword1"));
-            
             Death();
         }
 

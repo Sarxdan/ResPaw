@@ -4,7 +4,7 @@ public class PlayerOne : PlayerBase
 {
     public override string GetDragButton()
     {
-        return "Drag1";
+        return "Action1";
     }
     public override string GetHorizontalAxies()
     {
