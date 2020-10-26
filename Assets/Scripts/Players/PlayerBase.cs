@@ -21,7 +21,8 @@ public abstract class PlayerBase : MonoBehaviour
     private Rigidbody rb;
     private string horizontalAxies;
     private string jumpButton;
-    private string dragButton;
+    public string actionButton;
+    public string dropButton;
     private bool isIdle = false;
     [SerializeField]
     private bool isJumping = true;
@@ -87,12 +88,14 @@ public abstract class PlayerBase : MonoBehaviour
     {
         horizontalAxies = GetHorizontalAxies();
         jumpButton = GetJumpButton();
-        dragButton = GetDragButton();
+        actionButton = GetActionButton();
+        dropButton = GetDropButton();
     }
 
     public abstract string GetHorizontalAxies();
     public abstract string GetJumpButton();
-    public abstract string GetDragButton();
+    public abstract string GetActionButton();
+    public abstract string GetDropButton();
     public abstract Vector3 GetPosition();
 
 
@@ -139,12 +142,12 @@ public abstract class PlayerBase : MonoBehaviour
 
     private void DragPlayer()
     {
-        if (Input.GetButton(dragButton) && isFacingAnotherPlayer && !isJumping)
+        if (Input.GetButton(actionButton) && isFacingAnotherPlayer && !isJumping)
         {
             isDragging = true;
             JoinOtherPlayerToDrag();
         }
-        if (!Input.GetButton(dragButton))
+        if (!Input.GetButton(actionButton))
         {
             RemoveDragging();
         }

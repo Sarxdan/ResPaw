@@ -11,11 +11,18 @@ public class InteractionManager : MonoBehaviour
     public Bow bow;
     public float fireRate = 1.0f;
     private float lastFire = 0;
-    
+
+    public PlayerBase playerBase;
+
+    private void Start()
+    {
+        playerBase = GetComponent<PlayerBase>();
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Interact"))
+        if (Input.GetButtonDown(playerBase.actionButton))
         {
             if (equipped && (Time.time - lastFire) >= fireRate)
             {

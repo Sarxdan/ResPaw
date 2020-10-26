@@ -2,9 +2,14 @@
 
 class PlayerTwo : PlayerBase
 {
-    public override string GetDragButton()
+    public override string GetActionButton()
     {
         return "Action2";
+    }
+    
+    public override string GetDropButton()
+    {
+        return "Drop2";
     }
 
     public override string GetHorizontalAxies()
