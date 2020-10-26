@@ -341,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &68672466
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7633,6 +7633,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6141282341201205852, guid: d847395e7e0b9e843be023d6046dbba6, type: 3}
+      propertyPath: movementSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6928483219941082997, guid: d847395e7e0b9e843be023d6046dbba6, type: 3}
       propertyPath: m_Name
       value: Horizontal Enemy
@@ -10950,7 +10954,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6496691879647017860, guid: 5c1a40a4af6b06b42b5f89bab745a185, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.41
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 6496691879647017860, guid: 5c1a40a4af6b06b42b5f89bab745a185, type: 3}
       propertyPath: m_LocalPosition.y
@@ -12694,7 +12698,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2003607817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12820,7 +12824,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6496691879647017860, guid: 5c1a40a4af6b06b42b5f89bab745a185, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.48
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 6496691879647017860, guid: 5c1a40a4af6b06b42b5f89bab745a185, type: 3}
       propertyPath: m_LocalPosition.y
