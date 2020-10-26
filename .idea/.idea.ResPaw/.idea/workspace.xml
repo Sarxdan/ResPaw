@@ -20,9 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Archer.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Archer.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animations/Attack_Bow.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animations/Attack_Bow.anim" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/Archer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/Archer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Arrow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Arrow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapons/Bow.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapons/Bow.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +41,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/AI/EnemyBase.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Players/InteractionManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Weapons/Arrow.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
@@ -46,9 +54,11 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Players/FinishLine.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/EnemyBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Bow.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Arrow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Archer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Arrow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Bow.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/Interact.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/Players/InteractionManager.cs" />
       </list>
     </option>
   </component>
@@ -68,10 +78,10 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor &amp; Play">
-    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="3280">
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="3280" />
+      <option name="pid" />
       <option name="selectedOptions">
         <set />
       </option>
@@ -101,7 +111,8 @@
       <workItem from="1603184992397" duration="22364000" />
       <workItem from="1603349794567" duration="3978000" />
       <workItem from="1603374501080" duration="7402000" />
-      <workItem from="1603437953128" duration="5423000" />
+      <workItem from="1603437953128" duration="7686000" />
+      <workItem from="1603463877505" duration="360000" />
     </task>
     <servers />
   </component>

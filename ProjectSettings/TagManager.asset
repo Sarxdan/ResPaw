@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - PlayerOneSpawner
   - PlayerTwoSpawner
+  - Weapon
   layers:
   - Default
   - TransparentFX

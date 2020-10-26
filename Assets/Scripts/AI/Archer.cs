@@ -29,8 +29,6 @@ public class Archer : EnemyBase
         {
             anim.SetTrigger("Shoot");
             lastTime = Time.time;
-            //bow.Fire();
-            
         }
     }
 

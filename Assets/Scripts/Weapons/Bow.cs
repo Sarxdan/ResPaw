@@ -7,7 +7,7 @@
 //
 
 
-public class Bow : MonoBehaviour
+public class Bow : Interact
 {
     
     public GameObject arrowPrefab;
