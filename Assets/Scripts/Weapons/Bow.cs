@@ -7,7 +7,7 @@
 //
 
 
-public class Bow : MonoBehaviour
+public class Bow : Interact
 {
     
     public GameObject arrowPrefab;
@@ -30,6 +30,10 @@ public class Bow : MonoBehaviour
             arrow.GetComponent<Arrow>().StartCoroutine("DestroyWhenFinished", arrowLifetime);
 
             ammunition = (ammunition > 0) ? ammunition-1 : -1;
+            if (ammunition == 0)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }

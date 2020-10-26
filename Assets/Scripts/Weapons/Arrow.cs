@@ -21,7 +21,7 @@ public class Arrow : MonoBehaviour
             other.gameObject.GetComponent<PlayerBase>().OnDeath();
             Destroy(gameObject);
         }
-        else if (other.tag != "Spike" && other.tag != "AI Border")
+        else if (other.tag != "Spike" && other.tag != "AI Border" && other.tag != "Weapon")
         {
             Destroy(gameObject);
         }

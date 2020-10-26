@@ -524,6 +524,7 @@ GameObject:
   - component: {fileID: 3991392954390986631}
   - component: {fileID: 3906546505431363626}
   - component: {fileID: 3906546505431363627}
+  - component: {fileID: 8420185344275303875}
   m_Layer: 9
   m_Name: Lion
   m_TagString: Player
@@ -599,6 +600,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0903475, z: 1}
   m_Center: {x: 0, y: 0.537011, z: 0}
+--- !u!114 &8420185344275303875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3906075419459619649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241da5476abec5548a8f75cfbfa66746, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  occupied: 0
+  equipped: 0
+  bow: {fileID: 0}
+  fireRate: 1
+  playerBase: {fileID: 0}
 --- !u!1 &3906088976497965277
 GameObject:
   m_ObjectHideFlags: 0
