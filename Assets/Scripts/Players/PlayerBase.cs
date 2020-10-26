@@ -68,6 +68,9 @@ public abstract class PlayerBase : MonoBehaviour
     [SerializeField]
     public bool isDead = false;
 
+    [SerializeField]
+    private bool playSpawnSound = false;
+
 
 
     Shader transParent;
@@ -287,23 +290,22 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (!isDead)
         {
+            animalSource.clip = animalClips[3];
+            animalSource.Play();
+            Debug.Log(playSpawnSound);
             StartCoroutine(PlaySpawnSound());
-
-
                 if (manager.CanSpawn(this))
                 {
                     playerSpawner.SpawnPlayer(gameObject);
+
                 }
             
             
             RemoveDragging();
             GetComponentInChildren<Renderer>().material.shader = transParent;
             isDead = true;
-            animalSource.clip = animalClips[3];
-            animalSource.Play();
             StopWalkAnimation();
             anim.enabled = false;
-
             if (freezeLocation)
                 rb.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -311,6 +313,7 @@ public abstract class PlayerBase : MonoBehaviour
 
         }
     }
+
 
 
     private void RemoveAllEvents()
@@ -559,6 +562,7 @@ public abstract class PlayerBase : MonoBehaviour
     IEnumerator PlaySpawnSound()
     {
         yield return new WaitForSeconds(animalClips[3].length);
+        playSpawnSound = true;
         animalSource.clip = animalClips[2];
         animalSource.Play();
     }
