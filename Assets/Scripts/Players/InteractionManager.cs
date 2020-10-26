@@ -9,15 +9,18 @@ public class InteractionManager : MonoBehaviour
     public bool occupied = false;
     public bool equipped = false;
     public Bow bow;
+    public float fireRate = 1.0f;
+    private float lastFire = 0;
     
     // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Interact"))
         {
-            if (equipped)
+            if (equipped && (Time.time - lastFire) >= fireRate)
             {
                 bow.Fire();
+                lastFire = Time.time;
             }
 
             // Pick up weapon if near it
