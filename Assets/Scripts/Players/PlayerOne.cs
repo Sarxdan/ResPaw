@@ -21,9 +21,6 @@ public class PlayerOne : PlayerBase
     {
         return "Jump";
     }
-    public override Vector3 GetPosition()
-    {
-        return transform.position;
-    }
+
 
 }

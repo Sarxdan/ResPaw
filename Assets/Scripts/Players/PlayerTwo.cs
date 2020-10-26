@@ -22,8 +22,5 @@ class PlayerTwo : PlayerBase
         return "Jump2";
     }
 
-    public override Vector3 GetPosition()
-    {
-        return transform.position;
-    }
+
 }

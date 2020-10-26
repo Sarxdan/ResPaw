@@ -93,7 +93,6 @@ public abstract class PlayerBase : MonoBehaviour
     public abstract string GetJumpButton();
     public abstract string GetActionButton();
     public abstract string GetDropButton();
-    public abstract Vector3 GetPosition();
 
 
     void Start()
