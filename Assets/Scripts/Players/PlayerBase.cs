@@ -65,8 +65,6 @@ public abstract class PlayerBase : MonoBehaviour
     private bool isFacingAnotherPlayer;
 
 
-    public bool killedByPlayer = false;
-    public bool killedByRoof = false;
     [SerializeField]
     public bool isDead = false;
 
@@ -242,9 +240,11 @@ public abstract class PlayerBase : MonoBehaviour
 
             rb.velocity = currrentVelocity;
 
-
-            animalSource.clip = animalClips[1];
-            animalSource.Play();
+            if (!animalSource.isPlaying)
+            {
+                animalSource.clip = animalClips[1];
+                animalSource.Play();
+            }
         }
 
     }
@@ -287,13 +287,15 @@ public abstract class PlayerBase : MonoBehaviour
 
         if (!isDead)
         {
+            StartCoroutine(PlaySpawnSound());
 
-            if (manager.CanSpawn(this))
-            {
-                StartCoroutine(Delay());
-                StartCoroutine(PlaySpawnSound());
-                playerSpawner.SpawnPlayer(gameObject);
-            }
+
+                if (manager.CanSpawn(this))
+                {
+                    playerSpawner.SpawnPlayer(gameObject);
+                }
+            
+            
             RemoveDragging();
             GetComponentInChildren<Renderer>().material.shader = transParent;
             isDead = true;
@@ -560,9 +562,6 @@ public abstract class PlayerBase : MonoBehaviour
         animalSource.clip = animalClips[2];
         animalSource.Play();
     }
-    IEnumerator Delay()
-    {
-        yield return new WaitForSeconds(animalClips[3].length);
-    }
+
 
 }
