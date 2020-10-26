@@ -12,13 +12,13 @@ public class FinishLine : MonoBehaviour
     private List<GameObject> tb;
     private LevelControll lc;
 
-    public Canvas canvas;    
+    public GameObject winPanel;    
     private void Start()
     {
         tb = new List<GameObject>();
         lc = GameObject.FindObjectOfType(typeof(LevelControll)) as LevelControll;
-        
-        canvas.enabled = false;
+        winPanel.SetActive(false);
+        //canvas.enabled = false;
     }
 
     private void OnTriggerEnter(Collider other) 
@@ -52,8 +52,9 @@ public class FinishLine : MonoBehaviour
     private void CheckAmount()
     {
         if(tb.Count == 2)
-        {                      
-            canvas.enabled = true;
+        {
+            //canvas.enabled = true;
+            winPanel.SetActive(true);
             lc.YouWin();
             
             foreach (GameObject objects in tb)
