@@ -10,13 +10,11 @@ public class PlayerLives : MonoBehaviour
 {   
     public TextMeshProUGUI playerlives1, playerlives2;   
     public GameObject lostPanel;
-    private int restart;
     GameManager manager;
     // Start is called before the first frame update
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        restart = SceneManager.GetActiveScene().buildIndex;
         lostPanel.SetActive(false);
     }
     // Update is called once per frame
@@ -28,15 +26,5 @@ public class PlayerLives : MonoBehaviour
         {           
             lostPanel.SetActive(true);
         }
-    }
-
-    public void ToLevel()
-    {
-        SceneManager.LoadScene(2);
-    }
-
-    public void Restart()
-    {
-        SceneManager.LoadScene(restart);
     }
 }
