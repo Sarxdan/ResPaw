@@ -72,6 +72,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
     Shader transParent;
+    Shader normalShader;
 
     GameManager manager;
     [SerializeField]
@@ -117,6 +118,7 @@ public abstract class PlayerBase : MonoBehaviour
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         transParent = Shader.Find("Unlit/GreyScale");
+        normalShader = Shader.Find("Unlit/Double-Sided");
 
         lookRight = transform.rotation;
         lookLeft = lookRight * Quaternion.Euler(0, -180, 0);
@@ -124,6 +126,7 @@ public abstract class PlayerBase : MonoBehaviour
         animalSource = GetComponentInChildren<AudioSource>();
         animalClips = Resources.LoadAll<AudioClip>("Audio/Character");
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+        GetComponentInChildren<Renderer>().material.shader = normalShader;
     }
 
     void Update()
@@ -564,6 +567,7 @@ public abstract class PlayerBase : MonoBehaviour
             GetComponent<Interaction>().Drop();
             animalSource.clip = animalClips[3];
             animalSource.Play();
+            GetComponentInChildren<Renderer>().material.shader = transParent;
             if (freezeLocation)
                 rb.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -580,7 +584,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
             RemoveDragging();
-            GetComponentInChildren<Renderer>().material.shader = transParent;
+
 
 
             StopWalkAnimation();
