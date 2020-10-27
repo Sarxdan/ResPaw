@@ -15,7 +15,6 @@ public class PlayerLives : MonoBehaviour
     private void Start()
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
-        restart = SceneManager.GetActiveScene().buildIndex;
         lostPanel.SetActive(false);
     }
     // Update is called once per frame
