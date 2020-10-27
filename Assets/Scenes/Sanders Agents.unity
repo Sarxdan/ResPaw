@@ -892,7 +892,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dff66cc0d6107f445829e0c4aa374674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 7
+  lookLeft: {x: 0, y: 0, z: 0, w: 0}
+  actionButton: Action2
+  dropButton: Drop2
   isJumping: 1
   velocityY: 0
   touchingOtherPlayerFromBelow: 0
@@ -900,11 +902,9 @@ MonoBehaviour:
   isTouchingGround: 0
   isFacingObject: 0
   isFacingAnotherPlayer: 0
-  killedByPlayer: 0
-  killedByRoof: 0
   isDead: 0
-  playerFriction: 0
   animalClips: []
+  isDragging: 0
 --- !u!1001 &348859921
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1960,7 +1960,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9a6d4b6b23b3c7458884315454994f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpSpeed: 7
+  lookLeft: {x: 0, y: 0, z: 0, w: 0}
+  actionButton: Action1
+  dropButton: Drop1
   isJumping: 1
   velocityY: 0
   touchingOtherPlayerFromBelow: 0
@@ -1968,11 +1970,9 @@ MonoBehaviour:
   isTouchingGround: 0
   isFacingObject: 0
   isFacingAnotherPlayer: 0
-  killedByPlayer: 0
-  killedByRoof: 0
   isDead: 0
-  playerFriction: 0
   animalClips: []
+  isDragging: 0
 --- !u!114 &1063938704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,9 +1985,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241da5476abec5548a8f75cfbfa66746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupied: 0
-  equipped: 0
-  bow: {fileID: 0}
+  fireRate: 1
+  playerBase: {fileID: 0}
 --- !u!1001 &1065322309
 PrefabInstance:
   m_ObjectHideFlags: 0
