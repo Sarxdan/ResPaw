@@ -22,6 +22,10 @@ public class ToLevelSelect : MonoBehaviour
     {
         ToPause();
     }
+    public void ToCharacter()
+    {
+        SceneManager.LoadScene(1);
+    }
     public void QuitLevel()
     {
         Application.Quit();

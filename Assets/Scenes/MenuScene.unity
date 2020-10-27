@@ -946,6 +946,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64b358cf6f28dff43a68b6e30db0b407, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 0}
 --- !u!4 &1596283284
 Transform:
   m_ObjectHideFlags: 0
@@ -1044,7 +1045,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1596283283}
         m_TargetAssemblyTypeName: ToLevelSelect, Assembly-CSharp
-        m_MethodName: Tolevel
+        m_MethodName: ToCharacter
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
