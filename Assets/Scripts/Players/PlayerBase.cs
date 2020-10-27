@@ -123,6 +123,7 @@ public abstract class PlayerBase : MonoBehaviour
         rb.velocity = new Vector3(0, 0, 0);
         animalSource = GetComponentInChildren<AudioSource>();
         animalClips = Resources.LoadAll<AudioClip>("Audio/Character");
+        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
     }
 
     void Update()
@@ -271,8 +272,6 @@ public abstract class PlayerBase : MonoBehaviour
     public void OnDeath(bool freezeLocation = false)
     {
         StartCoroutine(PlaySpawnSound(freezeLocation));
-
-
     }
 
 
@@ -565,6 +564,8 @@ public abstract class PlayerBase : MonoBehaviour
             GetComponent<InteractionManager>().Drop();
             animalSource.clip = animalClips[3];
             animalSource.Play();
+            if (freezeLocation)
+                rb.constraints = RigidbodyConstraints.FreezeAll;
 
             yield return new WaitForSeconds(animalClips[3].length);
             animalSource.clip = animalClips[2];
@@ -584,10 +585,10 @@ public abstract class PlayerBase : MonoBehaviour
 
             StopWalkAnimation();
             anim.enabled = false;
-            if (freezeLocation)
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+
 
             manager.RemoveLife(this);
+
 
         }
 
