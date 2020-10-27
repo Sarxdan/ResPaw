@@ -3,9 +3,8 @@ using TMPro;
 using UnityEngine.SceneManagement;
 
 public class PlayerLives : MonoBehaviour
-{
-    //[SerializeField] Text restartText;
-    public TextMeshProUGUI retryText;
+{   
+    public TextMeshProUGUI playerlives1, playerlives2;   
     public GameObject lostPanel;
     private int restart;
     GameManager manager;
@@ -14,24 +13,17 @@ public class PlayerLives : MonoBehaviour
     {
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         restart = SceneManager.GetActiveScene().buildIndex;
-        //lostCanvas.enabled = false;
         lostPanel.SetActive(false);
     }
     // Update is called once per frame
     void Update()
     {
-        retryText.text = "P1: " + manager.PlayerOneLife.ToString() + " P2: " + manager.PlayerTwoLife.ToString();
-        if(manager.PlayerOneLife == 0 || manager.PlayerTwoLife == 0)
-        {
-            //RestartText();
-            //lostCanvas.enabled = true;
+        playerlives1.text = "" + manager.PlayerOneLife.ToString();
+        playerlives2.text=  "" + manager.PlayerTwoLife.ToString();
+        if (manager.PlayerOneLife == 0 || manager.PlayerTwoLife == 0)
+        {           
             lostPanel.SetActive(true);
         }
-    }
-    public void RestartText()
-    {
-        retryText.text = "PRESS R TO RESTART";
-        retryText.rectTransform.localPosition = new Vector3(0, 0, 0);       
     }
 
     public void ToLevel()
