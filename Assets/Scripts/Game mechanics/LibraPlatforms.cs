@@ -10,6 +10,7 @@ public class LibraPlatforms : MonoBehaviour
     GameObject[] Platform;
     List<Vector3> orgPos = new List<Vector3>();
     public LayerMask mask;
+    Transform MediumDistance;
 
     //initializing the list, containing all objects that can interact with the scale.
     List<GameObject> gameObjects = new List<GameObject>();
@@ -23,6 +24,7 @@ public class LibraPlatforms : MonoBehaviour
         //initializing masks, platforms and all interactable with the scale.
         mask = LayerMask.GetMask("Player", "Enemy");
         Platform = GameObject.FindGameObjectsWithTag("Platforms");
+        MediumDistance = GameObject.Find("MediumDistance").transform;
 
         gameObjects.AddRange(GameObject.FindGameObjectsWithTag("Player"));
         gameObjects.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
@@ -82,7 +84,7 @@ public class LibraPlatforms : MonoBehaviour
             {
                 Vector3 destinationPos = orgPos[i];
 
-                destinationPos.y = maxDistance - minDistance;
+                destinationPos.y = MediumDistance.position.y;
 
                 Platform[i].transform.position = Vector3.MoveTowards(Platform[i].transform.position, destinationPos, speed * Time.deltaTime);
             }
