@@ -4,7 +4,7 @@ using UnityEngine;
 //
 // Created by: Sandra Andersson
 //
-// Peer-reviewed by:
+// Peer-reviewed by: Mehmet
 //
 
 public class Arrow : MonoBehaviour

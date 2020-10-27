@@ -3,18 +3,18 @@
 //
 // Created by: Sandra Andersson
 //
-// Peer-reviewed by: 
+// Peer-reviewed by: Mehmet
 //
 
 
-public class Bow : Interact
+public class Bow : MonoBehaviour
 {
     
     public GameObject arrowPrefab;
-    public int ammunition = -1;
-        
+    public int ammunition = -1;    // -1 = infinite ammmunition
     public float arrowSpeed = 4;
     public float arrowLifetime = 4.0f;
+    
     private float direction;
     
 

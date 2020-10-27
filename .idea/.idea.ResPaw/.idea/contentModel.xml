@@ -78,7 +78,6 @@
             <e p="Archer.cs" t="Include" />
             <e p="EnemyBase.cs" t="Include" />
             <e p="HorizontalEnemy.cs" t="Include" />
-            <e p="Interact.cs" t="Include" />
           </e>
           <e p="Debug" t="Include">
             <e p="SceneLoader.cs" t="Include" />
@@ -101,7 +100,7 @@
           <e p="Players" t="Include">
             <e p="CharacterSelect.cs" t="Include" />
             <e p="FinishLine.cs" t="Include" />
-            <e p="InteractionManager.cs" t="Include" />
+            <e p="Interaction.cs" t="Include" />
             <e p="PlayerBase.cs" t="Include" />
             <e p="PlayerBottom.cs" t="Include" />
             <e p="PlayerFace.cs" t="Include" />

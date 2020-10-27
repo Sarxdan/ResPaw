@@ -3,7 +3,7 @@
 //
 // Created by: Sandra Andersson
 //
-// Peer-reviewed by: 
+// Peer-reviewed by: Mehmet
 //
 
 public class Archer : EnemyBase
@@ -11,8 +11,9 @@ public class Archer : EnemyBase
     
     // Seconds between each shot
     public float fireRate = 1f;
-    public Bow bow;
-
+    
+    [SerializeField]
+    private Bow bow;
     private float lastTime;
     private Animator anim;
 

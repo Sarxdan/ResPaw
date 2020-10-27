@@ -1,25 +1,27 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.TestTools;
+﻿using UnityEngine;
 
-public class InteractionManager : MonoBehaviour
+//
+// Created by: Sandra Andersson
+//
+// Peer-reviewed by: Mehmet
+//
+
+public class Interaction : MonoBehaviour
 {
-    public bool occupied = false;
-    public bool equipped = false;
-    public Bow bow;
     public float fireRate = 1.0f;
-    private float lastFire = 0;
 
-    public PlayerBase playerBase;
+    [SerializeField]
+    private PlayerBase playerBase;
+    
+    private Bow bow;
+    private bool equipped = false;
+    private float lastFire = 0;
 
     private void Start()
     {
         playerBase = GetComponent<PlayerBase>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown(playerBase.actionButton))
@@ -65,6 +67,7 @@ public class InteractionManager : MonoBehaviour
         if (equipped)
         {
             equipped = false;
+            // Reset transforms for the bow
             bow.transform.position = bow.transform.position - new Vector3(0,0.5f,0);
             bow.transform.rotation = Quaternion.Euler(90, 90, 0);
             bow.transform.parent = null;

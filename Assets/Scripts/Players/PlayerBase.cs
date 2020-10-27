@@ -562,7 +562,7 @@ public abstract class PlayerBase : MonoBehaviour
         if (!isDead)
         {
             isDead = true;
-            GetComponent<InteractionManager>().Drop();
+            GetComponent<Interaction>().Drop();
             animalSource.clip = animalClips[3];
             animalSource.Play();
 
