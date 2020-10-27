@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿//Created By Mehmet
+//Peer-Reviewed By Daniel
+//Fixed by Daniel
+
+using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 
