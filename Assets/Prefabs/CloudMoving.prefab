@@ -95,8 +95,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b4edfa2ed3f1d4581ca05315528f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  clamppos: 40.96
+  speed: 2
+  clamppos: 38
   StartPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1459054239436154098
 GameObject:
@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 1459054239436154108}
   - component: {fileID: 1459054239436154099}
   m_Layer: 0
-  m_Name: Cloud background respaw1
+  m_Name: CloudMoving
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -194,6 +194,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71b4edfa2ed3f1d4581ca05315528f4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  clamppos: 40.96
+  speed: 2
+  clamppos: 38
   StartPosition: {x: 0, y: 0, z: 0}
