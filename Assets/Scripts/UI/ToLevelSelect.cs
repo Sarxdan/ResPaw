@@ -27,12 +27,14 @@ public class ToLevelSelect : MonoBehaviour
     }
     public void ToCharacter()
     {
+        buttons.clip = pauseButton[0];
         buttons.Play();
         SceneManager.LoadScene(1);
         
     }
     public void QuitLevel()
     {
+        buttons.clip = pauseButton[0];
         buttons.Play();
         Application.Quit();
         
@@ -40,6 +42,7 @@ public class ToLevelSelect : MonoBehaviour
 
     public void LevelSelect()
     {
+        buttons.clip = pauseButton[0];
         buttons.Play();
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
@@ -48,6 +51,7 @@ public class ToLevelSelect : MonoBehaviour
 
     public void NextLevel()
     {
+        buttons.clip = pauseButton[0];
         buttons.Play();
         SceneManager.LoadScene(levelSelect + 1);
         
@@ -55,6 +59,7 @@ public class ToLevelSelect : MonoBehaviour
 
     public void Restart()
     {
+        buttons.clip = pauseButton[0];
         buttons.Play();
         Time.timeScale = 1;
         SceneManager.LoadScene(levelSelect);
@@ -62,7 +67,8 @@ public class ToLevelSelect : MonoBehaviour
 
     public void Resume()
     {
-        buttons.Play();
+        buttons.clip = pauseButton[2];
+        buttons.Play();       
         Time.timeScale = 1;
         pausePanel.SetActive(false);
     }
@@ -73,6 +79,8 @@ public class ToLevelSelect : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
+                buttons.clip = pauseButton[1];
+                buttons.Play();
                 pausePanel.SetActive(true);
                 Time.timeScale = 0;
             }
