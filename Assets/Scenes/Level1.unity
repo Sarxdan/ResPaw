@@ -1183,6 +1183,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.1618881, y: 13.708092, z: 1}
   m_Center: {x: 14.853075, y: -0.16189003, z: 0}
+--- !u!65 &97733422
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 97733402}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.2664194, y: 0.84318733, z: 1}
+  m_Center: {x: 6.9340987, y: 9.908172, z: 0}
 --- !u!4 &99268794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4402516023365876, guid: 23c46063ed51fed41bea97ccec34b39e, type: 3}
