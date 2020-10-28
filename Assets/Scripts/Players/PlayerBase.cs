@@ -147,6 +147,7 @@ public abstract class PlayerBase : MonoBehaviour
         {
             isDragging = true;
             JoinOtherPlayerToDrag();
+            PlayWalkAnimation();
         }
         if (!Input.GetButton(actionButton))
         {
