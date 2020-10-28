@@ -80,4 +80,14 @@ public class HorizontalEnemy : EnemyBase
         }
 
     }
+    
+    public override void Death()
+    {
+        base.Death();
+        // Shrink and center collider to dead enemy
+        BoxCollider boxCol = GetComponent<BoxCollider>();
+        boxCol.center = new Vector3(boxCol.center.x, boxCol.center.y, 0);
+        boxCol.size = new Vector3(boxCol.size.x, boxCol.size.y, 1.055f);
+        enabled = false;
+    }
 }

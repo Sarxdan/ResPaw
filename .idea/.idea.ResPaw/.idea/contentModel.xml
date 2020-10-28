@@ -111,6 +111,8 @@
             <e p="PlayerTwo.cs" t="Include" />
           </e>
           <e p="UI" t="Include">
+            <e p="BackgroundMoving.cs" t="Include" />
+            <e p="ControlLayout.cs" t="Include" />
             <e p="ImageManager.cs" t="Include" />
             <e p="LevelControll.cs" t="Include" />
             <e p="MainMenuController.cs" t="Include" />

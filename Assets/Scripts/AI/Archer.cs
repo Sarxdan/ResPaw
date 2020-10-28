@@ -41,4 +41,12 @@ public class Archer : EnemyBase
         }
         
     }
+    
+    public override void Death()
+    {
+        base.Death();
+        enabled = false;
+
+    }
+    
 }
