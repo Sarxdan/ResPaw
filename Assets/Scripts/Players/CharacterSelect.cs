@@ -27,7 +27,7 @@ public class CharacterSelect : MonoBehaviour
 
     private void Start()
     {
-        PlaceTheIconsOnDefultPlaces();
+        PlaceTheIconsOnDefaultPlaces();
     }
 
     private void Update()
@@ -96,7 +96,7 @@ public class CharacterSelect : MonoBehaviour
 
     }
 
-    private void PlaceTheIconsOnDefultPlaces()
+    private void PlaceTheIconsOnDefaultPlaces()
     {
         p1Icon.transform.position = iconsPositions[0].position;
         p2Icon.transform.position = iconsPositions[1].position;
