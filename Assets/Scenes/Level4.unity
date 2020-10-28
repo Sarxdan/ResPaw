@@ -1870,6 +1870,10 @@ PrefabInstance:
       propertyPath: winPanel
       value: 
       objectReference: {fileID: 1833536477}
+    - target: {fileID: 8457466269993377865, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: levelNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
 --- !u!1001 &1832030430
