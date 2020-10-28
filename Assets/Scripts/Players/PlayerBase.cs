@@ -12,6 +12,7 @@ public abstract class PlayerBase : MonoBehaviour
     private GameObject playerRoof;
 
     private GameObject playerBottom;
+    private GameObject playerDrag;
 
     private Animator anim;
     [SerializeField]
@@ -104,15 +105,19 @@ public abstract class PlayerBase : MonoBehaviour
         isTouchingGround = false;
         isFacingAnotherPlayer = false;
         isFacingObject = false;
+        isJumping = true;
         playerFace = gameObject.transform.Find("Face").gameObject;
         playerBottom = gameObject.transform.Find("Bottom").gameObject;
         playerRoof = gameObject.transform.Find("Roof").gameObject;
+        playerDrag = gameObject.transform.Find("Drag").gameObject;
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         playerCollider = GetComponent<Collider>();
 
         playerSpawner = FindObjectOfType<PlayerSpawner>();
-        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething += PlayerFacingObject;
+        playerFace.GetComponent<PlayerFace>().PlayerIsFacingPlayer += PlayerFacingPlayer;
+        playerFace.GetComponent<PlayerFace>().PlayerIsFacingObject += PlayerFacingObject;
+        playerDrag.GetComponent<PlayerDrag>().PlayerIsFacingPlayer += PlayerFacingPlayerToDrag;
         playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer += TouchingPlayerAbove;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround += touchingGround;
         playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer += LegTouchingPlayer;
@@ -151,7 +156,7 @@ public abstract class PlayerBase : MonoBehaviour
         }
         if (!Input.GetButton(actionButton))
         {
-            RemoveDragging();            
+            RemoveDragging();
         }
     }
 
@@ -159,7 +164,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         isDragging = false;
         if (fixedJointToDrag != null)
-            Destroy(fixedJointToDrag);        
+            Destroy(fixedJointToDrag);
     }
 
     private void AttachToBelowPlayer()
@@ -193,7 +198,7 @@ public abstract class PlayerBase : MonoBehaviour
             fixedJointToDrag.breakForce = 2f;
             fixedJointToDrag.enableCollision = true;
         }
-        
+
 
         fixedJointToDrag.connectedBody = playerFacing;
     }
@@ -279,15 +284,6 @@ public abstract class PlayerBase : MonoBehaviour
         StartCoroutine(PlaySpawnSound(freezeLocation));
     }
 
-
-
-    private void RemoveAllEvents()
-    {
-        playerFace.GetComponent<PlayerFace>().PlayerIsFacingSomething -= PlayerFacingObject;
-        playerRoof.GetComponent<PlayerRoof>().PlayerIsCarryingAnotherPlayer -= TouchingPlayerAbove;
-        playerBottom.GetComponent<PlayerBottom>().PlayerIsAboveGround -= touchingGround;
-        playerBottom.GetComponent<PlayerBottom>().PlayerIsAbovePlayer -= LegTouchingPlayer;
-    }
 
 
 
@@ -439,34 +435,33 @@ public abstract class PlayerBase : MonoBehaviour
             rb.velocity = currentVelocity;
         }
     }
+    private void PlayerFacingPlayerToDrag(object sender, (Rigidbody OtherPlayerRB, bool isFacingPlayer) values)
+    {
+        isFacingAnotherPlayer = values.isFacingPlayer;
+        playerFacing = values.OtherPlayerRB;
+    }
 
-    private void PlayerFacingObject(object sender, (Rigidbody OtherPlayerRB, bool isFacingObject, bool isItAPlayer) values)
+    private void PlayerFacingPlayer(object sender, (Rigidbody OtherPlayerRB, bool isFacingPlayer) values)
+    {
+        if (IsFacingTheSamePlayerOboveMe(playerAbove, values.OtherPlayerRB))
+        {
+
+            return;
+        }
+        if (values.isFacingPlayer)
+        {
+            isFacingObject = true;
+        }
+        else
+        {
+            isFacingObject = isFacingObject || values.isFacingPlayer;
+        }
+
+    }
+    private void PlayerFacingObject(object sender, bool isFacingOtherObject)
     {
 
-
-        if (values.isItAPlayer && playerFacing == null)
-        {
-            playerFacing = values.OtherPlayerRB;
-        }
-
-
-        if (values.OtherPlayerRB != null)
-        {
-
-            if (IsFacingTheSamePlayerOboveMe(playerAbove, values.OtherPlayerRB))
-            {
-                return;
-            }
-
-
-
-        }
-
-        isFacingObject = values.isFacingObject;
-
-        isFacingAnotherPlayer = values.isItAPlayer;
-
-
+        isFacingObject = isFacingOtherObject;
     }
 
     private bool IsFacingTheSamePlayerOboveMe(Rigidbody otherPlayerAbove, Rigidbody otherPlayerFacing)
@@ -480,20 +475,17 @@ public abstract class PlayerBase : MonoBehaviour
         return otherPlayerAbove.name == otherPlayerFacing.name;
     }
 
-    private void TouchingPlayerAbove(object sender, (Rigidbody rb, bool isCarying) values)
+    private void TouchingPlayerAbove(object sender, (Rigidbody otherPlayerAbove, bool isCarying) values)
     {
-
+        if (IsFacingTheSamePlayerOboveMe(values.otherPlayerAbove, playerFacing))
+        {
+            return;
+        }
 
         headTouchingPlayer = values.isCarying;
-        if (IsFacingTheSamePlayerOboveMe(values.rb, playerFacing))
-        {
-            isFacingAnotherPlayer = false;
 
-            playerFacing = null;
-
-        }
-        if (values.isCarying && playerAbove == null)
-            playerAbove = values.rb;
+        if (values.isCarying)
+            playerAbove = values.otherPlayerAbove;
         else
             playerAbove = null;
 
@@ -591,7 +583,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
             StopWalkAnimation();
-            
+
 
 
             manager.RemoveLife(this);
