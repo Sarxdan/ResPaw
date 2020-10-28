@@ -631,8 +631,9 @@ GameObject:
   - component: {fileID: 377684813}
   - component: {fileID: 377684815}
   - component: {fileID: 377684814}
+  - component: {fileID: 1854076755}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -705,8 +706,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -765,6 +766,25 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!95 &1854076755
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377684812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7726c701eac3bce468e2e5612c9736cb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &537304633
 GameObject:
   m_ObjectHideFlags: 0
@@ -2817,7 +2837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.4500122, y: -17.640015}
+  m_AnchoredPosition: {x: 1.4500732, y: -17.640015}
   m_SizeDelta: {x: -246.95187, y: -105.80347}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5570809621766854896
@@ -3005,6 +3025,7 @@ GameObject:
   - component: {fileID: 5570809622100760014}
   - component: {fileID: 5570809622100760015}
   - component: {fileID: 178460510}
+  - component: {fileID: 9031725113885326897}
   m_Layer: 5
   m_Name: Win-LoseCanvas
   m_TagString: Untagged
@@ -3115,6 +3136,19 @@ MonoBehaviour:
   playerlives1: {fileID: 708359810}
   playerlives2: {fileID: 364382740}
   lostPanel: {fileID: 5570809621766854911}
+--- !u!114 &9031725113885326897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5570809622100760012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661a8e6c99842914795c525fbbae8dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsWait: 5
 --- !u!1 &5665375070155057824
 GameObject:
   m_ObjectHideFlags: 0
