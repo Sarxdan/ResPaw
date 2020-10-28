@@ -127,6 +127,7 @@ public abstract class PlayerBase : MonoBehaviour
         animalClips = Resources.LoadAll<AudioClip>("Audio/Character");
         rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
         GetComponentInChildren<Renderer>().material.shader = normalShader;
+        anim.enabled = true;
     }
 
     void Update()
@@ -568,6 +569,7 @@ public abstract class PlayerBase : MonoBehaviour
             animalSource.clip = animalClips[3];
             animalSource.Play();
             GetComponentInChildren<Renderer>().material.shader = transParent;
+            anim.enabled = false;
             if (freezeLocation)
                 rb.constraints = RigidbodyConstraints.FreezeAll;
 
@@ -588,7 +590,7 @@ public abstract class PlayerBase : MonoBehaviour
 
 
             StopWalkAnimation();
-            anim.enabled = false;
+            
 
 
             manager.RemoveLife(this);
