@@ -32603,6 +32603,7 @@ GameObject:
   - component: {fileID: 2135063899}
   - component: {fileID: 2135063898}
   - component: {fileID: 2135063897}
+  - component: {fileID: 2135063901}
   m_Layer: 8
   m_Name: Ground
   m_TagString: Untagged
@@ -33075,6 +33076,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2135063901
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135063896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 6.3398857, z: 1.1605642}
+  m_Center: {x: 2.0152201e-14, y: 7.708911, z: 17.418081}
 --- !u!1001 &2137135401
 PrefabInstance:
   m_ObjectHideFlags: 0
