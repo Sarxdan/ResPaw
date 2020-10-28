@@ -147,10 +147,11 @@ public abstract class PlayerBase : MonoBehaviour
         {
             isDragging = true;
             JoinOtherPlayerToDrag();
+            PlayWalkAnimation();
         }
         if (!Input.GetButton(actionButton))
         {
-            RemoveDragging();
+            RemoveDragging();            
         }
     }
 
@@ -158,7 +159,7 @@ public abstract class PlayerBase : MonoBehaviour
     {
         isDragging = false;
         if (fixedJointToDrag != null)
-            Destroy(fixedJointToDrag);
+            Destroy(fixedJointToDrag);        
     }
 
     private void AttachToBelowPlayer()
@@ -192,7 +193,7 @@ public abstract class PlayerBase : MonoBehaviour
             fixedJointToDrag.breakForce = 2f;
             fixedJointToDrag.enableCollision = true;
         }
-
+        
 
         fixedJointToDrag.connectedBody = playerFacing;
     }
