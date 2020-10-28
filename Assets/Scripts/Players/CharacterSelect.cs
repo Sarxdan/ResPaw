@@ -7,7 +7,9 @@ using UnityEngine.UI;
 enum MoveTo
 {
     left = 0,
-    right
+    right,
+    up,
+    down
 }
 public class CharacterSelect : MonoBehaviour
 {
@@ -50,6 +52,20 @@ public class CharacterSelect : MonoBehaviour
             p1Icon.transform.position = iconsPositions[playerOnePosition].position;
             SetPlayers();
         }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+
+            playerOnePosition = MoveSelectIcon(playerOnePosition, MoveTo.up);
+            p1Icon.transform.position = iconsPositions[playerOnePosition].position;
+            SetPlayers();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+
+            playerOnePosition = MoveSelectIcon(playerOnePosition, MoveTo.down);
+            p1Icon.transform.position = iconsPositions[playerOnePosition].position;
+            SetPlayers();
+        }
 
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
@@ -60,6 +76,18 @@ public class CharacterSelect : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             playerTwoPosition = MoveSelectIcon(playerTwoPosition, MoveTo.left);
+            p2Icon.transform.position = iconsPositions[playerTwoPosition].position;
+            SetPlayers();
+        }
+        if (Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            playerTwoPosition = MoveSelectIcon(playerTwoPosition, MoveTo.up);
+            p2Icon.transform.position = iconsPositions[playerTwoPosition].position;
+            SetPlayers();
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            playerTwoPosition = MoveSelectIcon(playerTwoPosition, MoveTo.down);
             p2Icon.transform.position = iconsPositions[playerTwoPosition].position;
             SetPlayers();
         }
@@ -108,18 +136,39 @@ public class CharacterSelect : MonoBehaviour
                     goToPosition = currentPosition + 1;
                 }
                 break;
+            case MoveTo.up:
+                if (currentPosition > 2)
+                    goToPosition = currentPosition - 3;
+                else
+                    goToPosition = currentPosition + 3;
+                break;
+            case MoveTo.down:
+                if (currentPosition < 3)
+                    goToPosition = currentPosition + 3;
+                else
+                    goToPosition = currentPosition - 3;
+                break;
             default:
                 break;
         }
 
-        if (goToPosition == playerOnePosition || goToPosition == playerTwoPosition)
+        if ((IsTheTheNewPositionTakenByOtherPlayer(goToPosition)) && (moveTo <= MoveTo.right))
         {
             goToPosition = moveTo == MoveTo.right ? goToPosition + 1 : goToPosition - 1;
 
             goToPosition = goToPosition < 0 ? iconsPositions.Length - 1 : goToPosition <= iconsPositions.Length - 1 ? goToPosition : 0;
         }
+        else if (IsTheTheNewPositionTakenByOtherPlayer(goToPosition))
+        {
+            goToPosition = currentPosition;
+        }
 
         return goToPosition;
+    }
+
+    bool IsTheTheNewPositionTakenByOtherPlayer(int goToPosition)
+    {
+        return goToPosition == playerOnePosition || goToPosition == playerTwoPosition;
     }
 
     void SetPlayers()

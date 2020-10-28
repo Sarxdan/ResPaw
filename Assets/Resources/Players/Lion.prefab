@@ -540,7 +540,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3906075419459619649}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 29.25, y: 4.81, z: 3.6}
+  m_LocalPosition: {x: 29.25, y: 4.475, z: 3.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3907280282353303899}
@@ -612,9 +612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241da5476abec5548a8f75cfbfa66746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupied: 0
-  equipped: 0
-  bow: {fileID: 0}
   fireRate: 1
   playerBase: {fileID: 0}
 --- !u!1 &3906088976497965277

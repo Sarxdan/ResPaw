@@ -215,7 +215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414735553057067883}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -40.17, y: 24.885923, z: -629.6853}
+  m_LocalPosition: {x: -40.17, y: 24.258, z: -629.6853}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 416921819592417913}
@@ -287,9 +287,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241da5476abec5548a8f75cfbfa66746, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  occupied: 0
-  equipped: 0
-  bow: {fileID: 0}
   fireRate: 1
   playerBase: {fileID: 0}
 --- !u!1 &414821526481519199
@@ -438,7 +435,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415308191203572867}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0.133, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 416854037262614687}
