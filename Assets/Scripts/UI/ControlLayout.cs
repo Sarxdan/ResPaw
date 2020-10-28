@@ -7,6 +7,7 @@ public class ControlLayout : MonoBehaviour
     Animator anim;
     [SerializeField]
     float secondsWait;
+    bool hasActivated = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,17 +17,19 @@ public class ControlLayout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !hasActivated)
         {
             StartCoroutine(showText());
         }
     }
     IEnumerator showText()
     {
+        hasActivated = true;
         anim.SetTrigger("FadeIn");
         yield return new WaitForSeconds(secondsWait);
         anim.SetTrigger("FadeOut");
         yield return new WaitForSeconds(secondsWait);
         anim.SetTrigger("Reset");
+        hasActivated = false;
     }
 }

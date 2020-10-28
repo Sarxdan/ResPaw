@@ -176,5 +176,8 @@ public class CharacterSelect : MonoBehaviour
         SelectedPlayersSingleton.Instance.SelectedPlayerOne = (EnumAnimals)playerOnePosition;
         SelectedPlayersSingleton.Instance.SelectedPlayerTwo = (EnumAnimals)playerTwoPosition;
     }
-
+    public void ReturnToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
