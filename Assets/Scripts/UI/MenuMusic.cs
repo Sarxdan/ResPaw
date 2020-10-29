@@ -6,13 +6,11 @@ using UnityEngine.SceneManagement;
 public class MenuMusic : MonoBehaviour
 {
     public static MenuMusic Instance { get; private set; }
-    AudioSource menuMusic;
     [SerializeField] int sceneIndex = 0;
     bool spawned = false;
     // Start is called before the first frame update
     void Start()
     {
-        menuMusic = GetComponent<AudioSource>();
         CheckIfInstance();
     }
 

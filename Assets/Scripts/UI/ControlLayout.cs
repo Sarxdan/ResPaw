@@ -17,7 +17,7 @@ public class ControlLayout : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && !hasActivated)
+        if (Input.GetKeyDown(KeyCode.Q) && !hasActivated)
         {
             StartCoroutine(showText());
         }

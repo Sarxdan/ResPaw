@@ -34,7 +34,6 @@ public class GameplayMusic : MonoBehaviour
     }
     private void CheckIfInstance()
     {
-        //doing a singleton since we only want one of these in each scene.
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
