@@ -16563,6 +16563,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 377684813, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -200.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 377684813, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 29.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -24624,6 +24632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4047ff1b62c1bb94f9640d32bb426bd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneIndex: 0
 --- !u!4 &1584457991 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8820954503472056381, guid: c922e8416739ebe45a16135614e4546d, type: 3}
