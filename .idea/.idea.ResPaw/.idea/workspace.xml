@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" afterDir="false" />
-    </list>
+    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -111,7 +108,7 @@
       <workItem from="1603463877505" duration="360000" />
       <workItem from="1603787007128" duration="3086000" />
       <workItem from="1603895314540" duration="2778000" />
-      <workItem from="1603959990517" duration="1374000" />
+      <workItem from="1603959990517" duration="2197000" />
     </task>
     <servers />
   </component>

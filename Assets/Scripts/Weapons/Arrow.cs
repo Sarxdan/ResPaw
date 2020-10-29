@@ -13,12 +13,20 @@ public class Arrow : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            other.gameObject.GetComponent<EnemyBase>().Death();
+            EnemyBase baseScript = other.gameObject.GetComponent<EnemyBase>();
+            if (baseScript)
+            {
+                other.gameObject.GetComponent<EnemyBase>().Death();
+            }
             Destroy(gameObject);
         }
         else if(other.tag == "Player")
         {
-            other.gameObject.GetComponent<PlayerBase>().OnDeath();
+            PlayerBase baseScript = other.gameObject.GetComponent<PlayerBase>();
+            if (baseScript)
+            {
+                other.gameObject.GetComponent<PlayerBase>().OnDeath();
+            }
             Destroy(gameObject);
         }
         else if (other.tag != "Spike" && other.tag != "AI Border" && other.tag != "Weapon")
