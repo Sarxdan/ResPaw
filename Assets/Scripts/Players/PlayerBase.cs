@@ -56,7 +56,6 @@ public abstract class PlayerBase : MonoBehaviour
 
     private PlayerSpawner playerSpawner;
 
-    private PlayerBase playerClass;
 
     private int belowMeCount = 0;
     [SerializeField]
