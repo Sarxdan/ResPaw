@@ -16729,18 +16729,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.035555556
-      objectReference: {fileID: 0}
-    - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.035555556
-      objectReference: {fileID: 0}
-    - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.035555556
-      objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760012, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_Name
       value: Win-LoseCanvas

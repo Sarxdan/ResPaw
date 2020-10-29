@@ -20,45 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Archer.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Archer.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Attack_Bow.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Attack_Bow.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Horizontal Enemy.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Horizontal Enemy.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Idle (Archer).anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Idle (Archer).anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Idle (Horizontal).anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Idle (Horizontal).anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Idle Horizontal.controller" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Idle Horizontal.controller.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Turn.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Turn.anim.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Walk.anim" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Animations/AI/Walk.anim.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/contentModel.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Archer.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Archer.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Attack_Bow.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Attack_Bow.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathAnimation.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/DeathAnimation.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Horizontal Enemy.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Horizontal Enemy.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Idle (Horizontal).anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Idle (Horizontal).anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Idle Horizontal.controller" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Idle Horizontal.controller.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Shoot.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Shoot.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Turn.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Turn.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Walk.anim" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Animations/Walk.anim.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/AI/Horizontal Enemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/AI/Horizontal Enemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Sanders Agents.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Win-LoseCanvas.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Win-LoseCanvas.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Daniels Test.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Daniels Test.unity" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +55,7 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/EnemyBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Archer.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/UI/ConfettiActivator.cs" />
       </list>
     </option>
   </component>
@@ -147,6 +112,7 @@
       <workItem from="1603463877505" duration="360000" />
       <workItem from="1603787007128" duration="3086000" />
       <workItem from="1603895314540" duration="2778000" />
+      <workItem from="1603959990517" duration="786000" />
     </task>
     <servers />
   </component>
