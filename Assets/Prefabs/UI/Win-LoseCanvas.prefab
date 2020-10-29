@@ -632,6 +632,7 @@ GameObject:
   - component: {fileID: 377684815}
   - component: {fileID: 377684814}
   - component: {fileID: 1854076755}
+  - component: {fileID: 5510253322350669036}
   m_Layer: 5
   m_Name: Controls
   m_TagString: Untagged
@@ -655,7 +656,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 237.3, y: 201}
+  m_AnchoredPosition: {x: 389.3, y: 213}
   m_SizeDelta: {x: 311.81766, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &377684815
@@ -790,6 +791,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &5510253322350669036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377684812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 661a8e6c99842914795c525fbbae8dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secondsWait: 5
 --- !u!1 &537304633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,7 +3349,6 @@ GameObject:
   - component: {fileID: 5570809622100760014}
   - component: {fileID: 5570809622100760015}
   - component: {fileID: 178460510}
-  - component: {fileID: 9031725113885326897}
   m_Layer: 5
   m_Name: Win-LoseCanvas
   m_TagString: Untagged
@@ -3447,19 +3460,6 @@ MonoBehaviour:
   playerlives1: {fileID: 708359810}
   playerlives2: {fileID: 364382740}
   lostPanel: {fileID: 5570809621766854911}
---- !u!114 &9031725113885326897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5570809622100760012}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 661a8e6c99842914795c525fbbae8dd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secondsWait: 5
 --- !u!1 &5665375070155057824
 GameObject:
   m_ObjectHideFlags: 0
