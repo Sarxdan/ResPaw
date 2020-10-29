@@ -6592,9 +6592,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1459054239389642464, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
+      propertyPath: speed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1459054239436154098, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
       propertyPath: m_Name
       value: CloudMoving
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459054239436154099, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
+      propertyPath: speed
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1459054239436154109, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11948,7 +11956,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2523634939019302607, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 9.33
       objectReference: {fileID: 0}
     - target: {fileID: 2523634939019302607, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
       propertyPath: m_LocalPosition.y
@@ -11989,6 +11997,26 @@ PrefabInstance:
     - target: {fileID: 2523634939019302607, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563619762205553242, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: m_Size.y
+      value: 2.748036
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563619762205553242, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: m_Center.y
+      value: -0.6735003
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563619762205553242, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: m_Size.x
+      value: 3.1698265
+      objectReference: {fileID: 0}
+    - target: {fileID: 3563619762205553242, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: m_Center.x
+      value: 0.5457792
+      objectReference: {fileID: 0}
+    - target: {fileID: 6979677211486023318, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.18
       objectReference: {fileID: 0}
     - target: {fileID: 7276903323424919216, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
       propertyPath: m_Name
@@ -12524,6 +12552,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5570809622100760001, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1743824865}
     - target: {fileID: 5570809622100760012, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_Name
       value: Win-LoseCanvas
