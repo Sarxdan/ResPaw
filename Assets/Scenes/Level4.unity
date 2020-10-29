@@ -9446,6 +9446,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1680529450, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680529451, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680529451, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_Color.r
+      value: 0.3490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680529451, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_Color.g
+      value: 0.3490566
+      objectReference: {fileID: 0}
+    - target: {fileID: 1680529451, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3490566
+      objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9456,7 +9476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_LocalRotation.x
@@ -9492,11 +9512,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 1.12
       objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_SizeDelta.x
