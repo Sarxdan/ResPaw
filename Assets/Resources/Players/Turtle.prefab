@@ -670,7 +670,7 @@ GameObject:
   - component: {fileID: 2428519970979646780}
   m_Layer: 9
   m_Name: Drag
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
