@@ -122,6 +122,7 @@
             <e p="ImageManager.cs" t="Include" />
             <e p="LevelControll.cs" t="Include" />
             <e p="MainMenuController.cs" t="Include" />
+            <e p="MenuMusic.cs" t="Include" />
             <e p="ToLevelSelect.cs" t="Include" />
           </e>
           <e p="Weapons" t="Include">
