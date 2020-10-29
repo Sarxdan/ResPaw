@@ -83,7 +83,7 @@ public class ToLevelSelect : MonoBehaviour
         
         if(SceneManager.GetActiveScene().buildIndex != 0 )
         {
-            if(!fl.winPanel.activeInHierarchy || !pl.lostPanel.activeInHierarchy)
+            if(!fl.winPanel.activeInHierarchy && !pl.lostPanel.activeInHierarchy)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
