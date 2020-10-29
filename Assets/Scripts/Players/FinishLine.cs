@@ -16,8 +16,12 @@ public class FinishLine : MonoBehaviour
     private LevelControll lc;
     GameManager manager;
     public GameObject winPanel;
+    private float time = 0f;
+    private bool win = false;
+    private ScoreController scoreController;
     private void Start()
     {
+        scoreController = gameObject.GetComponent<ScoreController>();
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         tb = new List<GameObject>();
         lc = GameObject.FindObjectOfType(typeof(LevelControll)) as LevelControll;
@@ -51,25 +55,31 @@ public class FinishLine : MonoBehaviour
     private void Update()
     {
         CheckAmount();
+        time += Time.deltaTime;
+
     }
 
     private void CheckAmount()
     {
         if (tb.Count == 2)
         {
-            SaveScore();
-            //canvas.enabled = true;
-            winPanel.SetActive(true);
-            lc.YouWin();
-
-            foreach (GameObject objects in tb)
+            if (!win)
             {
-                objects.GetComponent<PlayerBase>().enabled = false;
-                ParticleSystem confetti = transform.Find("Winning Confetti").gameObject.GetComponent<ParticleSystem>();
-                confetti.Play();
-                enabled = false;
-                //TODO: make the final UI
-                //TODO: make winning animation
+                win = true;
+                SaveScore();
+                //canvas.enabled = true;
+                winPanel.SetActive(true);
+                lc.YouWin();
+
+                foreach (GameObject objects in tb)
+                {
+                    objects.GetComponent<PlayerBase>().enabled = false;
+                    ParticleSystem confetti = transform.Find("Winning Confetti").gameObject.GetComponent<ParticleSystem>();
+                    confetti.Play();
+                    enabled = false;
+                    //TODO: make the final UI
+                    //TODO: make winning animation
+                }
             }
         }
     }
@@ -83,17 +93,36 @@ public class FinishLine : MonoBehaviour
         return totalDeaths;
     }
 
+
     private void SaveScore()
     {
         ScoreModel scoreModel = new ScoreModel()
         {
             DeathCount = CalculateTotalDeaths(),
-            LevelNumber = levelNumber
+            LevelNumber = levelNumber,
+            Time = (int)time
         };
 
         ScoreManager.SavewNewScore(scoreModel);
+        SaveScoreInServer(scoreModel);
+
     }
 
+    private void SaveScoreInServer(ScoreModel scoreModel)
+    {
+        var user = ScoreManager.GetUser();
+        Score score = new Score()
+        {
+            name = user.Name,
+            userId = user.UserId,
+            dateAdded = System.DateTime.Now.ToString(),
+            deathsCount = scoreModel.DeathCount,
+            levelNumber = scoreModel.LevelNumber,
+            time = scoreModel.Time
+        };
+
+        scoreController.SaveScroe(score);
 
 
+    }
 }

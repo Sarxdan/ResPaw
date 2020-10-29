@@ -9,6 +9,7 @@ namespace Assets.Scripts.Models
         public int LevelNumber;
 
         public int DeathCount;
+        public int Time;
     }
 
     [Serializable]

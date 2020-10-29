@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 //created by Daniel
@@ -9,16 +10,27 @@ public class ToLevelSelect : MonoBehaviour
     int levelSelect;
     public GameObject pausePanel;
     AudioSource buttons;
-    [SerializeField]AudioClip[] pauseButton;
+    [SerializeField] AudioClip[] pauseButton;
+
+    [SerializeField]
+    private TMP_InputField textMeshPro;
+
+    private bool isUserExist = false;
     // Start is called before the first frame update
-    
-    
+
+
     void Start()
     {
         pauseButton = Resources.LoadAll<AudioClip>("Audio/PauseSound");
         buttons = GetComponent<AudioSource>();
         levelSelect = SceneManager.GetActiveScene().buildIndex;
         pausePanel.SetActive(false);
+        isUserExist = string.IsNullOrEmpty(ScoreManager.GetUser().Name) ? false : true;
+
+        if (isUserExist && textMeshPro != null)
+        {
+            textMeshPro.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -27,17 +39,29 @@ public class ToLevelSelect : MonoBehaviour
     }
     public void ToCharacter()
     {
+        if (textMeshPro.text != "" || isUserExist)
+        {
+            if (!isUserExist)
+                CreateNewUser();
+
+            buttons.clip = pauseButton[0];
+            buttons.Play();
+            SceneManager.LoadScene(1);
+        }
+    }
+    public void ToLeaderboard()
+    {
         buttons.clip = pauseButton[0];
         buttons.Play();
-        SceneManager.LoadScene(1);
-        
+        SceneManager.LoadScene(7);
+
     }
     public void QuitLevel()
     {
         buttons.clip = pauseButton[0];
         buttons.Play();
         Application.Quit();
-        
+
     }
 
     public void LevelSelect()
@@ -46,7 +70,7 @@ public class ToLevelSelect : MonoBehaviour
         buttons.Play();
         Time.timeScale = 1;
         SceneManager.LoadScene(2);
-        
+
     }
 
     public void NextLevel()
@@ -54,7 +78,7 @@ public class ToLevelSelect : MonoBehaviour
         buttons.clip = pauseButton[0];
         buttons.Play();
         SceneManager.LoadScene(levelSelect + 1);
-        
+
     }
 
     public void Restart()
@@ -68,14 +92,14 @@ public class ToLevelSelect : MonoBehaviour
     public void Resume()
     {
         buttons.clip = pauseButton[2];
-        buttons.Play();       
+        buttons.Play();
         Time.timeScale = 1;
         pausePanel.SetActive(false);
     }
 
     private void ToPause()
     {
-        if(SceneManager.GetActiveScene().buildIndex != 0)
+        if (SceneManager.GetActiveScene().buildIndex != 0)
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
@@ -84,11 +108,16 @@ public class ToLevelSelect : MonoBehaviour
                 pausePanel.SetActive(true);
                 Time.timeScale = 0;
             }
-        }      
+        }
     }
 
-    
-    
+    private void CreateNewUser()
+    {
+        ScoreManager.CreateNewUser(textMeshPro.text);
+    }
+
+
+
 
 
 
