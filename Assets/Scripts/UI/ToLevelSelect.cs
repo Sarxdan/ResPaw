@@ -8,6 +8,8 @@ public class ToLevelSelect : MonoBehaviour
 {
     int levelSelect;
     public GameObject pausePanel;
+    private FinishLine fl;
+    private PlayerLives pl;
     AudioSource buttons;
     [SerializeField]AudioClip[] pauseButton;
     // Start is called before the first frame update
@@ -15,6 +17,8 @@ public class ToLevelSelect : MonoBehaviour
     
     void Start()
     {
+        fl = GameObject.FindObjectOfType(typeof(FinishLine)) as FinishLine;
+        pl = GameObject.FindObjectOfType(typeof(PlayerLives)) as PlayerLives;
         pauseButton = Resources.LoadAll<AudioClip>("Audio/PauseSound");
         buttons = GetComponent<AudioSource>();
         levelSelect = SceneManager.GetActiveScene().buildIndex;
@@ -23,6 +27,7 @@ public class ToLevelSelect : MonoBehaviour
 
     private void Update()
     {
+        
         ToPause();
     }
     public void ToCharacter()
@@ -75,15 +80,19 @@ public class ToLevelSelect : MonoBehaviour
 
     private void ToPause()
     {
-        if(SceneManager.GetActiveScene().buildIndex != 0)
+        
+        if(SceneManager.GetActiveScene().buildIndex != 0 )
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if(!fl.winPanel.activeInHierarchy || !pl.lostPanel.activeInHierarchy)
             {
-                buttons.clip = pauseButton[1];
-                buttons.Play();
-                pausePanel.SetActive(true);
-                Time.timeScale = 0;
-            }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    buttons.clip = pauseButton[1];
+                    buttons.Play();
+                    pausePanel.SetActive(true);
+                    Time.timeScale = 0;
+                }
+            }           
         }      
     }
 
