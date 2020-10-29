@@ -91,11 +91,15 @@
             <e p="DoorKiller.cs" t="Include" />
             <e p="LibraPlatforms.cs" t="Include" />
             <e p="PressureSwitch.cs" t="Include" />
+            <e p="ScoreManager.cs" t="Include" />
             <e p="Switches.cs" t="Include" />
           </e>
           <e p="Managers" t="Include">
             <e p="GameManager.cs" t="Include" />
             <e p="SelectedPlayersSingleton.cs" t="Include" />
+          </e>
+          <e p="Models" t="Include">
+            <e p="ScoreModel.cs" t="Include" />
           </e>
           <e p="Players" t="Include">
             <e p="CharacterSelect.cs" t="Include" />
@@ -103,6 +107,7 @@
             <e p="Interaction.cs" t="Include" />
             <e p="PlayerBase.cs" t="Include" />
             <e p="PlayerBottom.cs" t="Include" />
+            <e p="PlayerDrag.cs" t="Include" />
             <e p="PlayerFace.cs" t="Include" />
             <e p="PlayerLives.cs" t="Include" />
             <e p="PlayerOne.cs" t="Include" />
@@ -112,6 +117,7 @@
           </e>
           <e p="UI" t="Include">
             <e p="BackgroundMoving.cs" t="Include" />
+            <e p="ConfettiActivator.cs" t="Include" />
             <e p="ControlLayout.cs" t="Include" />
             <e p="ImageManager.cs" t="Include" />
             <e p="LevelControll.cs" t="Include" />
