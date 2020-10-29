@@ -17230,9 +17230,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1459054239389642464, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
+      propertyPath: speed
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1459054239436154098, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
       propertyPath: m_Name
       value: CloudMoving
+      objectReference: {fileID: 0}
+    - target: {fileID: 1459054239436154099, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
+      propertyPath: speed
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1459054239436154109, guid: 8e6763c1ebdcca94fb698067cf788e08, type: 3}
       propertyPath: m_LocalPosition.x
