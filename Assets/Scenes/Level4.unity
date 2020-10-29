@@ -2292,7 +2292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5616903248640906468, guid: 88753d1d1aca3bc4a91c6b401d82f49b, type: 3}
       propertyPath: playerLives
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5616903248640906469, guid: 88753d1d1aca3bc4a91c6b401d82f49b, type: 3}
       propertyPath: m_Name
@@ -7073,6 +7073,10 @@ PrefabInstance:
     - target: {fileID: 2312220278096089661, guid: f538f22a14ac9ef449fb71be2ff1c50a, type: 3}
       propertyPath: m_Name
       value: Door (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2312220278096089661, guid: f538f22a14ac9ef449fb71be2ff1c50a, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2312220278096089663, guid: f538f22a14ac9ef449fb71be2ff1c50a, type: 3}
       propertyPath: m_Materials.Array.data[0]
