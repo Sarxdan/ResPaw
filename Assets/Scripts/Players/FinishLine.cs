@@ -12,7 +12,7 @@ public class FinishLine : MonoBehaviour
     [SerializeField]
     private int levelNumber;
 
-    private List<GameObject> tb;
+    [SerializeField] private List<GameObject> tb;
     private LevelControll lc;
     GameManager manager;
     public GameObject winPanel;
@@ -32,7 +32,7 @@ public class FinishLine : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //saves playerobject for later use
-        if (other.gameObject.tag == "Player" && !other.GetComponent<PlayerBase>().isDead)
+        if (other.gameObject.layer == 9)
         {
             if (!tb.Contains(other.gameObject))
             {
@@ -43,7 +43,7 @@ public class FinishLine : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.tag == "Player" && !other.GetComponent<PlayerBase>().isDead)
+        if (other.gameObject.layer == 9)
         {
             if (tb.Contains(other.gameObject))
             {

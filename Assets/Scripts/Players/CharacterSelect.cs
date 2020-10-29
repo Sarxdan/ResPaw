@@ -21,6 +21,8 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField]
     Transform[] iconsPositions;
 
+    AudioSource buttons;
+
     private int playerOnePosition;
     private int playerTwoPosition;
 
@@ -28,6 +30,7 @@ public class CharacterSelect : MonoBehaviour
     private void Start()
     {
         PlaceTheIconsOnDefaultPlaces();
+        buttons = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -108,6 +111,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void loadLevel()
     {
+        buttons.Play();
         SceneManager.LoadScene(2);
     }
 
@@ -178,6 +182,7 @@ public class CharacterSelect : MonoBehaviour
     }
     public void ReturnToMenu()
     {
+        buttons.Play();
         SceneManager.LoadScene(0);
     }
 }
