@@ -669,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 661a8e6c99842914795c525fbbae8dd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsWait: 5
+  secondsWait: 8
 --- !u!1 &413039164
 GameObject:
   m_ObjectHideFlags: 0
@@ -3862,6 +3862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 273947634}
   pauseButton: []
+  textMeshPro: {fileID: 0}
 --- !u!82 &795044155
 AudioSource:
   m_ObjectHideFlags: 0

@@ -28,7 +28,7 @@ public class ControlLayout : MonoBehaviour
         anim.SetTrigger("FadeIn");
         yield return new WaitForSeconds(secondsWait);
         anim.SetTrigger("FadeOut");
-        yield return new WaitForSeconds(secondsWait);
+        yield return new WaitForSeconds(3);
         anim.SetTrigger("Reset");
         hasActivated = false;
     }
