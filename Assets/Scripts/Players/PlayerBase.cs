@@ -129,7 +129,7 @@ public abstract class PlayerBase : MonoBehaviour
         rb.velocity = new Vector3(0, 0, 0);
         animalSource = GetComponentInChildren<AudioSource>();
         animalClips = Resources.LoadAll<AudioClip>("Audio/Character");
-        rb.constraints = RigidbodyConstraints.FreezeRotation | RigidbodyConstraints.FreezePositionZ;
+        rb.isKinematic = false;
         GetComponentInChildren<Renderer>().material.shader = normalShader;
         anim.enabled = true;
     }
@@ -563,7 +563,7 @@ public abstract class PlayerBase : MonoBehaviour
             GetComponentInChildren<Renderer>().material.shader = transParent;
             anim.enabled = false;
             if (freezeLocation)
-                rb.constraints = RigidbodyConstraints.FreezeAll;
+                rb.isKinematic = true;
 
             yield return new WaitForSeconds(animalClips[3].length);
             animalSource.clip = animalClips[2];
