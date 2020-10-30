@@ -568,13 +568,14 @@ public abstract class PlayerBase : MonoBehaviour
                 rb.isKinematic = true;
 
             yield return new WaitForSeconds(animalClips[3].length);
-            animalSource.clip = animalClips[2];
-            animalSource.Play();
+
 
 
             if (manager.CanSpawn(this))
             {
                 playerSpawner.SpawnPlayer(gameObject);
+                animalSource.clip = animalClips[2];
+                animalSource.Play();
             }
 
 
