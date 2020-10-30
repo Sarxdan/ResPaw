@@ -11,7 +11,7 @@ public class ToLevelSelect : MonoBehaviour
     public GameObject pausePanel;
     private FinishLine fl;
     private PlayerLives pl;
-    //private int prefs; //enable if we want to reset the unlocked levels everytime start is pressed
+    private int prefs; //enable if we want to reset the unlocked levels everytime start is pressed
     AudioSource buttons;
     [SerializeField] AudioClip[] pauseButton;
 
@@ -30,13 +30,14 @@ public class ToLevelSelect : MonoBehaviour
         buttons = GetComponent<AudioSource>();
         levelSelect = SceneManager.GetActiveScene().buildIndex;
         pausePanel.SetActive(false);
-       // isUserExist = string.IsNullOrEmpty(ScoreManager.GetUser().Name) ? false : true;
-       /*
-        if (isUserExist && textMeshPro != null)
-        {
-            textMeshPro.gameObject.SetActive(false);
-        }
-        */
+        prefs = PlayerPrefs.GetInt("LevelPassed");
+        // isUserExist = string.IsNullOrEmpty(ScoreManager.GetUser().Name) ? false : true;
+        /*
+         if (isUserExist && textMeshPro != null)
+         {
+             textMeshPro.gameObject.SetActive(false);
+         }
+         */
     }
 
     private void Update()
@@ -50,7 +51,7 @@ public class ToLevelSelect : MonoBehaviour
         //{
           //  if (!isUserExist)
             //    CreateNewUser();
-
+            PlayerPrefs.DeleteAll();
             buttons.clip = pauseButton[0];
             buttons.Play();
             SceneManager.LoadScene(1);
@@ -86,7 +87,7 @@ public class ToLevelSelect : MonoBehaviour
         buttons.Play();
         if (levelSelect == 7)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
         else
         {
