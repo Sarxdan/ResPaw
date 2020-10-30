@@ -30,12 +30,13 @@ public class ToLevelSelect : MonoBehaviour
         buttons = GetComponent<AudioSource>();
         levelSelect = SceneManager.GetActiveScene().buildIndex;
         pausePanel.SetActive(false);
-        isUserExist = string.IsNullOrEmpty(ScoreManager.GetUser().Name) ? false : true;
-
+       // isUserExist = string.IsNullOrEmpty(ScoreManager.GetUser().Name) ? false : true;
+       /*
         if (isUserExist && textMeshPro != null)
         {
             textMeshPro.gameObject.SetActive(false);
         }
+        */
     }
 
     private void Update()
@@ -45,15 +46,15 @@ public class ToLevelSelect : MonoBehaviour
     }
     public void ToCharacter()
     {
-        if (textMeshPro.text != "" || isUserExist)
-        {
-            if (!isUserExist)
-                CreateNewUser();
+        //if (textMeshPro.text != "" || isUserExist)
+        //{
+          //  if (!isUserExist)
+            //    CreateNewUser();
 
             buttons.clip = pauseButton[0];
             buttons.Play();
             SceneManager.LoadScene(1);
-        }
+        //}
     }
     public void ToLeaderboard()
     {
