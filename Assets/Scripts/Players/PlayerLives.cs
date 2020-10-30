@@ -5,7 +5,6 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
-using UnityEditor.Experimental.TerrainAPI;
 using System.Collections.Generic;
 
 public class PlayerLives : MonoBehaviour
