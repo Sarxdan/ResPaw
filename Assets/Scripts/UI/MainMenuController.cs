@@ -9,6 +9,7 @@ public class MainMenuController : MonoBehaviour
 {
     public Button button2, button3, button4;
 
+
     //This to be changes to A star?
     public Text level1Deaths, level2Deaths, level3Deaths;
     public int levelpassed;
@@ -16,6 +17,7 @@ public class MainMenuController : MonoBehaviour
 
     void Start()
     {
+
         levelpassed = PlayerPrefs.GetInt("LevelPassed");
         button2.interactable = false;
         button3.interactable = false;
@@ -38,6 +40,9 @@ public class MainMenuController : MonoBehaviour
 
         }
         GetAllLevelsScores();
+
+
+
     }
 
     public void LevelToLoad(int level)
@@ -79,6 +84,7 @@ public class MainMenuController : MonoBehaviour
             }
         }
     }
+
 
 
 }

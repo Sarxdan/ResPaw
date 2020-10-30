@@ -1,10 +1,45 @@
 ﻿using Assets.Scripts.Models;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public class ScoreManager
 {
+
+    public static void CreateNewUser(string name)
+    {
+        User user = new User()
+        {
+            Name = name,
+            UserId = Guid.NewGuid().ToString()
+        };
+
+        if (String.IsNullOrEmpty(GetUser().Name))
+        {
+            string data = JsonUtility.ToJson(user, true);
+            File.WriteAllText(Application.persistentDataPath + "/UserInfo.json", data);
+        }
+    }
+
+    public static User GetUser()
+    {
+        try
+        {
+            using (StreamReader r = new StreamReader(Application.persistentDataPath + "/UserInfo.json"))
+            {
+                string json = r.ReadToEnd();
+                User user = JsonUtility.FromJson<User>(json);
+
+                return user;
+            }
+        }
+        catch (System.Exception)
+        {
+
+            return new User();
+        }
+    }
 
     public static void SavewNewScore(ScoreModel score)
     {
