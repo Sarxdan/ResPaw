@@ -132,6 +132,7 @@ public abstract class PlayerBase : MonoBehaviour
         rb.isKinematic = false;
         GetComponentInChildren<Renderer>().material.shader = normalShader;
         anim.enabled = true;
+        animalSource.volume = 1;
     }
 
     void Update()
@@ -560,6 +561,7 @@ public abstract class PlayerBase : MonoBehaviour
             GetComponent<Interaction>().Drop();
             animalSource.clip = animalClips[3];
             animalSource.Play();
+            animalSource.volume = 0.5f;
             GetComponentInChildren<Renderer>().material.shader = transParent;
             anim.enabled = false;
             if (freezeLocation)
