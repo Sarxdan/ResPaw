@@ -7,11 +7,11 @@ using UnityEngine.UI;
 
 public class MainMenuController : MonoBehaviour
 {
-    public Button button2, button3, button4;
+    public Button button2, button3, button4, button5;
 
 
     //This to be changes to A star?
-    public Text level1Deaths, level2Deaths, level3Deaths;
+    public Text level1Deaths, level2Deaths, level3Deaths, level4Deaths;
     public int levelpassed;
 
 
@@ -22,6 +22,7 @@ public class MainMenuController : MonoBehaviour
         button2.interactable = false;
         button3.interactable = false;
         button4.interactable = false;
+        button5.interactable = false;
 
         switch (levelpassed)
         {
@@ -36,6 +37,12 @@ public class MainMenuController : MonoBehaviour
                 button2.interactable = true;
                 button3.interactable = true;
                 button4.interactable = true;
+                break;
+            case 6:
+                button2.interactable = true;
+                button3.interactable = true;
+                button4.interactable = true;
+                button5.interactable = true;
                 break;
 
         }
@@ -59,6 +66,7 @@ public class MainMenuController : MonoBehaviour
         button2.interactable = false;
         button3.interactable = false;
         button4.interactable = false;
+        button5.interactable = false;
         PlayerPrefs.DeleteAll();
     }
 
@@ -78,6 +86,9 @@ public class MainMenuController : MonoBehaviour
                     break;
                 case 3:
                     level3Deaths.text = "Deaths =" + score.DeathCount;
+                    break;
+                case 4:
+                    level4Deaths.text = "Deaths =" + score.DeathCount;
                     break;
                 default:
                     break;
