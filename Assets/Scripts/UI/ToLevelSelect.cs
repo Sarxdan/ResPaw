@@ -83,7 +83,7 @@ public class ToLevelSelect : MonoBehaviour
     {
         buttons.clip = pauseButton[0];
         buttons.Play();
-        if (levelSelect == 6)
+        if (levelSelect == 7)
         {
             SceneManager.LoadScene(0);
         }
