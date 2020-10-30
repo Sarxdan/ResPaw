@@ -559,7 +559,7 @@ MonoBehaviour:
 
     Jump: W
 
-    Action: E
+    Pull: E
 
 
     Player 2
@@ -569,7 +569,10 @@ MonoBehaviour:
 
     Jump: Up arrow
 
-    Action: Enter'
+    Pull: Enter
+
+
+    Reset Level: R'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7a076de1c41257740a0a38c8990aa37a, type: 2}
   m_sharedMaterial: {fileID: -3736854361418253247, guid: 7a076de1c41257740a0a38c8990aa37a, type: 2}
