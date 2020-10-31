@@ -1,5 +1,7 @@
 ﻿using Assets.Scripts.Models;
+using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 //created by Daniel
@@ -15,13 +17,19 @@ public class FinishLine : MonoBehaviour
     [SerializeField] private List<GameObject> tb;
     private LevelControll lc;
     GameManager manager;
+
+
     public GameObject winPanel;
-    private float time = 0f;
+
+
     private bool win = false;
-    private ScoreController scoreController;
+
+    [SerializeField]
+    TextMeshProUGUI levelTime;
+
     private void Start()
     {
-        scoreController = gameObject.GetComponent<ScoreController>();
+
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         tb = new List<GameObject>();
         lc = GameObject.FindObjectOfType(typeof(LevelControll)) as LevelControll;
@@ -55,8 +63,24 @@ public class FinishLine : MonoBehaviour
     private void Update()
     {
         CheckAmount();
-        time += Time.deltaTime;
 
+        DisplayTime();
+    }
+
+    private void DisplayTime()
+    {
+        if (!win)
+        {
+            TimeSpan result = TimeSpan.FromSeconds(Time.timeSinceLevelLoad);
+
+            var textTime = result.ToString("mm':'ss':'ff");
+            var segments = textTime.Split(':');
+            segments[0] = (result.TotalMinutes).ToString("00");
+
+            var finalText = segments[0] + ":" + segments[1] + ":" + segments[2];
+
+            levelTime.text = finalText;
+        }
     }
 
     private void CheckAmount()
@@ -94,35 +118,20 @@ public class FinishLine : MonoBehaviour
     }
 
 
+
+
     private void SaveScore()
     {
         ScoreModel scoreModel = new ScoreModel()
         {
             DeathCount = CalculateTotalDeaths(),
             LevelNumber = levelNumber,
-            Time = (int)time
+            Time = Time.timeSinceLevelLoad
         };
 
-        ScoreManager.SavewNewScore(scoreModel);
-        SaveScoreInServer(scoreModel);
-
+        var toLevelSelevt = FindObjectOfType<ToLevelSelect>();
+        toLevelSelevt.SetScore(scoreModel);
     }
 
-    private void SaveScoreInServer(ScoreModel scoreModel)
-    {
-        var user = ScoreManager.GetUser();
-        Score score = new Score()
-        {
-            name = user.Name,
-            userId = user.UserId,
-            dateAdded = System.DateTime.Now.ToString(),
-            deathsCount = scoreModel.DeathCount,
-            levelNumber = scoreModel.LevelNumber,
-            time = scoreModel.Time
-        };
 
-        scoreController.SaveScroe(score);
-
-
-    }
 }

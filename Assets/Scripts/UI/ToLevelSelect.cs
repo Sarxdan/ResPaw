@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using Assets.Scripts.Models;
+using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,35 +11,42 @@ public class ToLevelSelect : MonoBehaviour
 {
     int levelSelect;
     public GameObject pausePanel;
-    private FinishLine fl;
-    private PlayerLives pl;
+    private FinishLine finishLine;
+    private PlayerLives playerLives;
     private int prefs; //enable if we want to reset the unlocked levels everytime start is pressed
     AudioSource buttons;
     [SerializeField] AudioClip[] pauseButton;
 
     [SerializeField]
-    private TMP_InputField textMeshPro;
+    private TMP_InputField playerNameInput;
 
-    private bool isUserExist = false;
+    private ScoreModel scoreModel;
+
     // Start is called before the first frame update
-
+    private ScoreController scoreController;
 
     void Start()
     {
-        fl = GameObject.FindObjectOfType(typeof(FinishLine)) as FinishLine;
-        pl = GameObject.FindObjectOfType(typeof(PlayerLives)) as PlayerLives;
+        scoreModel = null;
+        try
+        {
+            playerNameInput.characterLimit = 25;
+            scoreController = gameObject.GetComponent<ScoreController>();
+        }
+        catch (Exception)
+        {
+
+
+        }
+
+        finishLine = GameObject.FindObjectOfType(typeof(FinishLine)) as FinishLine;
+        playerLives = GameObject.FindObjectOfType(typeof(PlayerLives)) as PlayerLives;
         pauseButton = Resources.LoadAll<AudioClip>("Audio/PauseSound");
         buttons = GetComponent<AudioSource>();
         levelSelect = SceneManager.GetActiveScene().buildIndex;
         pausePanel.SetActive(false);
         prefs = PlayerPrefs.GetInt("LevelPassed");
-        // isUserExist = string.IsNullOrEmpty(ScoreManager.GetUser().Name) ? false : true;
-        /*
-         if (isUserExist && textMeshPro != null)
-         {
-             textMeshPro.gameObject.SetActive(false);
-         }
-         */
+
     }
 
     private void Update()
@@ -47,15 +56,12 @@ public class ToLevelSelect : MonoBehaviour
     }
     public void ToCharacter()
     {
-        //if (textMeshPro.text != "" || isUserExist)
-        //{
-          //  if (!isUserExist)
-            //    CreateNewUser();
-            PlayerPrefs.DeleteAll();
-            buttons.clip = pauseButton[0];
-            buttons.Play();
-            SceneManager.LoadScene(1);
-        //}
+
+        PlayerPrefs.DeleteAll();
+        buttons.clip = pauseButton[0];
+        buttons.Play();
+        SceneManager.LoadScene(1);
+
     }
     public void ToLeaderboard()
     {
@@ -74,6 +80,7 @@ public class ToLevelSelect : MonoBehaviour
 
     public void LevelSelect()
     {
+        SaveScoreIfWin();
         buttons.clip = pauseButton[0];
         buttons.Play();
         Time.timeScale = 1;
@@ -85,16 +92,30 @@ public class ToLevelSelect : MonoBehaviour
     {
         buttons.clip = pauseButton[0];
         buttons.Play();
+
+        SaveScoreIfWin();
+
         if (levelSelect == 7)
         {
+            this.Restart();
+
             SceneManager.LoadScene(2);
         }
         else
         {
+            this.Restart();
+
             SceneManager.LoadScene(levelSelect + 1);
         }
 
 
+
+    }
+
+    private void SaveScoreIfWin()
+    {
+        if (scoreModel != null)
+            SaveScoreInServer(scoreModel);
     }
 
     public void Restart()
@@ -118,7 +139,7 @@ public class ToLevelSelect : MonoBehaviour
 
         if (SceneManager.GetActiveScene().buildIndex != 0)
         {
-            if (!fl.winPanel.activeInHierarchy && !pl.lostPanel.activeInHierarchy)
+            if (!finishLine.winPanel.activeInHierarchy && !playerLives.lostPanel.activeInHierarchy)
             {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
@@ -131,12 +152,28 @@ public class ToLevelSelect : MonoBehaviour
         }
     }
 
-    private void CreateNewUser()
+    public void SetScore(ScoreModel scoreModel)
     {
-        ScoreManager.CreateNewUser(textMeshPro.text);
+        this.scoreModel = scoreModel;
     }
 
+    private void SaveScoreInServer(ScoreModel scoreModel)
+    {
 
+        Score score = new Score()
+        {
+            name = string.IsNullOrEmpty(playerNameInput.text) ? "WithoutName" : playerNameInput.text,
+            userId = Guid.NewGuid().ToString(),
+            dateAdded = DateTime.Now.ToString(),
+            deathsCount = scoreModel.DeathCount,
+            levelNumber = scoreModel.LevelNumber,
+            time = scoreModel.Time
+        };
+
+        scoreController.SaveScroe(score);
+
+
+    }
 
 
 

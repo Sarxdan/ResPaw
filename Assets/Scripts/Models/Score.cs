@@ -12,7 +12,7 @@ namespace Assets.Scripts.Models
         public string name;
 
         public int levelNumber;
-        public int time;
+        public float time;
 
         public int deathsCount;
 

@@ -19,9 +19,9 @@ public class Leaderboard : MonoBehaviour
     void Start()
     {
         scoreController = gameObject.GetComponent<ScoreController>();
-        scoreController.ReadList(1);
+        scoreController.ReadListHighScoreTimeForLevel(1);
 
-        scoreController.ReadScoreListForLevel += ReadScoreListForLevel;
+        scoreController.ReadListScoreTimeForLevel += ReadScoreTimeListForLevel;
         gameObjects = new List<GameObject>();
     }
 
@@ -35,18 +35,18 @@ public class Leaderboard : MonoBehaviour
 
     public void ReadListForLevel1()
     {
-        scoreController.ReadList(1);
+        scoreController.ReadListHighScoreTimeForLevel(1);
     }
     public void ReadListForLevel2()
     {
-        scoreController.ReadList(2);
+        scoreController.ReadListHighScoreTimeForLevel(2);
     }
     public void ReadListForLevel3()
     {
-        scoreController.ReadList(3);
+        scoreController.ReadListHighScoreTimeForLevel(3);
     }
 
-    private void ReadScoreListForLevel(object sender, ScoreCollection scoreCollection)
+    private void ReadScoreTimeListForLevel(object sender, ScoreCollection scoreCollection)
     {
         RemoveAllScores();
 
@@ -57,12 +57,16 @@ public class Leaderboard : MonoBehaviour
                 {
                     var text = Instantiate(scoorPreFab);
                     gameObjects.Add(text);
+
+
                     TimeSpan result = TimeSpan.FromSeconds(score.time);
-                    string fromTimeString = string.Format("{0:D2}h:{1:D2}m:{2:D2}s",
-                    result.Hours,
-                    result.Minutes,
-                    result.Seconds);
-                    string scoreText = "Name: " + score.name + " ** Time: " + fromTimeString;
+
+                    var textTime = result.ToString("mm':'ss':'ff");
+                    var segments = textTime.Split(':');
+                    segments[0] = (result.TotalMinutes).ToString("00");
+
+                    var finalText = segments[0] + ":" + segments[1] + ":" + segments[2];
+                    string scoreText = "Name: " + score.name + " ** Time: " + finalText;
                     text.GetComponent<TMPro.TextMeshProUGUI>().text = scoreText;
                     text.transform.parent = hightScoors.transform;
                     text.transform.localScale = new Vector3(1, 1, 1);

@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Models;
+using System;
+using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -9,15 +12,25 @@ public class MainMenuController : MonoBehaviour
 {
     public Button button2, button3, button4, button5;
 
+    [SerializeField]
+    private TextMeshProUGUI[] DeathsCountsList;
 
-    //This to be changes to A star?
-    public Text level1Deaths, level2Deaths, level3Deaths, level4Deaths;
+    [SerializeField]
+    private TextMeshProUGUI[] TimeCountsList;
+
     public int levelpassed;
 
-
+    private ScoreController scoreController;
     void Start()
     {
+        scoreController = gameObject.GetComponent<ScoreController>();
 
+        scoreController.ReadScoreDeathForLevel += SetTextOnDeathsCount;
+        scoreController.ReadScoreTimeForLevel += SetTextOnTimesCount;
+
+
+        ReadAllLevelTopDeathsFromServer();
+        ReadAllLevelTopTimeFromServer();
         levelpassed = PlayerPrefs.GetInt("LevelPassed");
         button2.interactable = false;
         button3.interactable = false;
@@ -46,7 +59,7 @@ public class MainMenuController : MonoBehaviour
                 break;
 
         }
-        GetAllLevelsScores();
+
 
 
 
@@ -70,32 +83,43 @@ public class MainMenuController : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    private void GetAllLevelsScores()
-    {
-        var allScores = ScoreManager.GetScores();
 
-        foreach (var score in allScores.Scores)
+
+    private void ReadAllLevelTopDeathsFromServer()
+    {
+        for (int i = 0; i < 5; i++)
         {
-            switch (score.LevelNumber)
-            {
-                case 1:
-                    level1Deaths.text = "Deaths =" + score.DeathCount;
-                    break;
-                case 2:
-                    level2Deaths.text = "Deaths =" + score.DeathCount;
-                    break;
-                case 3:
-                    level3Deaths.text = "Deaths =" + score.DeathCount;
-                    break;
-                case 4:
-                    level4Deaths.text = "Deaths =" + score.DeathCount;
-                    break;
-                default:
-                    break;
-            }
+            scoreController.ReadHighScoreDeathsForLevel(i);
+        }
+    }
+    private void ReadAllLevelTopTimeFromServer()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            scoreController.ReadHighScoreTimeForLevel(i);
         }
     }
 
+    private void SetTextOnDeathsCount(object sender, Score score)
+    {
+        if (score != null)
+            DeathsCountsList[score.levelNumber].text = score.deathsCount.ToString();
+    }
 
+    private void SetTextOnTimesCount(object sender, Score score)
+    {
+        if (score != null)
+        {
+            TimeSpan result = TimeSpan.FromSeconds(score.time);
+
+            var textTime = result.ToString("mm':'ss':'ff");
+            var segments = textTime.Split(':');
+            segments[0] = (result.TotalMinutes).ToString("00");
+
+            var finalText = segments[0] + ":" + segments[1] + ":" + segments[2];
+
+            TimeCountsList[score.levelNumber].text = finalText;
+        }
+    }
 
 }

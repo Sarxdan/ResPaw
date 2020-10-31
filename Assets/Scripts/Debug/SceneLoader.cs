@@ -8,6 +8,9 @@ public class SceneLoader : MonoBehaviour
     GameManager manager;
     private PlayerSpawner playerSpawner1;
     private PlayerSpawner playerSpawner2;
+    public GameObject winPanel;
+    public GameObject losePanel;
+    public GameObject pausePanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -74,14 +77,18 @@ public class SceneLoader : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !IsAnyMenuActive())
         {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
             manager.PlayerOneLife = manager.playerLives;
             manager.PlayerTwoLife = manager.playerLives;
         }
     }
-
+    private bool IsAnyMenuActive()
+    {
+        return pausePanel.activeInHierarchy || losePanel.activeInHierarchy || winPanel.activeInHierarchy;
+    }
     private string GetPlayerPreFab(EnumAnimals enumAnimals)
     {
         string preFabeLocation = "";
