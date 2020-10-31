@@ -6,6 +6,22 @@
     <e p="D:\Git\ResPaw" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Environment" t="Include">
+          <e p="Shaders" t="Include">
+            <e p="Cloud_Shader.shader" t="Include" />
+            <e p="CustomStandardSpecular.shader" t="Include" />
+            <e p="Fog_Shader.shader" t="Include" />
+            <e p="Ice_Shader.shader" t="Include" />
+            <e p="Lava_Shader.shader" t="Include" />
+            <e p="Magma_Shader.shader" t="Include" />
+            <e p="PlaneLava_Shader.shader" t="Include" />
+            <e p="PlaneWater_Shader.shader" t="Include" />
+            <e p="Sun_Shader.shader" t="Include" />
+            <e p="Surface_Shader.shader" t="Include" />
+            <e p="Water_Shader.shader" t="Include" />
+            <e p="WaterGreen_Shader.shader" t="Include" />
+          </e>
+        </e>
         <e p="KUBIKOS - Cube Mini Animals" t="Include">
           <e p="Animals1_!Demo" t="Include">
             <e p="Animals1_Scripts" t="Include">
@@ -33,42 +49,7 @@
             <e p="Unlit-DoubleSided.shader" t="Include" />
           </e>
         </e>
-        <e p="KUBIKOS - World" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="EnableCameraDepthInForward.cs" t="Include" />
-          </e>
-          <e p="Shaders" t="Include">
-            <e p="Cloud_Shader.shader" t="Include" />
-            <e p="CustomStandardSpecular.shader" t="Include" />
-            <e p="Fog_Shader.shader" t="Include" />
-            <e p="Ice_Shader.shader" t="Include" />
-            <e p="Lava_Shader.shader" t="Include" />
-            <e p="Magma_Shader.shader" t="Include" />
-            <e p="PlaneLava_Shader.shader" t="Include" />
-            <e p="PlaneWater_Shader.shader" t="Include" />
-            <e p="Sun_Shader.shader" t="Include" />
-            <e p="Surface_Shader.shader" t="Include" />
-            <e p="Water_Shader.shader" t="Include" />
-            <e p="WaterGreen_Shader.shader" t="Include" />
-          </e>
-          <e p="URP Support" t="Include">
-            <e p="Shaders URP" t="Include">
-              <e p="Cloud_Shader.shader" t="Include" />
-              <e p="CustomStandardSpecular.shader" t="Include" />
-              <e p="fade.shader" t="Include" />
-              <e p="Ice_Shader.shader" t="Include" />
-              <e p="Lava_Shader.shader" t="Include" />
-              <e p="Magma_Shader.shader" t="Include" />
-              <e p="PlaneLava_Shader.shader" t="Include" />
-              <e p="PlaneWater_Shader.shader" t="Include" />
-              <e p="Surface_Shader.shader" t="Include" />
-              <e p="Vertical Fog.shader" t="Include" />
-              <e p="Water_Shader.shader" t="Include" />
-              <e p="WaterGreen_Shader.shader" t="Include" />
-            </e>
-          </e>
-        </e>
-        <e p="Racing Flag Animated" t="Include">
+        <e p="Resources" t="Include">
           <e p="Shaders" t="Include">
             <e p="vertex_animation_shader.shader" t="Include" />
           </e>
