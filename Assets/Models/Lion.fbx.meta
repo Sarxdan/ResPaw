@@ -1,131 +1,53 @@
 fileFormatVersion: 2
 guid: bbfb6f7db0794cd6b22c04e08d2c2bbf
+timeCreated: 1505755233
+licenseType: Store
 ModelImporter:
-  serializedVersion: 20101
-  internalIDToNameTable:
-  - first:
-      1: 100000
-    second: Body
-  - first:
-      1: 100002
-    second: Eye_L
-  - first:
-      1: 100004
-    second: Eye_R
-  - first:
-      1: 100006
-    second: LegBack_L
-  - first:
-      1: 100008
-    second: LegBack_R
-  - first:
-      1: 100010
-    second: LegFront_L
-  - first:
-      1: 100012
-    second: LegFront_R
-  - first:
-      1: 100014
-    second: //RootNode
-  - first:
-      1: 100016
-    second: Lion
-  - first:
-      1: 100018
-    second: Lion_Root
-  - first:
-      1: 100020
-    second: Trail_1
-  - first:
-      1: 100022
-    second: Trail_2
-  - first:
-      1: 100024
-    second: Trail_3
-  - first:
-      1: 100026
-    second: Trail_4
-  - first:
-      4: 400000
-    second: Body
-  - first:
-      4: 400002
-    second: Eye_L
-  - first:
-      4: 400004
-    second: Eye_R
-  - first:
-      4: 400006
-    second: LegBack_L
-  - first:
-      4: 400008
-    second: LegBack_R
-  - first:
-      4: 400010
-    second: LegFront_L
-  - first:
-      4: 400012
-    second: LegFront_R
-  - first:
-      4: 400014
-    second: //RootNode
-  - first:
-      4: 400016
-    second: Lion
-  - first:
-      4: 400018
-    second: Lion_Root
-  - first:
-      4: 400020
-    second: Trail_1
-  - first:
-      4: 400022
-    second: Trail_2
-  - first:
-      4: 400024
-    second: Trail_3
-  - first:
-      4: 400026
-    second: Trail_4
-  - first:
-      43: 4300000
-    second: Lion
-  - first:
-      74: 7400000
-    second: Idle
-  - first:
-      74: 7400002
-    second: Walk
-  - first:
-      74: 7400004
-    second: Idle2
-  - first:
-      74: 7400006
-    second: Run
-  - first:
-      74: 7400008
-    second: Jump
-  - first:
-      74: 7400010
-    second: Attack
-  - first:
-      74: 7400012
-    second: Hit
-  - first:
-      74: 7400014
-    second: Jump Inplace
-  - first:
-      95: 9500000
-    second: //RootNode
-  - first:
-      137: 13700000
-    second: Lion
-  externalObjects: {}
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Body
+    100002: Eye_L
+    100004: Eye_R
+    100006: LegBack_L
+    100008: LegBack_R
+    100010: LegFront_L
+    100012: LegFront_R
+    100014: //RootNode
+    100016: Lion
+    100018: Lion_Root
+    100020: Trail_1
+    100022: Trail_2
+    100024: Trail_3
+    100026: Trail_4
+    400000: Body
+    400002: Eye_L
+    400004: Eye_R
+    400006: LegBack_L
+    400008: LegBack_R
+    400010: LegFront_L
+    400012: LegFront_R
+    400014: //RootNode
+    400016: Lion
+    400018: Lion_Root
+    400020: Trail_1
+    400022: Trail_2
+    400024: Trail_3
+    400026: Trail_4
+    4300000: Lion
+    7400000: Idle
+    7400002: Walk
+    7400004: Idle2
+    7400006: Run
+    7400008: Jump
+    7400010: Attack
+    7400012: Hit
+    7400014: Jump Inplace
+    9500000: //RootNode
+    13700000: Lion
   materials:
-    materialImportMode: 1
+    importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
@@ -138,20 +60,16 @@ ModelImporter:
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
-    importAnimatedCustomProperties: 0
-    importConstraints: 0
     animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
       name: Idle
       takeName: Take 001
-      internalID: 0
       firstFrame: 0
       lastFrame: 40
       wrapMode: 0
@@ -208,7 +126,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Idle2
       takeName: Take 001
-      internalID: 0
       firstFrame: 40
       lastFrame: 140
       wrapMode: 0
@@ -265,7 +182,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Walk
       takeName: Take 001
-      internalID: 0
       firstFrame: 141
       lastFrame: 161
       wrapMode: 0
@@ -322,7 +238,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Run
       takeName: Take 001
-      internalID: 0
       firstFrame: 162
       lastFrame: 172
       wrapMode: 0
@@ -379,7 +294,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Jump
       takeName: Take 001
-      internalID: 0
       firstFrame: 173
       lastFrame: 190
       wrapMode: 0
@@ -436,7 +350,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Attack
       takeName: Take 001
-      internalID: 0
       firstFrame: 190
       lastFrame: 204
       wrapMode: 0
@@ -493,7 +406,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Hit
       takeName: Take 001
-      internalID: 0
       firstFrame: 204
       lastFrame: 235
       wrapMode: 0
@@ -550,7 +462,6 @@ ModelImporter:
     - serializedVersion: 16
       name: Jump Inplace
       takeName: Take 001
-      internalID: 0
       firstFrame: 235
       lastFrame: 252
       wrapMode: 0
@@ -610,45 +521,26 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    useSRGBMaterialColor: 1
-    sortHierarchyByName: 1
-    importVisibility: 0
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
-    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
+    optimizeMeshForGPU: 1
     keepQuads: 0
     weldVertices: 1
-    bakeAxisConversion: 0
-    preserveHierarchy: 0
-    skinWeightsMode: 0
-    maxBonesPerVertex: 4
-    minBoneWeight: 0.001
-    meshOptimizationFlags: -1
-    indexFormat: 1
     secondaryUVAngleDistortion: 8
     secondaryUVAreaDistortion: 15.000001
     secondaryUVHardAngle: 88
-    secondaryUVMarginMethod: 0
-    secondaryUVMinLightmapResolution: 40
-    secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
     useFileScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
     tangentImportMode: 3
-    normalCalculationMode: 0
-    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 1
-    blendShapeNormalImportMode: 1
-    normalSmoothingSource: 0
-  referencedClips: []
   importAnimation: 1
+  copyAvatar: 0
   humanDescription:
-    serializedVersion: 3
+    serializedVersion: 2
     human: []
     skeleton: []
     armTwist: 0.5
@@ -658,16 +550,14 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
     rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
   additionalBone: 0
   userData: 
   assetBundleName: 
