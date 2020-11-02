@@ -16,8 +16,8 @@ public class HorizontalEnemy : EnemyBase
 
     private float lastTime = 1;
     private float lastPos;
-    private float checkSec = .2f;
-    private float distanceCheck = .02f;
+    private float checkSec = .08f;
+    private float distanceCheck = .01f;
 
     private bool rotated = false;    // Used for making the distance check and border rotation not screw with eachother
 
