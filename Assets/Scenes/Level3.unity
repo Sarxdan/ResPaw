@@ -649,6 +649,7 @@ MonoBehaviour:
   playerlives1: {fileID: 0}
   playerlives2: {fileID: 0}
   lostPanel: {fileID: 0}
+  volume: 0
 --- !u!114 &68672468
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12164,6 +12165,10 @@ PrefabInstance:
       propertyPath: levelTime
       value: 
       objectReference: {fileID: 1605050362}
+    - target: {fileID: 8457466269993377865, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
+      propertyPath: levelNumber
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e5f5eabe71316649b5e1571eaed6fb9, type: 3}
 --- !u!4 &1515919116 stripped
