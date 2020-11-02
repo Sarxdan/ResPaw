@@ -4907,7 +4907,7 @@ MonoBehaviour:
   playerlives1: {fileID: 708359810}
   playerlives2: {fileID: 364382740}
   lostPanel: {fileID: 5570809621766854911}
-  volume: 0.01
+  volume: 0.1
 --- !u!82 &4978132393780815824
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4920,7 +4920,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 0e7b6fbf6cda87642bcc4ab443dc2540, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.023
   m_Pitch: 1
   Loop: 0
   Mute: 0
