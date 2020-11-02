@@ -19,6 +19,7 @@ public class FinishLine : MonoBehaviour
     GameManager manager;
     AudioSource victory;
    [SerializeField] AudioSource[] otherSources;
+   [SerializeField] float soundVolume;
 
 
     public GameObject winPanel;
@@ -104,7 +105,7 @@ public class FinishLine : MonoBehaviour
                     objects.GetComponent<PlayerBase>().enabled = false;
                     ParticleSystem confetti = transform.Find("Winning Confetti").gameObject.GetComponent<ParticleSystem>();
                     StopAllAudio();
-                    victory.volume = 0.1f;
+                    victory.volume = soundVolume;
                     victory.Play();
                     confetti.Play();
                     enabled = false;
