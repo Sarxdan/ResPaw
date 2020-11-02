@@ -26,7 +26,7 @@ public class MenuMusic : MonoBehaviour
 
     private void DestroyMenuMusic()
     {
-        if(sceneIndex == 0 || sceneIndex == 1 || sceneIndex == 2 )
+        if(sceneIndex == 0 || sceneIndex == 1 || sceneIndex == 2 ||sceneIndex==8 )
         {
             DontDestroyOnLoad(gameObject);
         }
