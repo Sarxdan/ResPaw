@@ -70,6 +70,12 @@ public class HorizontalEnemy : EnemyBase
             Rotate();
             rotated = true;
         }
+        
+        else if (other.tag == "AI Turn Border")
+        {
+            direction = -Vector3.forward;
+            anim.SetTrigger("TurnRight");
+        }
     }
 
     private void OnCollisionEnter(Collision other)
