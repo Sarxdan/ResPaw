@@ -18,7 +18,7 @@ public class FinishLine : MonoBehaviour
     private LevelControll lc;
     GameManager manager;
     AudioSource victory;
-    AudioSource[] otherSources;
+   [SerializeField] AudioSource[] otherSources;
 
 
     public GameObject winPanel;
@@ -28,15 +28,15 @@ public class FinishLine : MonoBehaviour
 
     [SerializeField]
     TextMeshProUGUI levelTime;
-
+    private void Awake()
+    {
+        victory = GetComponentInChildren<AudioSource>();
+    }
     private void Start()
     {
-
         manager = GameObject.FindGameObjectWithTag("Manager").GetComponent<GameManager>();
         tb = new List<GameObject>();
         lc = GameObject.FindObjectOfType(typeof(LevelControll)) as LevelControll;
-        victory = GameObject.Find("Victory Jingle").GetComponent<AudioSource>();
-        otherSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         winPanel.SetActive(false);
         //canvas.enabled = false;
     }
@@ -104,6 +104,7 @@ public class FinishLine : MonoBehaviour
                     objects.GetComponent<PlayerBase>().enabled = false;
                     ParticleSystem confetti = transform.Find("Winning Confetti").gameObject.GetComponent<ParticleSystem>();
                     StopAllAudio();
+                    victory.volume = 0.1f;
                     victory.Play();
                     confetti.Play();
                     enabled = false;
@@ -141,9 +142,10 @@ public class FinishLine : MonoBehaviour
 
     void StopAllAudio()
     {
+        otherSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         foreach (AudioSource audioS in otherSources)
         {
-            audioS.Stop();
+            audioS.volume = 0;
         }
     }
 }
