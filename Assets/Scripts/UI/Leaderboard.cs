@@ -27,6 +27,7 @@ public class Leaderboard : MonoBehaviour
         scoreController.ReadListScoreTimeForLevel += ReadScoreTimeListForLevel;
         scoreController.ReadListScoreDeathsForLevel += ReadScoreTimeListForLevel;
         gameObjects = new List<GameObject>();
+
     }
 
     public void ToHome()
