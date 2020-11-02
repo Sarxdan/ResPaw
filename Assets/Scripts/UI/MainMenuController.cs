@@ -57,6 +57,12 @@ public class MainMenuController : MonoBehaviour
                 button4.interactable = true;
                 button5.interactable = true;
                 break;
+            case 7:
+                button2.interactable = true;
+                button3.interactable = true;
+                button4.interactable = true;
+                button5.interactable = true;
+                break;
 
         }
 

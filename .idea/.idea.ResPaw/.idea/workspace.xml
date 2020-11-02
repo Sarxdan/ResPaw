@@ -19,7 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="" />
+    <list default="true" id="b582c1d7-fc76-48b9-9a62-2632b28d5da2" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ResPaw/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,10 +53,10 @@
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Bow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Weapons/Arrow.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/Players/Interaction.cs" />
-        <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/EnemyBase.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/AI/Archer.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/UI/ConfettiActivator.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/AI/HorizontalEnemy.cs" />
       </list>
     </option>
   </component>

@@ -13,6 +13,7 @@ TagManager:
   - PlayerOneSpawner
   - PlayerTwoSpawner
   - Weapon
+  - AI Turn Border
   layers:
   - Default
   - TransparentFX
