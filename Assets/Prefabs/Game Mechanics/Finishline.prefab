@@ -194,7 +194,7 @@ MonoBehaviour:
   levelNumber: 0
   tb: []
   otherSources: []
-  soundVolume: 0.05
+  soundVolume: 0.02
   winPanel: {fileID: 0}
   levelTime: {fileID: 0}
 --- !u!114 &241094468
