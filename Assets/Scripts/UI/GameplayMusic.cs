@@ -14,6 +14,7 @@ public class GameplayMusic : MonoBehaviour
     void Start()
     {
         CheckIfInstance();
+        Instance.GetComponent<AudioSource>().volume = 0.013f;
     }
 
     // Update is called once per frame
