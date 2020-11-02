@@ -2055,7 +2055,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5570809622100760012, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82bea5a578da58d498935e42b9d8b78f, type: 3}
@@ -2769,20 +2769,20 @@ Transform:
   - {fileID: 1747986591}
   - {fileID: 510093219}
   - {fileID: 1326225420}
+  - {fileID: 1825920574}
   - {fileID: 540603205}
   - {fileID: 1482611192}
+  - {fileID: 1784129825}
   - {fileID: 414428014}
   - {fileID: 1200424276}
   - {fileID: 1635769509}
   - {fileID: 1487812414}
   - {fileID: 80836229}
   - {fileID: 394274807}
-  - {fileID: 1784129825}
   - {fileID: 86254384}
   - {fileID: 1966243066}
   - {fileID: 1276324023}
   - {fileID: 22381090}
-  - {fileID: 1825920574}
   - {fileID: 332790184}
   - {fileID: 775540665}
   - {fileID: 349015945}
@@ -3376,7 +3376,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 176ebcd679b0a6941b29cdaca510e36a, type: 3}
 --- !u!4 &540603205 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4852019242954038, guid: 176ebcd679b0a6941b29cdaca510e36a, type: 3}
   m_PrefabInstance: {fileID: 540603204}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &544860739
@@ -10641,7 +10641,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 7167984cf7e03fe449d08e1fbcf46d79, type: 3}
 --- !u!4 &1784129825 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4888218971011309202, guid: 7167984cf7e03fe449d08e1fbcf46d79, type: 3}
   m_PrefabInstance: {fileID: 1784129824}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1790468287
@@ -10976,7 +10976,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: fe0c7a6e1f236c54596f5931ec6f78af, type: 3}
 --- !u!4 &1825920574 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4457106982992056, guid: fe0c7a6e1f236c54596f5931ec6f78af, type: 3}
   m_PrefabInstance: {fileID: 1825920573}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1829051291
