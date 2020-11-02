@@ -1,6 +1,7 @@
 ﻿using Assets.Scripts.Models;
 using System;
 using System.Collections;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -43,12 +44,13 @@ public class ScoreController : MonoBehaviour
 
     IEnumerator PostNewScore(Score score)
     {
+        var culture = CultureInfo.CreateSpecificCulture("en-US");
         WWWForm scoreForm = new WWWForm();
 
         scoreForm.AddField("UserId", score.userId);
         scoreForm.AddField("Name", score.name);
         scoreForm.AddField("LevelNumber", score.levelNumber);
-        scoreForm.AddField("Time", score.time.ToString());
+        scoreForm.AddField("Time", score.time.ToString(culture));
         scoreForm.AddField("DeathsCount", score.deathsCount);
         scoreForm.AddField("DateAdded", "31/03/2014");
         scoreForm.AddField("Id", 0);
