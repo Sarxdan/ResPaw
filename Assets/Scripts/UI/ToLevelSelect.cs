@@ -13,7 +13,7 @@ public class ToLevelSelect : MonoBehaviour
     public GameObject pausePanel;
     private FinishLine finishLine;
     private PlayerLives playerLives;
-    private int prefs; //enable if we want to reset the unlocked levels everytime start is pressed
+    public int prefs; //enable if we want to reset the unlocked levels everytime start is pressed
     AudioSource buttons;
     [SerializeField] AudioClip[] pauseButton;
 
@@ -56,8 +56,11 @@ public class ToLevelSelect : MonoBehaviour
     }
     public void ToCharacter()
     {
-
-        PlayerPrefs.DeleteAll();
+        if(prefs < 1)
+        {
+            PlayerPrefs.DeleteAll();
+        }
+        
         buttons.clip = pauseButton[0];
         buttons.Play();
         SceneManager.LoadScene(1);
