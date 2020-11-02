@@ -30,7 +30,7 @@ public class ToLevelSelect : MonoBehaviour
         scoreModel = null;
         try
         {
-            playerNameInput.characterLimit = 25;
+            playerNameInput.characterLimit = 12;
             scoreController = gameObject.GetComponent<ScoreController>();
         }
         catch (Exception)
