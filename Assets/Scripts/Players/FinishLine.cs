@@ -18,8 +18,8 @@ public class FinishLine : MonoBehaviour
     private LevelControll lc;
     GameManager manager;
     AudioSource victory;
-   [SerializeField] AudioSource[] otherSources;
-   [SerializeField] float soundVolume;
+    [SerializeField] AudioSource[] otherSources;
+    [SerializeField] float soundVolume;
 
 
     public GameObject winPanel;
@@ -80,8 +80,7 @@ public class FinishLine : MonoBehaviour
 
             var textTime = result.ToString("mm':'ss':'ff");
             var segments = textTime.Split(':');
-            segments[0] = (result.TotalMinutes).ToString("00");
-
+            segments[0] = result.TotalMinutes < 1 ? "00" : (result.TotalMinutes).ToString("00");
             var finalText = segments[0] + ":" + segments[1] + ":" + segments[2];
 
             levelTime.text = finalText;
